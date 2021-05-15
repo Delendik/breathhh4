@@ -24,8 +24,4 @@
     box-shadow: 0px 2px 0px #d33f32;
     border-radius: 4px;
   }
-
-  :global(body) {
-    padding: 0;
-  }
 </style>

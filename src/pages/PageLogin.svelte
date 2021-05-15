@@ -9,8 +9,11 @@
       This is to fine-tune the beneficial practices specifically for you
     </p>
     <div class="btn-warp">
-      <a class="link" href="#"><span>Continue with Google</span></a>
-      <a class="link" href="#"><span>Continue with Facebook</span></a>
+      <a class="link link--google" href="#"><span>Continue with Google</span></a
+      >
+      <a class="link link--facebook" href="#"
+        ><span>Continue with Facebook</span></a
+      >
     </div>
   </div>
 </LayoutCenter>
@@ -54,6 +57,13 @@
     left: 15px;
     width: 24px;
     height: 24px;
-    background-color: red;
+  }
+
+  .link--google::before {
+    background: url("/assets/icon-google.svg") 0 0 / cover no-repeat;
+  }
+
+  .link--facebook::before {
+    background: url("/assets/icon-facebook.svg") 0 0 / cover no-repeat;
   }
 </style>

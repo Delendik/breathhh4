@@ -3,7 +3,7 @@
     width="24"
     height="24"
     class="icon-wrap"
-    src="/assets/icons/icon-yahht.svg"
+    src="/assets/icon-yahht.svg"
     alt="Yahht Logo"
   />
   <div>Developed by Yahht</div>
