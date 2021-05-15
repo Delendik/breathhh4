@@ -1,6 +1,10 @@
 # Breathhh-Web
 
-## pages
+```sh
+yarn dev # http://localhost:5000
+```
+
+## [pages](https://www.figma.com/file/4h13xBqtDoOSnCtwgZeJti/Yahht?node-id=238%3A262)
 
 - http://localhost:5000/
 - http://localhost:5000/login
