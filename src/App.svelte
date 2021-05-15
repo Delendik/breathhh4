@@ -1,30 +1,31 @@
 <script lang="ts">
-	export let name: string;
+  import LayoutCenter from "./comp/LayoutCenter.svelte";
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<LayoutCenter>
+  <div>
+    <h1 class="title">Breathhh</h1>
+    <a class="link" href="#">Install from Google Store</a>
+  </div>
+</LayoutCenter>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+  .title {
+    margin: 0 0 25px;
+    text-align: center;
+  }
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+  .link {
+    display: inline-flex;
+    padding: 12px 24px;
+    background-color: #eb6135;
+    font-size: 18px;
+    color: white;
+    box-shadow: 0px 2px 0px #d33f32;
+    border-radius: 4px;
+  }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  :global(body) {
+    padding: 0;
+  }
 </style>
