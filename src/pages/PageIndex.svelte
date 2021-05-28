@@ -1,11 +1,12 @@
 <script lang="ts">
   import LayoutCenter from "../comp/LayoutCenter.svelte";
+  import { chromeExtUrl } from "../config";
 </script>
 
 <LayoutCenter>
   <div>
     <h1 class="title">Breathhh</h1>
-    <a class="link" href="#">Install from Google Store</a>
+    <a class="link" href={chromeExtUrl}>Install from Google Store</a>
   </div>
 </LayoutCenter>
 

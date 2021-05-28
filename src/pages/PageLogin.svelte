@@ -1,5 +1,6 @@
 <script lang="ts">
   import LayoutCenter from "../comp/LayoutCenter.svelte";
+  import { apiUrlFacebook, apiUrlGoogle } from "../config";
 </script>
 
 <LayoutCenter>
@@ -9,9 +10,10 @@
       This is to fine-tune the beneficial practices specifically for you
     </p>
     <div class="btn-warp">
-      <a class="link link--google" href="#"><span>Continue with Google</span></a
+      <a class="link link--google" href={apiUrlGoogle}
+        ><span>Continue with Google</span></a
       >
-      <a class="link link--facebook" href="#"
+      <a class="link link--facebook" href={apiUrlFacebook}
         ><span>Continue with Facebook</span></a
       >
     </div>

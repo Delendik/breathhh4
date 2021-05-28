@@ -1,5 +1,6 @@
 <script lang="ts">
   import LayoutCenter from "../comp/LayoutCenter.svelte";
+  import Profile from "../comp/Profile.svelte";
 
   const handleCloseTab = () => {
     // Scripts may close only the windows that were opened by them.
@@ -9,6 +10,9 @@
 
 <LayoutCenter>
   <div class="root">
+    <div class="profile-wrap">
+      <Profile />
+    </div>
     <div class="pieace">✌️</div>
     <h1 class="title">
       From time to time when you open the tabs you will see a tool for breathing
@@ -29,6 +33,12 @@
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .profile-wrap {
+    position: absolute;
+    top: 40px;
+    right: 40px;
   }
 
   .pieace {
