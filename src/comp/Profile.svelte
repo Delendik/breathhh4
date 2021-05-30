@@ -2,14 +2,16 @@
   import { useNavigate } from "svelte-navigator";
   import cookie from "js-cookie";
   import { storeUser } from "../store";
-  import { chromeExtUrl } from "../config";
+  import { chromeExtUrl, sendMessageToExt } from "../config";
 
   const navigate = useNavigate();
 
   const handleReset = () => {
     cookie.remove("token");
     storeUser.set(null);
-    localStorage.removeItem("token");
+
+    sendMessageToExt("logout");
+
     navigate("/login", { replace: true });
   };
 </script>

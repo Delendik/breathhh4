@@ -4,7 +4,7 @@
   import cookie from "js-cookie";
   import axios from "axios";
   import { storeToken, storeUser } from "./store.js";
-  import { apiUrl, chromeExtId } from "./config.js";
+  import { apiUrl, sendMessageToExt } from "./config.js";
   import PageIndex from "./pages/PageIndex.svelte";
   import PageLogin from "./pages/PageLogin.svelte";
   import PageOnBoarding from "./pages/PageOnBoarding.svelte";
@@ -25,11 +25,7 @@
 
       storeUser.set(data);
 
-      try {
-        chrome.runtime.sendMessage(chromeExtId, { type: "userLoginIn" });
-      } catch (error) {
-        console.log("Extension not installed");
-      }
+      sendMessageToExt("userLoginIn");
     }
 
     dataLoaded = true;
