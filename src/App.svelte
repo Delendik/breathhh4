@@ -4,27 +4,32 @@
   import cookie from "js-cookie";
   import axios from "axios";
   import { storeToken, storeUser } from "./store.js";
-  import { apiUrl } from "./config.js";
+  import { apiUrl, chromeExtId } from "./config.js";
   import PageIndex from "./pages/PageIndex.svelte";
   import PageLogin from "./pages/PageLogin.svelte";
   import PageOnBoarding from "./pages/PageOnBoarding.svelte";
 
-  const newToken = cookie.get("token");
+  const AUTHORIZATION = cookie.get("token");
 
-  if (newToken) {
-    storeToken.set(newToken);
-    localStorage.setItem("token", newToken);
+  if (AUTHORIZATION) {
+    storeToken.set(AUTHORIZATION);
   }
 
   let dataLoaded;
 
   onMount(async () => {
-    if (newToken || $storeToken) {
+    if (AUTHORIZATION) {
       const { data } = await axios.get(`${apiUrl}/profile`, {
-        headers: { AUTHORIZATION: newToken || $storeToken },
+        headers: { AUTHORIZATION },
       });
 
       storeUser.set(data);
+
+      try {
+        chrome.runtime.sendMessage(chromeExtId, { type: "userLoginIn" });
+      } catch (error) {
+        console.log("Extension not installed");
+      }
     }
 
     dataLoaded = true;
