@@ -3,6 +3,7 @@ import { Router } from '@reach/router'
 import cookie from 'js-cookie'
 import UserStore from './store/UserStore'
 import { sendMessageToExt } from './utils/config'
+import { ACTION_LOGIN } from './utils/actions'
 import { PageIndex } from './pages/PageIndex'
 import { PageLogin } from './pages/PageLogin'
 import { PageOnBoarding } from './pages/PageOnBoarding'
@@ -16,7 +17,7 @@ export function App() {
 
       if (AUTHORIZATION) {
         await UserStore.setAndFetchUser(AUTHORIZATION)
-        sendMessageToExt('userLoginIn')
+        sendMessageToExt(ACTION_LOGIN)
       }
 
       setDataLoaded(true)

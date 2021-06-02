@@ -3,6 +3,7 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import cookie from 'js-cookie'
 import { apiUrl, sendMessageToExt } from '../../utils/config'
+import { ACTION_LOGOUT } from '../../utils/actions'
 import type { IUser } from './types'
 
 const today = () => dayjs().format('YYYY-MM-DD')
@@ -41,7 +42,7 @@ class UserStore {
   logout() {
     cookie.remove('token')
     this.user = null
-    sendMessageToExt('logout')
+    sendMessageToExt(ACTION_LOGOUT)
   }
 }
 
