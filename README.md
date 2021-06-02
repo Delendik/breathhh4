@@ -4,6 +4,11 @@
 yarn start # http://localhost:5000
 ```
 
+```sh
+yarn build
+yarn serve # http://localhost:5000
+```
+
 ## [pages](https://www.figma.com/file/4h13xBqtDoOSnCtwgZeJti/Yahht?node-id=238%3A262)
 
 - http://localhost:5000/
