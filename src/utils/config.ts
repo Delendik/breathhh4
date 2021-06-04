@@ -1,3 +1,4 @@
+export const yahhtUrl = 'https://yahht.com/'
 export const apiUrl = 'https://api.breathhh.app'
 export const apiUrlFacebook = apiUrl + '/auth/facebook'
 export const apiUrlGoogle = apiUrl + '/auth/google_oauth2'
