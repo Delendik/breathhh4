@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
 import { LayoutCenter } from '../components/LayoutCenter'
 import { chromeExtUrl } from '../utils/config'
-import React from 'react'
 
 const Title = styled.h1`
   margin: 0 0 25px;
