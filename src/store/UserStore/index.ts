@@ -40,7 +40,7 @@ class UserStore {
   }
 
   logout() {
-    cookie.remove('token')
+    cookie.remove('token', { path: '/', domain: '.breathhh.app' })
     this.user = null
     sendMessageToExt(ACTION_LOGOUT)
   }
