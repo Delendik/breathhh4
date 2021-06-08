@@ -61,6 +61,7 @@ export const Profile = observer(() => {
   const navigate = useNavigate()
 
   const handleReset = () => {
+    UserStore.logout()
     navigate('/login', { replace: true })
   }
 
