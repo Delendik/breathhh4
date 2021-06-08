@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import cookie from 'js-cookie'
-import UserStore from '../store/UserStore'
+import { UserStore } from '../store/UserStore'
 import { sendMessageToExt } from '../utils/config'
 import { ACTION_LOGIN } from '../utils/actions'
 

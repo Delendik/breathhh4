@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useNavigate } from '@reach/router'
 import { observer } from 'mobx-react-lite'
-import UserStore from '../store/UserStore'
+import { UserStore } from '../store/UserStore'
 import { chromeExtUrl } from '../utils/config'
 
 const Root = styled.div`
