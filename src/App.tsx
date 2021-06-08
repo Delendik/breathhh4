@@ -9,7 +9,7 @@ import { Page404 } from './pages/Page404'
 const PageOnBoardingProtected = withProtect(PageOnBoarding)
 
 export function App() {
-  const dataLoaded = useAuth()
+  const [dataLoaded] = useAuth()
 
   return dataLoaded ? (
     <Router>
