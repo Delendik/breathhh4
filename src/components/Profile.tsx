@@ -15,6 +15,7 @@ const Inner = styled.div`
 `
 const Avatar = styled.img`
   margin-right: 8px;
+  border-radius: 50%;
 `
 
 const Dropdown = styled.div`
