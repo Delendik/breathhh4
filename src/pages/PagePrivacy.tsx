@@ -33,6 +33,10 @@ const P = styled.p`
   margin: 0;
 `
 
+const Pad = styled.div`
+  padding-top: 500px;
+`
+
 export const PagePrivacy: React.FC<RouteComponentProps> = () => {
   return (
     <Container>
@@ -102,6 +106,7 @@ export const PagePrivacy: React.FC<RouteComponentProps> = () => {
         If you have any questions or comments, you can reach out to us at{' '}
         <a href="mailto:mail@yahht.com">mail@yahht.com</a>
       </p>
+      <Pad />
     </Container>
   )
 }
