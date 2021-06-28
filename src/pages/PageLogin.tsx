@@ -54,6 +54,16 @@ const Href = styled.a<{ type: 'google' | 'facebook' }>`
   }
 `
 
+const Footer = styled.div`
+  text-align: center;
+  margin: 90px 10px 0;
+  color: #71727b;
+
+  a {
+    color: inherit;
+  }
+`
+
 export const PageLogin: React.FC<RouteComponentProps> = () => {
   return (
     <LayoutCenter>
@@ -68,6 +78,10 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
             <span>Continue with Facebook</span>
           </Href>
         </BtnWrap>
+        <Footer>
+          By logging in you agree to the personal <a href="/privacy_policy">privacy policy</a> and{' '}
+          <a href="/terms_of_use">terms of use</a>
+        </Footer>
       </div>
     </LayoutCenter>
   )
