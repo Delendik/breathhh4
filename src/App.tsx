@@ -6,6 +6,7 @@ import { PageLogin } from './pages/PageLogin'
 import { PageOnBoarding } from './pages/PageOnBoarding'
 import { PagePrivacy } from './pages/PagePrivacy'
 import { PageTerms } from './pages/PageTerms'
+import { UnInstallExt } from './pages/UnInstallExt'
 import { Page404 } from './pages/Page404'
 
 const PageOnBoardingProtected = withProtectNotLogin(PageOnBoarding)
@@ -21,6 +22,7 @@ export function App() {
       <PageLoginProtected path="/login" />
       <PagePrivacy path="/privacy_policy" />
       <PageTerms path="/terms_of_use" />
+      <UnInstallExt path="/uninstall_ext" />
 
       <Page404 path="/404" />
       <Redirect from="*" to="/404" noThrow />
