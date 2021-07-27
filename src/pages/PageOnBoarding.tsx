@@ -49,13 +49,27 @@ const Subtitle = styled.div`
   cursor: pointer;
 `
 
+const LOL = true
+
+const StyledLOL = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const PageOnBoarding: React.FC<RouteComponentProps> = () => {
   const handleCloseTab = () => {
     // Scripts may close only the windows that were opened by them.
     window.close()
   }
 
-  return (
+  return LOL ? (
+    <StyledLOL>
+      <h1>Thanks for install!</h1>
+    </StyledLOL>
+  ) : (
     <LayoutCenter>
       <Root>
         <ProfileWrap>
