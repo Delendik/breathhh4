@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import axios from 'axios'
 import dayjs from 'dayjs'
 import cookie from 'js-cookie'
-import { apiUrl, sendMessageToExt } from '../../utils/config'
+import { sendMessageToExt } from '../../utils/config'
+import { fetcher } from '../../utils/fetcher'
 import { ACTION_LOGOUT } from '../../utils/actions'
 import type { IUser } from './types'
 
@@ -21,7 +21,7 @@ export class UserStore {
   }
 
   async fetchUser() {
-    const { data } = await axios.get<IUser>(apiUrl + `/profile?date=${today()}`, {
+    const { data } = await fetcher.get<IUser>(`/profile?date=${today()}`, {
       headers: { AUTHORIZATION: this.token },
     })
 

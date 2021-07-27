@@ -12,8 +12,10 @@ export const useAuth = () => {
       const AUTHORIZATION = cookie.get('token')
 
       if (AUTHORIZATION) {
-        await UserStore.setAndFetchUser(AUTHORIZATION)
-        sendMessageToExt(ACTION_LOGIN)
+        try {
+          await UserStore.setAndFetchUser(AUTHORIZATION)
+          sendMessageToExt(ACTION_LOGIN)
+        } catch {}
       }
 
       setDataLoaded(true)
