@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import cookie from 'js-cookie'
-import { useNavigate } from '@reach/router'
 import { UserStore } from '../store/UserStore'
 import { sendMessageToExt, chromeExtId } from '../utils/config'
 import { ACTION_LOGIN, ACTION_LOGOUT } from '../utils/actions'
 
 export const useAuth = () => {
   const [dataLoaded, setDataLoaded] = useState(false)
-  const navigate = useNavigate()
 
   // INFO: Логин
   useEffect(() => {
