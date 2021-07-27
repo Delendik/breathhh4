@@ -5,7 +5,7 @@ export const apiUrlGoogle = apiUrl + '/auth/google_oauth2'
 export const chromeExtUrl = 'https://google.com'
 
 const chromeExtId_OLD = 'bmllbkjcollkklanejokmbnmgmknkkph'
-export const chromeExtId = 'cllimaakonijffcoofcdjmgdibcdiabd'
+const chromeExtId = 'cllimaakonijffcoofcdjmgdibcdiabd'
 
 // FIXME: нужно будет удалить `chromeExtId_OLD`, когда все будут сидеть на новой версии
 export const sendMessageToExt = (type: string) => {
