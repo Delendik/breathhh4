@@ -1,9 +1,12 @@
 // import styled from 'styled-components'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 import { Formik, Form, Field } from 'formik'
 import { RouteComponentProps } from '@reach/router'
-import { Container } from '../components/Container'
-import { chromeExtUrl } from '../utils/config'
+
+import { UserStore } from 'src/store/UserStore'
+import { Container } from 'src/components/Container'
+import { chromeExtUrl } from 'src/utils/config'
 
 const DATA = [
   { text: "Don't understand how it works" },
@@ -15,8 +18,12 @@ const DATA = [
   { text: 'Other', type: 'textArea' },
 ]
 
-export const UnInstallExt: React.FC<RouteComponentProps> = () => {
+export const UnInstallExt: React.FC<RouteComponentProps> = observer(() => {
   const [isDataSend, setDataSend] = useState(false)
+
+  useEffect(() => {
+    UserStore.sendDeleteFact()
+  }, [])
 
   return (
     <Container>
@@ -34,10 +41,8 @@ export const UnInstallExt: React.FC<RouteComponentProps> = () => {
             comment: '',
           }}
           onSubmit={async (values) => {
-            setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2))
-              setDataSend(true)
-            }, 400)
+            await UserStore.sendDeleteFeedback(values)
+            setDataSend(true)
           }}
         >
           {({ values }) => (
@@ -72,4 +77,4 @@ export const UnInstallExt: React.FC<RouteComponentProps> = () => {
       )}
     </Container>
   )
-}
+})

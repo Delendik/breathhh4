@@ -16,3 +16,8 @@ export interface IUser {
   mood: IMood | null
   picture: string | null
 }
+
+export interface IDeleteFeedback {
+  reason: string
+  comment: string
+}

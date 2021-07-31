@@ -4,7 +4,7 @@ import cookie from 'js-cookie'
 import { sendMessageToExt } from '../../utils/config'
 import { fetcher } from '../../utils/fetcher'
 import { ACTION_LOGOUT } from '../../utils/actions'
-import type { IUser } from './types'
+import type { IUser, IDeleteFeedback } from './types'
 
 const today = () => dayjs().format('YYYY-MM-DD')
 
@@ -43,5 +43,13 @@ export class UserStore {
     cookie.remove('token', { path: '/', domain: '.breathhh.app' })
     this.user = null
     sendMessageToExt(ACTION_LOGOUT)
+  }
+
+  async sendDeleteFact() {
+    await fetcher.delete(`/users/extension`, { headers: { AUTHORIZATION: this.token } })
+  }
+
+  async sendDeleteFeedback(data: IDeleteFeedback) {
+    await fetcher.post(`/users/feedbacks`, { headers: { AUTHORIZATION: this.token }, data })
   }
 }
