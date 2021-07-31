@@ -21,3 +21,8 @@ export interface IDeleteFeedback {
   reason: string
   comment: string
 }
+
+export interface IReferrer {
+  referrer: string
+  entry_url: string
+}

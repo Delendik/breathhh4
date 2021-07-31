@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import cookie from 'js-cookie'
-import { UserStore } from '../store/UserStore'
-import { sendMessageToExt } from '../utils/config'
-import { ACTION_LOGIN } from '../utils/actions'
+
+import { UserStore } from 'src/store/UserStore'
+import { sendMessageToExt } from 'src/utils/config'
+import { ACTION_LOGIN } from 'src/utils/actions'
 
 export const useAuth = () => {
   const [dataLoaded, setDataLoaded] = useState(false)
