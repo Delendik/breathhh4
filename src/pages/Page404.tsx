@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
-import { LayoutCenter } from '../components/LayoutCenter'
+import { LayoutCenter } from 'src/components/LayoutCenter'
 
 const Root = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 `
 
 export const Page404: React.FC<RouteComponentProps> = () => {

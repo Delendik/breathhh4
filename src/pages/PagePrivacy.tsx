@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
-import { Container } from '../components/Container'
-import { MadeBy } from '../components/MadeBy'
+import { Container } from 'src/components/Container'
+import { MadeBy } from 'src/components/MadeBy'
 
 const H1 = styled.h1`
   margin-bottom: 25px;
@@ -17,9 +17,9 @@ const Top = styled.div`
 
 const Caption = styled.p`
   margin: 0 0 5px;
+  color: var(--gray);
   font-size: 15px;
   line-height: 25px;
-  color: var(--gray);
 `
 
 const H3 = styled.h3`
@@ -28,9 +28,9 @@ const H3 = styled.h3`
 `
 
 const P = styled.p`
+  margin: 0;
   font-size: 15px;
   line-height: 25px;
-  margin: 0;
 `
 
 const Pad = styled.div`

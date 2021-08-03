@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
-import { LayoutCenter } from '../components/LayoutCenter'
-import { Profile } from '../components/Profile'
+import { LayoutCenter } from 'src/components/LayoutCenter'
+import { Profile } from 'src/components/Profile'
 
 const Root = styled.div`
   max-width: 680px;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 `
 
 const ProfileWrap = styled.div`
@@ -26,25 +26,25 @@ const Title = styled.div`
 `
 
 const Images = styled.div`
-  filter: drop-shadow(0px 48px 128px rgba(28, 65, 84, 0.12));
+  filter: drop-shadow(0 48px 128px rgba(28, 65, 84, 0.12));
 `
 
 const ImageTop = styled.div`
-  height: 48px;
   width: 622px;
+  height: 48px;
   background: url('/assets/browser-header.png') 0 0 / cover no-repeat;
 `
 
 const ImageBottom = styled.div`
-  height: 48px;
   width: 622px;
+  height: 48px;
   background: url('/assets/browser-search-bar.png') 0 0 / cover no-repeat;
 `
 
 const Subtitle = styled.div`
   margin: 50px 0 0;
-  font-size: 20px;
   color: #f6803e;
+  font-size: 20px;
   text-align: center;
   cursor: pointer;
 `
@@ -52,11 +52,11 @@ const Subtitle = styled.div`
 const LOL = true
 
 const StyledLOL = styled.div`
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 100vh;
 `
 
 export const PageOnBoarding: React.FC<RouteComponentProps> = () => {

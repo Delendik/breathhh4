@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
-import { LayoutCenter } from '../components/LayoutCenter'
-import { chromeExtUrl } from '../utils/config'
+import { LayoutCenter } from 'src/components/LayoutCenter'
+import { chromeExtUrl } from 'src/utils/config'
 
 const Title = styled.h1`
   margin: 0 0 25px;
@@ -11,12 +11,12 @@ const Title = styled.h1`
 const Href = styled.a`
   display: inline-flex;
   padding: 12px 24px;
-  background-color: #eb6135;
+  color: #ffffff;
   font-size: 18px;
-  color: white;
-  box-shadow: 0px 2px 0px #d33f32;
-  border-radius: 4px;
   text-decoration: none;
+  background-color: #eb6135;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 #d33f32;
   transition: 0.3s;
 
   &:hover {

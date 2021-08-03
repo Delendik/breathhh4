@@ -1,13 +1,9 @@
 module.exports = {
-  syntax: 'scss',
-  plugins: ['stylelint-scss'],
+  processors: ['stylelint-processor-styled-components'],
   extends: [
     'stylelint-config-htmlacademy',
+    'stylelint-config-styled-components',
     'stylelint-config-prettier',
     'stylelint-config-rational-order',
   ],
-  rules: {
-    'at-rule-no-unknown': null,
-    'scss/at-rule-no-unknown': true,
-  },
 }

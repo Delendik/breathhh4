@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { yahhtUrl } from '../utils/config'
+import { yahhtUrl } from 'src/utils/config'
 
 const Root = styled.a`
   display: flex;

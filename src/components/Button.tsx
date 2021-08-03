@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
 const Root = styled.button`
-  box-sizing: border-box;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   min-height: 44px;
   padding: 5px 20px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #71727b;
-  background-color: transparent;
   font-size: 15px;
   text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #71727b;
   border-radius: 4px;
 `
 

@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { useNavigate } from '@reach/router'
 import { observer } from 'mobx-react-lite'
-import { UserStore } from '../store/UserStore'
-import { chromeExtUrl } from '../utils/config'
+
+import { UserStore } from 'src/store/UserStore'
+import { chromeExtUrl } from 'src/utils/config'
 
 const Root = styled.div`
   position: relative;
@@ -19,23 +20,23 @@ const Avatar = styled.img`
 `
 
 const Dropdown = styled.div`
-  padding-top: 20px;
-  display: none;
   position: absolute;
   top: 100%;
   right: 0;
+  display: none;
+  padding-top: 20px;
 
-  ${Root}:hover & {
+  ${/* sc-selector */ Root}:hover & {
     display: block;
   }
 `
 
 const DropdownInner = styled.div`
-  background: #ffffff;
-  box-shadow: 0px 8px 24px rgba(28, 65, 84, 0.08), 0px 24px 128px rgba(28, 65, 84, 0.12);
-  border-radius: 16px;
-  padding-left: 20px;
   padding-right: 20px;
+  padding-left: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(28, 65, 84, 0.08), 0 24px 128px rgba(28, 65, 84, 0.12);
 `
 
 const DropdownItem = styled.div`

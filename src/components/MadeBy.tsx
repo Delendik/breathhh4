@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { yahhtUrl } from '../utils/config'
+import { yahhtUrl } from 'src/utils/config'
 
 const Root = styled.a`
   display: flex;
   align-items: center;
+  color: inherit;
   font-size: 14px;
   text-decoration: none;
-  color: inherit;
   transition: 0.3s;
 
   :hover {
@@ -22,16 +22,16 @@ const IconWrap = styled.img`
 
 const Made = styled.div`
   margin-bottom: 3px;
+  color: #232a34;
   font-weight: 500;
   font-size: 18px;
   line-height: 25px;
-  color: #232a34;
 `
 
 const Team = styled.div`
+  color: var(--gray);
   font-size: 15px;
   line-height: 20px;
-  color: var(--gray);
 `
 
 export const MadeBy = () => {

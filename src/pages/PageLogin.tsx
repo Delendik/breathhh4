@@ -1,50 +1,50 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
-import { LayoutCenter } from '../components/LayoutCenter'
-import { apiUrlFacebook, apiUrlGoogle } from '../utils/config'
+import { LayoutCenter } from 'src/components/LayoutCenter'
+import { apiUrlFacebook, apiUrlGoogle } from 'src/utils/config'
 
 const Title = styled.h1`
-  font-size: 32px;
-  color: #3d3a4b;
-  text-align: center;
   margin: 0 0 15px;
+  color: #3d3a4b;
+  font-size: 32px;
+  text-align: center;
 `
 
 const Subtitle = styled.p`
-  font-size: 20px;
   color: #615f68;
+  font-size: 20px;
   text-align: center;
 `
 
 const BtnWrap = styled.div`
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
   display: grid;
+  max-width: 300px;
+  margin-right: auto;
+  margin-left: auto;
   gap: 12px;
   margin-top: 45px;
 `
 
 const Href = styled.a<{ type: 'google' | 'facebook' }>`
   position: relative;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.16);
-  border-radius: 4px;
-  font-size: 18px;
-  color: #3d3a4b;
   padding: 15px 15px 15px 64px;
+  color: #3d3a4b;
+  font-size: 18px;
   text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
 
   &:hover {
     opacity: 0.8;
   }
 
   &::before {
-    content: '';
     position: absolute;
     top: 15px;
     left: 15px;
     width: 24px;
     height: 24px;
+    content: '';
 
     ${({ type }) =>
       type === 'google' && `background: url("/assets/icon-google.svg") 0 0 / cover no-repeat;`}
@@ -55,9 +55,9 @@ const Href = styled.a<{ type: 'google' | 'facebook' }>`
 `
 
 const Footer = styled.div`
-  text-align: center;
   margin: 90px 10px 0;
   color: #71727b;
+  text-align: center;
 
   a {
     color: inherit;

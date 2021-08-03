@@ -1,7 +1,7 @@
 // import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
 import { observer } from 'mobx-react-lite'
-import { LayoutCenter } from '../components/LayoutCenter'
+import { LayoutCenter } from 'src/components/LayoutCenter'
 
 export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
   return (
