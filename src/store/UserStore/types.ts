@@ -5,6 +5,10 @@ export interface IMood {
   rate: number
 }
 
+export interface IEngagement {
+  [_: string]: number
+}
+
 export interface IUser {
   breath: boolean
   email: string
@@ -15,6 +19,7 @@ export interface IUser {
   tabs_count: number
   mood: IMood | null
   picture: string | null
+  engagement: IEngagement
 }
 
 export interface IDeleteFeedback {

@@ -41,6 +41,17 @@ export class UserStore {
     return this.user?.picture || undefined
   }
 
+  get engList() {
+    if (this.user?.engagement) {
+      return Object.keys(this.user.engagement).map((name) => ({
+        name,
+        value: this.user!.engagement[name],
+      }))
+    }
+
+    return []
+  }
+
   logout() {
     cookie.remove('token', { path: '/', domain: '.breathhh.app' })
     this.user = null

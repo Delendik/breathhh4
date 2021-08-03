@@ -7,12 +7,18 @@ import { Root } from 'src/pages/Root'
 import { PageIndex } from 'src/pages/PageIndex'
 import { PageLogin } from 'src/pages/PageLogin'
 import { PageOnBoarding } from 'src/pages/PageOnBoarding'
+import { PageDashboard } from 'src/pages/PageDashboard'
+import { PageSubscription } from 'src/pages/PageSubscription'
+import { PageAccount } from 'src/pages/PageAccount'
 import { PagePrivacy } from 'src/pages/PagePrivacy'
 import { PageTerms } from 'src/pages/PageTerms'
 import { UnInstallExt } from 'src/pages/UnInstallExt'
 import { Page404 } from 'src/pages/Page404'
 
 const PageOnBoardingProtected = withProtectNotLogin(PageOnBoarding)
+const PageDashboardProtected = withProtectNotLogin(PageDashboard)
+const PageSubscriptionProtected = withProtectNotLogin(PageSubscription)
+const PageAccountProtected = withProtectNotLogin(PageAccount)
 const PageLoginProtected = withProtectWithLogin(PageLogin)
 
 export function App() {
@@ -24,6 +30,9 @@ export function App() {
         <PageIndex path="/" />
         <PageOnBoardingProtected path="/onboarding" />
         <PageLoginProtected path="/login" />
+        <PageDashboardProtected path="/dashboard" />
+        <PageSubscriptionProtected path="/subscription" />
+        <PageAccountProtected path="/account" />
         <PagePrivacy path="/privacy_policy" />
         <PageTerms path="/terms_of_use" />
         <UnInstallExt path="/uninstall_ext" />
