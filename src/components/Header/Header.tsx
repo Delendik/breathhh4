@@ -1,4 +1,4 @@
-import { Link } from '@reach/router'
+import { Link, useLocation } from '@reach/router'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 
@@ -23,11 +23,28 @@ const Login = styled.div`
   font-size: 22px;
 `
 
-export const Header: React.FC = observer(() => {
+interface IProps {
+  hideLogin?: boolean
+}
+
+export const Header: React.FC<IProps> = observer((props) => {
+  const { hideLogin } = props
+  const { pathname } = useLocation()
+
+  const isCurrent = pathname === '/login'
+
   return (
     <Root>
       <Title>Breathhh</Title>
-      <Login>{UserStore.user ? <Profile /> : <Link to="/login">Log in</Link>}</Login>
+      {!hideLogin && (
+        <Login>
+          {UserStore.user ? (
+            <Profile />
+          ) : (
+            <Link to={isCurrent ? '/' : '/login'}>{isCurrent ? 'Go Back' : 'Log in'}</Link>
+          )}
+        </Login>
+      )}
     </Root>
   )
 })

@@ -1,90 +1,82 @@
 import styled from 'styled-components'
-import { RouteComponentProps } from '@reach/router'
-import { LayoutCenter } from 'src/components/LayoutCenter'
-import { Profile } from 'src/components/Profile'
+import { RouteComponentProps, Link } from '@reach/router'
+import { observer } from 'mobx-react-lite'
 
-const Root = styled.div`
-  max-width: 680px;
-  margin-right: auto;
-  margin-left: auto;
-`
-
-const ProfileWrap = styled.div`
-  position: absolute;
-  top: 40px;
-  right: 40px;
-`
-const Peace = styled.div`
-  font-size: 60px;
-  text-align: center;
-`
+// import { UserStore } from 'src/store/UserStore'
+import { Header } from 'src/components/Header'
+import { ContentInner } from 'src/components/ContentInner'
 
 const Title = styled.div`
-  margin: 0 0 35px;
-  font-size: 32px;
-  text-align: center;
+  font-size: 42px;
+  line-height: 50px;
 `
 
-const Images = styled.div`
-  filter: drop-shadow(0 48px 128px rgba(28, 65, 84, 0.12));
-`
-
-const ImageTop = styled.div`
-  width: 622px;
-  height: 48px;
-  background: url('/assets/browser-header.png') 0 0 / cover no-repeat;
-`
-
-const ImageBottom = styled.div`
-  width: 622px;
-  height: 48px;
-  background: url('/assets/browser-search-bar.png') 0 0 / cover no-repeat;
-`
-
-const Subtitle = styled.div`
-  margin: 50px 0 0;
-  color: #f6803e;
-  font-size: 20px;
-  text-align: center;
-  cursor: pointer;
-`
-
-const LOL = true
-
-const StyledLOL = styled.div`
+const WrapBadge = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 100vh;
+  justify-content: space-between;
 `
 
-export const PageOnBoarding: React.FC<RouteComponentProps> = () => {
-  const handleCloseTab = () => {
-    // Scripts may close only the windows that were opened by them.
-    window.close()
-  }
+const BadgeTitle = styled.div`
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+`
 
-  return LOL ? (
-    <StyledLOL>
-      <h1>Thanks for install!</h1>
-    </StyledLOL>
-  ) : (
-    <LayoutCenter>
-      <Root>
-        <ProfileWrap>
-          <Profile />
-        </ProfileWrap>
-        <Peace>✌️</Peace>
-        <Title>
-          From time to time when you open the tabs you will see a tool for breathing practice
-        </Title>
-        <Images>
-          <ImageTop />
-          <ImageBottom />
-        </Images>
-        <Subtitle onClick={handleCloseTab}>Close this page and start browser surfing</Subtitle>
-      </Root>
-    </LayoutCenter>
+const BadgeSubtitle = styled.div`
+  margin-top: 16px;
+  color: #71727b;
+  font-size: 16px;
+  line-height: 24px;
+`
+
+const Banner = styled.div`
+  padding: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  background-color: #ffeacb;
+  border-radius: 8px;
+`
+
+const Profile = styled.div`
+  display: inline-flex;
+  padding: 15px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+`
+
+export const PageOnBoarding: React.FC<RouteComponentProps> = observer(() => {
+  return (
+    <div>
+      <Header hideLogin />
+      <ContentInner>
+        <Title>How it works</Title>
+        <WrapBadge>
+          <div>
+            <BadgeTitle>Extension</BadgeTitle>
+            <BadgeSubtitle>
+              In the extension window you can enable or disable the necessary options
+            </BadgeSubtitle>
+          </div>
+          <div>
+            <BadgeTitle>Standalone Tabs</BadgeTitle>
+            <BadgeSubtitle>
+              From time to time you will automatically receive breathing simulator, mood picker, and
+              warm-ups
+            </BadgeSubtitle>
+          </div>
+        </WrapBadge>
+        <div>
+          <Banner>
+            🏁 Now you can close this page. The product is already running automatically.
+          </Banner>
+        </div>
+        <Profile>
+          <Link to="/dashboard">Go to my personal space</Link>
+        </Profile>
+      </ContentInner>
+    </div>
   )
-}
+})
