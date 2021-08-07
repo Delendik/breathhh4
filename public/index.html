@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <title>Breathhh</title>
-
+    <% if (process.env.NODE_ENV === 'production') { %>
     <!-- Facebook Pixel START -->
     <!-- prettier-ignore -->
     <script>
@@ -42,7 +42,7 @@
         dataLayer.push(arguments)
       }
       gtag('js', new Date())
-      gtag('config', 'UA-196308133-3');
+      gtag('config', 'UA-196308133-3')
       gtag('config', 'G-5G545BL5EH')
     </script>
     <!-- Google Analytics END -->
@@ -63,6 +63,7 @@
     <!-- prettier-ignore -->
     <noscript><div><img src="https://mc.yandex.ru/watch/78744483" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika END -->
+    <% } %>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
