@@ -12,13 +12,15 @@ import { PageSubscription } from 'src/pages/PageSubscription'
 import { PageAccount } from 'src/pages/PageAccount'
 import { PagePrivacy } from 'src/pages/PagePrivacy'
 import { PageTerms } from 'src/pages/PageTerms'
-import { UnInstallExt } from 'src/pages/UnInstallExt'
+import { PageUninstall } from 'src/pages/PageUninstall'
 import { Page404 } from 'src/pages/Page404'
 
 const PageOnBoardingProtected = withProtectNotLogin(PageOnBoarding)
 const PageDashboardProtected = withProtectNotLogin(PageDashboard)
 const PageSubscriptionProtected = withProtectNotLogin(PageSubscription)
 const PageAccountProtected = withProtectNotLogin(PageAccount)
+const PageUninstallProtected = withProtectNotLogin(PageUninstall)
+
 const PageLoginProtected = withProtectWithLogin(PageLogin)
 
 export function App() {
@@ -35,7 +37,7 @@ export function App() {
         <PageAccountProtected path="/account" />
         <PagePrivacy path="/privacy_policy" />
         <PageTerms path="/terms_of_use" />
-        <UnInstallExt path="/uninstall_ext" />
+        <PageUninstallProtected path="/uninstall_ext" />
 
         <Page404 path="/404" />
         <Redirect from="*" to="/404" noThrow />

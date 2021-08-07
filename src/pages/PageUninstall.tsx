@@ -18,7 +18,7 @@ const DATA = [
   { text: 'Other', type: 'textArea' },
 ]
 
-export const UnInstallExt: React.FC<RouteComponentProps> = observer(() => {
+export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
   const [isDataSend, setDataSend] = useState(false)
 
   useEffect(() => {
