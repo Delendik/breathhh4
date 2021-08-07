@@ -16,6 +16,7 @@ const Root = styled.button`
 
 export const Button: React.FC = ({ children, ...rest }) => {
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Root type="button" {...rest}>
       {children}
     </Root>

@@ -17,7 +17,9 @@ export const useAuth = () => {
         try {
           await UserStore.setAndFetchUser(AUTHORIZATION)
           sendMessageToExt(ACTION_LOGIN)
-        } catch {}
+        } catch (error) {
+          console.error(error)
+        }
       }
 
       setDataLoaded(true)

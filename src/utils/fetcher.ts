@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { apiUrl } from './config'
 import { UserStore } from 'src/store/UserStore'
+import { apiUrl } from './config'
 
 export const fetcher = axios.create({
   baseURL: apiUrl,

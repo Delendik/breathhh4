@@ -11,7 +11,8 @@ import type { IUser, IDeleteFeedback, IReferrer } from './types'
 const today = () => dayjs().format('YYYY-MM-DD')
 
 export class UserStore {
-  token: string = ''
+  token = ''
+
   user: null | IUser = null
 
   constructor() {

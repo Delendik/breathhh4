@@ -35,6 +35,5 @@ export const useReferrer = () => {
     }
 
     start()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }

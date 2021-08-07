@@ -1,7 +1,7 @@
 export const yahhtUrl = 'https://yahht.com/'
 export const apiUrl = 'https://api.breathhh.app'
-export const apiUrlFacebook = apiUrl + '/auth/facebook'
-export const apiUrlGoogle = apiUrl + '/auth/google_oauth2'
+export const apiUrlFacebook = `${apiUrl}/auth/facebook`
+export const apiUrlGoogle = `${apiUrl}/auth/google_oauth2`
 export const chromeExtUrl = 'https://google.com'
 
 const chromeExtId_OLD = 'bmllbkjcollkklanejokmbnmgmknkkph'
@@ -17,5 +17,7 @@ export const sendMessageToExt = (type: string) => {
 
   try {
     chrome.runtime.sendMessage(chromeExtId_OLD, { type })
-  } catch {}
+  } catch (error) {
+    console.error(error)
+  }
 }
