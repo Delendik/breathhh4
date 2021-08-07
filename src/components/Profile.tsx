@@ -12,7 +12,7 @@ const Root = styled.div`
 const Inner = styled.div`
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 20px;
 `
 const Avatar = styled.img`
   margin-right: 8px;

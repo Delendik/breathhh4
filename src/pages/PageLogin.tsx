@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { RouteComponentProps } from '@reach/router'
+import { RouteComponentProps, Link } from '@reach/router'
+
 import { LayoutCenter } from 'src/components/LayoutCenter'
 import { apiUrlFacebook, apiUrlGoogle } from 'src/utils/config'
 
@@ -79,8 +80,8 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
           </Href>
         </BtnWrap>
         <Footer>
-          By logging in you agree to the personal <a href="/privacy_policy">privacy policy</a> and{' '}
-          <a href="/terms_of_use">terms of use</a>
+          By logging in you agree to the personal <Link to="/privacy_policy">privacy policy</Link>{' '}
+          and <Link to="/terms_of_use">terms of use</Link>
         </Footer>
       </div>
     </LayoutCenter>

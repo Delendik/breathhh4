@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
 import { Header } from 'src/components/Header'
+import { Footer } from 'src/components/Footer'
 import { chromeExtUrl } from 'src/utils/config'
 
 import iconSimulator from './assets/icon-breathing-simulator.svg'
@@ -35,6 +36,7 @@ const Content = styled.div`
   max-width: 864px;
   margin-top: 72px;
   margin-right: auto;
+  margin-bottom: 180px;
   margin-left: auto;
   padding-right: 20px;
   padding-left: 20px;
@@ -139,6 +141,7 @@ export const PageIndex: React.FC<RouteComponentProps> = () => {
           })}
         </BenefitsContainer>
       </Content>
+      <Footer />
     </div>
   )
 }
