@@ -21,6 +21,11 @@ const Title = styled.div`
 
 const Login = styled.div`
   font-size: 22px;
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 const Nav = styled.div`

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { RouteComponentProps, Link } from '@reach/router'
 
-import { Header } from 'src/components/Header'
+import { LayoutBase } from 'src/components/LayoutBase'
 import { ContentInner } from 'src/components/ContentInner'
 import {
   // apiUrlFacebook,
@@ -25,11 +25,13 @@ const DATA = [
 ]
 
 const Title = styled.h1`
+  margin-top: 70px;
   font-size: 42px;
   line-height: 50px;
 `
 
 const Subtitle = styled.p`
+  margin-top: 30px;
   color: #71727b;
   font-size: 18px;
   line-height: 24px;
@@ -39,7 +41,7 @@ const BtnWrap = styled.div`
   display: grid;
   gap: 12px;
   max-width: 276px;
-  margin-top: 45px;
+  margin-top: 70px;
 `
 
 const Href = styled.a<{ type: `google` | `facebook` }>`
@@ -74,6 +76,7 @@ const Href = styled.a<{ type: `google` | `facebook` }>`
 const WrapBadge = styled.div`
   display: flex;
   gap: 20px;
+  margin-top: 40px;
 `
 
 const Badge = styled.div`
@@ -103,8 +106,7 @@ const BadgeText = styled.div`
 
 export const PageLogin: React.FC<RouteComponentProps> = () => {
   return (
-    <div>
-      <Header />
+    <LayoutBase>
       <ContentInner>
         <Title>Please authorize to start using</Title>
         <Subtitle>
@@ -134,6 +136,6 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
           </Href> */}
         </BtnWrap>
       </ContentInner>
-    </div>
+    </LayoutBase>
   )
 }
