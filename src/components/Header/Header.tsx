@@ -17,6 +17,11 @@ const Root = styled.header`
 
 const Title = styled.div`
   font-size: 22px;
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 const Login = styled.div`
@@ -71,7 +76,9 @@ export const Header: React.FC<IProps> = observer((props) => {
 
   return (
     <Root>
-      <Title>Breathhh</Title>
+      <Title>
+        <Link to="/">Breathhh</Link>
+      </Title>
       {enableNav && (
         <Nav>
           <NavLink to="/dashboard">Dashboard</NavLink>
