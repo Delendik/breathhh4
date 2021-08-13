@@ -9,13 +9,13 @@ import { Container } from 'src/components/Container'
 import { chromeExtUrl } from 'src/utils/config'
 
 const DATA = [
-  { text: "Don't understand how it works" },
-  { text: 'Privacy Concerns' },
-  { text: 'Windows shows to often' },
-  { text: 'Slows down computer' },
-  { text: "Doesn't support native language" },
-  { text: 'Was useless application to me' },
-  { text: 'Other', type: 'textArea' },
+  { text: `Don't understand how it works` },
+  { text: `Privacy Concerns` },
+  { text: `Windows shows to often` },
+  { text: `Slows down computer` },
+  { text: `Doesn't support native language` },
+  { text: `Was useless application to me` },
+  { text: `Other`, type: `textArea` },
 ]
 
 export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
@@ -37,8 +37,8 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
       ) : (
         <Formik
           initialValues={{
-            reason: '',
-            comment: '',
+            reason: ``,
+            comment: ``,
           }}
           onSubmit={async (values) => {
             await UserStore.sendDeleteFeedback(values)
@@ -55,7 +55,7 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                       {item.text}
                     </label>
 
-                    {item?.type === 'textArea' && (
+                    {item?.type === `textArea` && (
                       <div>
                         <Field
                           name="comment"

@@ -13,13 +13,13 @@ import iconVerified from './assets/verified_user_24px.svg'
 
 const DATA = [
   {
-    title: 'Data Protection',
-    text: 'We encrypt your data securely. You can always delete them',
+    title: `Data Protection`,
+    text: `We encrypt your data securely. You can always delete them`,
     icon: iconFlash,
   },
   {
-    title: 'Neural Engine Boosted',
-    text: 'Adjusts to you and you see when you need it',
+    title: `Neural Engine Boosted`,
+    text: `Adjusts to you and you see when you need it`,
     icon: iconVerified,
   },
 ]
@@ -42,7 +42,7 @@ const BtnWrap = styled.div`
   margin-top: 45px;
 `
 
-const Href = styled.a<{ type: 'google' | 'facebook' }>`
+const Href = styled.a<{ type: `google` | `facebook` }>`
   position: relative;
   padding: 15px 15px 15px 64px;
   color: #3d3a4b;
@@ -64,10 +64,10 @@ const Href = styled.a<{ type: 'google' | 'facebook' }>`
     content: '';
 
     ${({ type }) =>
-      type === 'google' && `background: url("/assets/icon-google.svg") 0 0 / cover no-repeat;`}
+      type === `google` && `background: url("/assets/icon-google.svg") 0 0 / cover no-repeat;`}
 
     ${({ type }) =>
-      type === 'facebook' && `background: url("/assets/icon-facebook.svg") 0 0 / cover no-repeat;`}
+      type === `facebook` && `background: url("/assets/icon-facebook.svg") 0 0 / cover no-repeat;`}
   }
 `
 
@@ -109,7 +109,7 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
         <Title>Please authorize to start using</Title>
         <Subtitle>
           This is to fine-tune the beneficial practices specifically for you. By logging in you
-          agree to the personal <Link to="/privacy_policy">privacy policy</Link> and{' '}
+          agree to the personal <Link to="/privacy_policy">privacy policy</Link> and{` `}
           <Link to="/terms_of_use">terms of use</Link>
         </Subtitle>
         <WrapBadge>

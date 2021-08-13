@@ -22,6 +22,8 @@ export interface IUser {
   mood: IMood | null
   picture: string | null
   engagement: IEngagement[]
+  facebook_connected: boolean
+  google_connected: boolean
 }
 
 export interface IDeleteFeedback {

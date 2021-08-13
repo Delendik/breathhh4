@@ -54,6 +54,11 @@ export class UserStore {
     sendMessageToExt(ACTION_LOGOUT)
   }
 
+  async deleteMyAccount() {
+    await fetcher.delete(`/profile`, { headers: { AUTHORIZATION: this.token } })
+    this.logout()
+  }
+
   async sendDeleteFact() {
     await fetcher.delete(`/users/extension`, { headers: { AUTHORIZATION: this.token } })
   }

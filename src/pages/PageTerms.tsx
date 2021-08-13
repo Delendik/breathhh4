@@ -116,7 +116,7 @@ export const PageTerms: React.FC<RouteComponentProps> = () => {
       <br />
 
       <p>
-        If you have any questions or comments, you can reach out to us at{' '}
+        If you have any questions or comments, you can reach out to us at{` `}
         <a href="mailto:mail@yahht.com">mail@yahht.com</a>
       </p>
       <Pad />
