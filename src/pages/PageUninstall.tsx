@@ -1,4 +1,4 @@
-// import styled from 'styled-components'
+import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import { Formik, Form, Field } from 'formik'
@@ -6,6 +6,7 @@ import { RouteComponentProps } from '@reach/router'
 
 import { UserStore } from 'src/store/UserStore'
 import { Container } from 'src/components/Container'
+import { Button } from 'src/components/Button'
 import { chromeExtUrl } from 'src/utils/config'
 
 const DATA = [
@@ -17,6 +18,12 @@ const DATA = [
   { text: `Was useless application to me` },
   { text: `Other`, type: `textArea` },
 ]
+
+const ControlsWrap = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`
 
 export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
   const [isDataSend, setDataSend] = useState(false)
@@ -67,10 +74,12 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                   </div>
                 )
               })}
-              <button type="submit" disabled={!values.reason}>
-                Submit
-              </button>
-              <a href={chromeExtUrl}>Reinstall extension</a>
+              <ControlsWrap>
+                <Button type="submit" disabled={!values.reason}>
+                  Submit
+                </Button>
+                <a href={chromeExtUrl}>Reinstall extension</a>
+              </ControlsWrap>
             </Form>
           )}
         </Formik>

@@ -28,7 +28,7 @@ type TProps = {
   active?: boolean
 }
 
-export const Button: React.FC<React.HTMLAttributes<HTMLButtonElement> & TProps> = (props) => {
+export const Button: React.FC<React.ComponentProps<`button`> & TProps> = (props) => {
   const { children, active, ...rest } = props
 
   return (
