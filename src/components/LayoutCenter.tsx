@@ -9,8 +9,8 @@ const Root = styled.div`
 
 const Main = styled.main`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 `
 
 const Footer = styled.footer`

@@ -45,15 +45,7 @@ export class UserStore {
   }
 
   get engList() {
-    if (this.user?.engagement) {
-      return Object.keys(this.user.engagement).map((name) => ({
-        name,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        value: this.user!.engagement[name],
-      }))
-    }
-
-    return []
+    return this.user?.engagement || []
   }
 
   logout() {

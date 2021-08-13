@@ -6,7 +6,9 @@ export interface IMood {
 }
 
 export interface IEngagement {
-  [_: string]: number
+  category_title: string
+  engagement: null | number
+  color: string
 }
 
 export interface IUser {
@@ -19,7 +21,7 @@ export interface IUser {
   tabs_count: number
   mood: IMood | null
   picture: string | null
-  engagement: IEngagement
+  engagement: IEngagement[]
 }
 
 export interface IDeleteFeedback {

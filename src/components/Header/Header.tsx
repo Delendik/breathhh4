@@ -23,25 +23,63 @@ const Login = styled.div`
   font-size: 22px;
 `
 
+const Nav = styled.div`
+  display: flex;
+  gap: 10px;
+  color: #232a34;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
+`
+
 interface IProps {
   hideLogin?: boolean
+  enableNav?: boolean
 }
 
+const NavLink = (props: React.ComponentProps<typeof Link>) => (
+  <Link
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...props}
+    getProps={({ isCurrent }) => {
+      return {
+        style: {
+          opacity: isCurrent ? `1` : `0.5`,
+        },
+      }
+    }}
+  />
+)
+
 export const Header: React.FC<IProps> = observer((props) => {
-  const { hideLogin } = props
+  const { hideLogin, enableNav } = props
   const { pathname } = useLocation()
 
-  const isCurrent = pathname === '/login'
+  const isCurrentPath = pathname === `/login`
 
   return (
     <Root>
       <Title>Breathhh</Title>
+      {enableNav && (
+        <Nav>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/subscription">Subscirption</NavLink>
+        </Nav>
+      )}
+
       {!hideLogin && (
         <Login>
           {UserStore.user ? (
             <Profile />
           ) : (
-            <Link to={isCurrent ? '/' : '/login'}>{isCurrent ? 'Go Back' : 'Log in'}</Link>
+            <Link to={isCurrentPath ? `/` : `/login`}>{isCurrentPath ? `Go Back` : `Log in`}</Link>
           )}
         </Login>
       )}

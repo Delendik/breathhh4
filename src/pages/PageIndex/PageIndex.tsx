@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
-import { Header } from 'src/components/Header'
-import { Footer } from 'src/components/Footer'
+
+import { LayoutBase } from 'src/components/LayoutBase'
 import { chromeExtUrl } from 'src/utils/config'
 
 import iconSimulator from './assets/icon-breathing-simulator.svg'
@@ -11,23 +11,23 @@ import iconWarm from './assets/icon-warm-ups.svg'
 
 const DATA = [
   {
-    title: 'Breathing Sumulator',
-    text: 'Box Breathing to relax and take a break while working',
+    title: `Breathing Sumulator`,
+    text: `Box Breathing to relax and take a break while working`,
     icon: iconSimulator,
   },
   {
-    title: 'Mood Picker',
-    text: 'To pay attention to your mental state',
+    title: `Mood Picker`,
+    text: `To pay attention to your mental state`,
     icon: iconMood,
   },
   {
-    title: 'Warm-Ups',
-    text: 'Stretch your eyes, neck, and back from time to time',
+    title: `Warm-Ups`,
+    text: `Stretch your eyes, neck, and back from time to time`,
     icon: iconWarm,
   },
   {
-    title: 'Engagement',
-    text: 'Find out your categories engagement when web surfing',
+    title: `Engagement`,
+    text: `Find out your categories engagement when web surfing`,
     icon: iconEngagement,
   },
 ]
@@ -121,8 +121,7 @@ const BenefitText = styled.div`
 
 export const PageIndex: React.FC<RouteComponentProps> = () => {
   return (
-    <div>
-      <Header />
+    <LayoutBase>
       <Content>
         <Title>Keep a cool head and stay open-minded while working</Title>
         <Subtitle>A browser extension to help reduce stress and make you more efficient</Subtitle>
@@ -141,7 +140,6 @@ export const PageIndex: React.FC<RouteComponentProps> = () => {
           })}
         </BenefitsContainer>
       </Content>
-      <Footer />
-    </div>
+    </LayoutBase>
   )
 }

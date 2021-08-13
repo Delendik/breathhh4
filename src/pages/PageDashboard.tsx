@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
 import { observer } from 'mobx-react-lite'
+
 import { UserStore } from 'src/store/UserStore'
-import { Header } from 'src/components/Header'
+import { LayoutBase } from 'src/components/LayoutBase'
 import { ContentInner } from 'src/components/ContentInner'
 
 const WrapRow = styled.div`
   display: grid;
   gap: 20px;
   max-width: 374px;
+  margin-top: 50px;
 `
 
 const Row = styled.div`
@@ -29,6 +31,7 @@ const RowIndex = styled.div`
 `
 
 const Banner = styled.div`
+  margin-top: 70px;
   padding: 12px 16px;
   background: #f1f2f2;
   border-radius: 6px;
@@ -47,17 +50,16 @@ const BannerText = styled.div`
   line-height: 20px;
 `
 
-const Progress = styled.div`
+const Progress = styled.div<{ color: string }>`
   height: 5px;
   margin-top: 10px;
-  background: #ffc839;
+  background-color: ${({ color }) => color};
   border-radius: 2px;
 `
 
 export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
   return (
-    <div>
-      <Header />
+    <LayoutBase enableNav>
       <ContentInner>
         <Banner>
           <BannerTitle>Here is your engagement when surfing the web</BannerTitle>
@@ -70,15 +72,15 @@ export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
             return (
               <div>
                 <Row>
-                  <RowTitle>{item.name}</RowTitle>
-                  <RowIndex>{item.value}</RowIndex>
+                  <RowTitle>{item.category_title}</RowTitle>
+                  <RowIndex>{item.engagement ?? `-`}</RowIndex>
                 </Row>
-                <Progress />
+                <Progress color={item.color} />
               </div>
             )
           })}
         </WrapRow>
       </ContentInner>
-    </div>
+    </LayoutBase>
   )
 })
