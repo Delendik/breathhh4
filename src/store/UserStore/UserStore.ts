@@ -5,13 +5,14 @@ import cookie from 'js-cookie'
 import { sendMessageToExt } from 'src/utils/config'
 import { fetcher } from 'src/utils/fetcher'
 import { ACTION_LOGOUT } from 'src/utils/actions'
+import { Referrer } from 'src/utils/localStore'
 
 import type { IUser, IDeleteFeedback, IReferrer } from './types'
 
-const today = () => dayjs().format('YYYY-MM-DD')
+const today = () => dayjs().format(`YYYY-MM-DD`)
 
 export class UserStore {
-  token = ''
+  token = ``
 
   user: null | IUser = null
 
@@ -30,6 +31,7 @@ export class UserStore {
 
     runInAction(() => {
       this.user = data
+      this.sendReferrer()
     })
   }
 
@@ -46,6 +48,7 @@ export class UserStore {
     if (this.user?.engagement) {
       return Object.keys(this.user.engagement).map((name) => ({
         name,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         value: this.user!.engagement[name],
       }))
     }
@@ -54,7 +57,7 @@ export class UserStore {
   }
 
   logout() {
-    cookie.remove('token', { path: '/', domain: '.breathhh.app' })
+    cookie.remove(`token`, { path: `/`, domain: `.breathhh.app` })
     this.user = null
     sendMessageToExt(ACTION_LOGOUT)
   }
@@ -67,7 +70,24 @@ export class UserStore {
     await fetcher.post(`/users/feedbacks`, data, { headers: { AUTHORIZATION: this.token } })
   }
 
-  async sendReferrer(data: IReferrer) {
-    await fetcher.post(`/users/analytics`, data, { headers: { AUTHORIZATION: this.token } })
+  async sendReferrer() {
+    const refLink = Referrer.getRef()
+
+    if (refLink && this.token) {
+      try {
+        const data = JSON.parse(refLink) as IReferrer
+        await fetcher.post(`/users/analytics`, data, { headers: { AUTHORIZATION: this.token } })
+        Referrer.clearRef()
+      } catch (error) {
+        console.log(`>> useReferrer`, error)
+      }
+    } else if (document.referrer) {
+      const json = JSON.stringify({
+        referrer: document.referrer,
+        entry_url: window.location.href,
+      })
+
+      Referrer.safeRef(json)
+    }
   }
 }

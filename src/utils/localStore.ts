@@ -1,5 +1,5 @@
 export class Referrer {
-  private static REF_NAME = 'ref_url'
+  private static REF_NAME = `ref_url`
 
   static safeRef(value: string) {
     return localStorage.setItem(Referrer.REF_NAME, value)
