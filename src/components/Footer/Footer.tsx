@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
             </div>
           </Slot>
           <Slot>
-            <div>&nbsp;</div>
+            <Link to="/contacts">Contacts</Link>
             <CurrentAction>Currently in Alfa</CurrentAction>
           </Slot>
         </Inner>
