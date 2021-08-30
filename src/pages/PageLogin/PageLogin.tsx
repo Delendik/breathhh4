@@ -3,10 +3,7 @@ import { RouteComponentProps, Link } from '@reach/router'
 
 import { LayoutBase } from 'src/components/LayoutBase'
 import { ContentInner } from 'src/components/ContentInner'
-import {
-  // apiUrlFacebook,
-  apiUrlGoogle,
-} from 'src/utils/config'
+import { apiUrlFacebook, apiUrlGoogle } from 'src/utils/config'
 
 import iconFlash from './assets/flash_auto_24px.svg'
 import iconVerified from './assets/verified_user_24px.svg'
@@ -131,9 +128,9 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
           <Href type="google" href={apiUrlGoogle}>
             <span>Continue with Google</span>
           </Href>
-          {/* <Href type="facebook" href={apiUrlFacebook}>
+          <Href type="facebook" href={apiUrlFacebook}>
             <span>Continue with Facebook</span>
-          </Href> */}
+          </Href>
         </BtnWrap>
       </ContentInner>
     </LayoutBase>

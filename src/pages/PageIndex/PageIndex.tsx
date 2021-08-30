@@ -126,7 +126,9 @@ export const PageIndex: React.FC<RouteComponentProps> = () => {
         <Title>Keep a cool head and stay open-minded while working</Title>
         <Subtitle>A browser extension to help reduce stress and make you more efficient</Subtitle>
         <ButtonWrap>
-          <Href href={chromeExtUrl}>Add to Chrome — it’s Free</Href>
+          <Href href={chromeExtUrl} target="_blank" rel="noreferrer">
+            Add to Chrome — it’s Free
+          </Href>
         </ButtonWrap>
         <BenefitsContainer>
           {DATA.map((item, index) => {

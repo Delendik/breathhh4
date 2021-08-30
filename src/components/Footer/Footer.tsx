@@ -1,6 +1,8 @@
 import { Link } from '@reach/router'
 import styled from 'styled-components'
 
+import { yahhtUrl } from 'src/utils/config'
+
 import iconUrl from './assets/yahht-emblem.svg'
 
 const Wrap = styled.footer`
@@ -33,11 +35,11 @@ const Slot = styled.div`
   gap: 10px;
 `
 
-const Badge = styled.div`
+const Badge = styled.a`
   display: flex;
 `
 
-const BadgeImage = styled.div`
+const BadgeImage = styled.span`
   width: 24px;
   height: 24px;
   margin-right: 10px;
@@ -54,11 +56,11 @@ export const Footer: React.FC = () => {
       <Root>
         <Inner>
           <Slot>
-            <Badge>
+            <Badge href={yahhtUrl} target="_blank" rel="noreferrer">
               <BadgeImage />
-              <div>
-                <div>Developed by Yahht</div>
-              </div>
+              <span>
+                <span>Developed by Yahht</span>
+              </span>
             </Badge>
 
             <div>© 2021 Breathhh, All rights reserved</div>
@@ -73,7 +75,7 @@ export const Footer: React.FC = () => {
           </Slot>
           <Slot>
             <Link to="/contacts">Contacts</Link>
-            <CurrentAction>Currently in Alfa</CurrentAction>
+            <CurrentAction>Currently in Alpha</CurrentAction>
           </Slot>
         </Inner>
       </Root>

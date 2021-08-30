@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import { Formik, Form, Field } from 'formik'
 import { RouteComponentProps } from '@reach/router'
+import * as Yup from 'yup'
 
 import { UserStore } from 'src/store/UserStore'
 import { Container } from 'src/components/Container'
@@ -24,6 +25,10 @@ const ControlsWrap = styled.div`
   gap: 10px;
   align-items: center;
 `
+
+const validationSchema = Yup.object().shape({
+  comment: Yup.string().min(2, `Too Short!`).max(1_000, `Too Long!`).required(`Required`),
+})
 
 export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
   const [isDataSend, setDataSend] = useState(false)
@@ -47,12 +52,13 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
             reason: ``,
             comment: ``,
           }}
+          validationSchema={validationSchema}
           onSubmit={async (values) => {
             await UserStore.sendDeleteFeedback(values)
             setDataSend(true)
           }}
         >
-          {({ values }) => (
+          {({ values, errors, touched }) => (
             <Form>
               {DATA.map((item, index) => {
                 return (
@@ -69,6 +75,7 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                           as="textarea"
                           disabled={values.reason !== item.text}
                         />
+                        {errors.comment && touched.comment && errors.comment}
                       </div>
                     )}
                   </div>
@@ -78,7 +85,9 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                 <Button type="submit" disabled={!values.reason}>
                   Submit
                 </Button>
-                <a href={chromeExtUrl}>Reinstall extension</a>
+                <a href={chromeExtUrl} target="_blank" rel="noreferrer">
+                  Reinstall extension
+                </a>
               </ControlsWrap>
             </Form>
           )}

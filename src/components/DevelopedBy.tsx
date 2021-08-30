@@ -4,9 +4,9 @@ import { yahhtUrl } from 'src/utils/config'
 const Root = styled.a`
   display: flex;
   align-items: center;
+  color: inherit;
   font-size: 14px;
   text-decoration: none;
-  color: inherit;
   transition: 0.3s;
 
   :hover {
