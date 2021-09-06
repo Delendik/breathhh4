@@ -12,15 +12,17 @@ export interface IEngagement {
 }
 
 export interface IUser {
-  breath: boolean
-  email: string
-  gdpr: boolean
   id: string
-  mood_picker: boolean
-  name: string
-  tabs_count: number
-  mood: IMood | null
   picture: string | null
+  email: string
+  name: string
+  breath: boolean
+  mood_picker: boolean
+  gdpr: boolean
+  mood: IMood | null
+  warming: null
+  tabs_count: number
+  onboarding_state: string | `onboarding_initial`
   engagement: IEngagement[]
   facebook_connected: boolean
   google_connected: boolean
