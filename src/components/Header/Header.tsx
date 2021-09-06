@@ -83,6 +83,7 @@ export const Header: React.FC<IProps> = observer((props) => {
         <Nav>
           <NavLink to="/dashboard">Dashboard</NavLink>
           <NavLink to="/subscription">Subscirption</NavLink>
+          <NavLink to="/diary">Diary</NavLink>
         </Nav>
       )}
 

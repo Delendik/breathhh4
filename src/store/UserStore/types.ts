@@ -35,3 +35,8 @@ export interface IReferrer {
   referrer: string
   entry_url: string
 }
+
+export interface IMoodRates {
+  date: string
+  rate: 1 | 2 | 3 | 4 | 5
+}

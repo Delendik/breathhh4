@@ -7,7 +7,7 @@ import { fetcher } from 'src/utils/fetcher'
 import { ACTION_LOGOUT } from 'src/utils/actions'
 import { Referrer } from 'src/utils/localStore'
 
-import type { IUser, IDeleteFeedback, IReferrer } from './types'
+import type { IUser, IDeleteFeedback, IReferrer, IMoodRates } from './types'
 
 const today = () => dayjs().format(`YYYY-MM-DD`)
 
@@ -15,6 +15,8 @@ export class UserStore {
   token = ``
 
   user: null | IUser = null
+
+  moodRates: IMoodRates[] = []
 
   constructor() {
     makeAutoObservable(this)
@@ -85,6 +87,20 @@ export class UserStore {
       })
 
       Referrer.safeRef(json)
+    }
+  }
+
+  async fetchMoodRates() {
+    try {
+      const { data } = await fetcher.get<IMoodRates[]>(`/moods`, {
+        headers: { AUTHORIZATION: this.token },
+      })
+
+      runInAction(() => {
+        this.moodRates = data
+      })
+    } catch (error) {
+      console.log(`>> fetchMoodRates`, error)
     }
   }
 }

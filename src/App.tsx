@@ -19,6 +19,7 @@ import { PageTerms } from 'src/pages/PageTerms'
 import { PageUninstall } from 'src/pages/PageUninstall'
 import { PageContact } from 'src/pages/PageContact'
 import { Page404 } from 'src/pages/Page404'
+import { PageDiary } from 'src/pages/PageDiary'
 
 const PageIndexProtected = withAccountRedirectIfLoggedIn(PageIndex)
 
@@ -29,6 +30,7 @@ const PageDashboardProtected = withLoginIfNotLoggedIn(PageDashboard)
 const PageSubscriptionProtected = withLoginIfNotLoggedIn(PageSubscription)
 const PageAccountProtected = withLoginIfNotLoggedIn(PageAccount)
 const PageUninstallProtected = withLoginIfNotLoggedIn(PageUninstall)
+const PPageDiaryProtected = withLoginIfNotLoggedIn(PageDiary)
 
 export function App() {
   const [dataLoaded] = useAuth()
@@ -40,6 +42,7 @@ export function App() {
         <PageOnBoardingProtected path="/onboarding" />
         <PageLoginProtected path="/login" />
         <PageDashboardProtected path="/dashboard" />
+        <PPageDiaryProtected path="/diary" />
         <PageSubscriptionProtected path="/subscription" />
         <PageAccountProtected path="/account" />
         <PagePrivacy path="/privacy_policy" />
