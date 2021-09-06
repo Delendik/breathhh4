@@ -50,11 +50,24 @@ const BannerText = styled.div`
   line-height: 20px;
 `
 
-const Progress = styled.div<{ color: string }>`
+const Progress = styled.div<{ color: string; progress: number | null }>`
+  position: relative;
+  width: 100%;
   height: 5px;
   margin-top: 10px;
-  background-color: ${({ color }) => color};
+  background-color: #f3f3f3;
   border-radius: 2px;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: ${({ progress }) => (progress ? progress * 10 : 0)}%;
+    height: 100%;
+    background-color: ${({ color }) => color};
+    border-radius: 2px;
+    content: '';
+  }
 `
 
 export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
@@ -75,7 +88,7 @@ export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
                   <RowTitle>{item.category_title}</RowTitle>
                   <RowIndex>{item.engagement ?? `-`}</RowIndex>
                 </Row>
-                <Progress color={item.color} />
+                <Progress color={item.color} progress={item.engagement} />
               </div>
             )
           })}
