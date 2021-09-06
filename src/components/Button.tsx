@@ -7,8 +7,10 @@ const Root = styled.button<{ active: boolean }>`
   box-sizing: border-box;
   min-height: 44px;
   padding: 5px 20px;
+  color: #000000;
   font-size: 15px;
   text-transform: uppercase;
+  text-decoration: none;
   background-color: transparent;
   border: 1px solid #71727b;
   border-radius: 4px;
@@ -26,15 +28,16 @@ const Root = styled.button<{ active: boolean }>`
 
 type TProps = {
   active?: boolean
+  href?: string
 }
 
 export const Button: React.FC<React.ComponentProps<`button`> & TProps> = (props) => {
-  const { children, active, ...rest } = props
+  const { children, active, href, ...rest } = props
 
   return (
     // @ts-ignore
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <Root type="button" active={active} {...rest}>
+    <Root type={!href && `button`} as={href && `a`} href={href} active={active} {...rest}>
       {children}
     </Root>
   )
