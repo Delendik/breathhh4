@@ -8,8 +8,12 @@ export const withLoginIfNotLoggedIn = (Component: any) => (props: RouteComponent
 
 export const withOnboardingRedirectIfLoggedIn =
   (Component: any) => (props: RouteComponentProps) => {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    return !UserStore.user ? <Component {...props} /> : <Redirect to="/onboarding" noThrow />
+    return !UserStore.user ? (
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      <Component {...props} />
+    ) : (
+      <Redirect to={UserStore.showOnboarding ? `/onboarding` : `/dashboard`} noThrow />
+    )
   }
 
 export const withAccountRedirectIfLoggedIn = (Component: any) => (props: RouteComponentProps) => {

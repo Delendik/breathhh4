@@ -7,7 +7,7 @@ import { fetcher } from 'src/utils/fetcher'
 import { ACTION_LOGOUT } from 'src/utils/actions'
 import { Referrer } from 'src/utils/localStore'
 
-import type { IUser, IDeleteFeedback, IReferrer, IMoodRates } from './types'
+import { Onboarding_state, IUser, IDeleteFeedback, IReferrer, IMoodRates } from './types'
 
 const today = () => dayjs().format(`YYYY-MM-DD`)
 
@@ -48,6 +48,10 @@ export class UserStore {
 
   get engList() {
     return this.user?.engagement || []
+  }
+
+  get showOnboarding() {
+    return this.user?.onboarding_state === Onboarding_state.INITIAL
   }
 
   logout() {
@@ -99,6 +103,18 @@ export class UserStore {
       runInAction(() => {
         this.moodRates = data
       })
+    } catch (error) {
+      console.log(`>> fetchMoodRates`, error)
+    }
+  }
+
+  async onboarding() {
+    try {
+      const { data } = await fetcher.get(`/users/onboardings`, {
+        headers: { AUTHORIZATION: this.token },
+      })
+
+      console.log(data)
     } catch (error) {
       console.log(`>> fetchMoodRates`, error)
     }

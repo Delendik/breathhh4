@@ -11,6 +11,13 @@ export interface IEngagement {
   color: string
 }
 
+export enum Onboarding_state {
+  INITIAL = `initial`,
+  // INITIAL = `onboarding_initial`,
+  INSTALLED = `extension_installed`,
+  COMPLETED = `completed`,
+}
+
 export interface IUser {
   id: string
   picture: string | null
@@ -22,7 +29,7 @@ export interface IUser {
   mood: IMood | null
   warming: null
   tabs_count: number
-  onboarding_state: string | `onboarding_initial`
+  onboarding_state: Onboarding_state
   engagement: IEngagement[]
   facebook_connected: boolean
   google_connected: boolean
