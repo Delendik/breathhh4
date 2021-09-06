@@ -37,7 +37,7 @@ const Subtitle = styled.p`
 const BtnWrap = styled.div`
   display: grid;
   gap: 12px;
-  max-width: 276px;
+  max-width: 290px;
   margin-top: 70px;
 `
 

@@ -49,8 +49,13 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
   }
 
   const handleDelete = async () => {
-    await UserStore.deleteMyAccount()
-    navigate(`/`, { replace: true })
+    const isOk = window.confirm(
+      `Do you really want to delete youre account? It will not be possible to undo this action`
+    )
+    if (isOk) {
+      await UserStore.deleteMyAccount()
+      navigate(`/`, { replace: true })
+    }
   }
 
   return (
