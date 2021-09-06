@@ -50,7 +50,7 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
 
   const handleDelete = async () => {
     await UserStore.deleteMyAccount()
-    navigate(`/login`, { replace: true })
+    navigate(`/`, { replace: true })
   }
 
   return (
