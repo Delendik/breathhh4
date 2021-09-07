@@ -12,10 +12,9 @@ export interface IEngagement {
 }
 
 export enum Onboarding_state {
-  INITIAL = `initial`,
-  // INITIAL = `onboarding_initial`,
-  INSTALLED = `extension_installed`,
-  COMPLETED = `completed`,
+  INITIAL = `onboarding_initial`,
+  INSTALLED = `onboarding_extension_installed_step`,
+  COMPLETED = `onboarding_completed`,
 }
 
 export interface IUser {
