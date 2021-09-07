@@ -14,15 +14,12 @@ const Root = styled.button<{ active: boolean }>`
   background-color: transparent;
   border: 1px solid #71727b;
   border-radius: 4px;
-  cursor: pointer;
 
   ${({ active }) =>
     active
-      ? `
-    background-color: #232A34;
+      ? `background-color: #232a34;
     border-color: transparent;
-    color: #ffffff;
-  `
+    color: #ffffff;`
       : ``}
 `
 

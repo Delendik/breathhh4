@@ -58,6 +58,10 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
     }
   }
 
+  const isGoogleConnected = UserStore.user?.google_connected
+
+  const isFacebookConnected = UserStore.user?.facebook_connected
+
   return (
     <LayoutBase enableNav>
       <ContentInner>
@@ -67,17 +71,14 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
         </Banner>
 
         <ConnectWrap>
-          <Button
-            active={UserStore.user?.google_connected}
-            href={UserStore.user?.google_connected ? undefined : apiUrlGoogle}
-          >
-            {UserStore.user?.google_connected ? `Connected by` : `Connect`} Gmail
+          <Button active={isGoogleConnected} href={isGoogleConnected ? undefined : apiUrlGoogle}>
+            {isGoogleConnected ? `Connected by` : `Connect`} Gmail
           </Button>
           <Button
-            active={UserStore.user?.facebook_connected}
-            href={UserStore.user?.facebook_connected ? undefined : apiUrlFacebook}
+            active={isFacebookConnected}
+            href={isFacebookConnected ? undefined : apiUrlFacebook}
           >
-            {UserStore.user?.facebook_connected ? `Connected by` : `Connect`} Facebook
+            {isFacebookConnected ? `Connected by` : `Connect`} Facebook
           </Button>
         </ConnectWrap>
 
