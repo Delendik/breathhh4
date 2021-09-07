@@ -5,6 +5,7 @@ import {
   withLoginIfNotLoggedIn,
   withOnboardingRedirectIfLoggedIn,
   withAccountRedirectIfLoggedIn,
+  withOnboardingProtection,
 } from 'src/utils/withProtect'
 
 import { Root } from 'src/pages/Root'
@@ -25,7 +26,7 @@ const PageIndexProtected = withAccountRedirectIfLoggedIn(PageIndex)
 
 const PageLoginProtected = withOnboardingRedirectIfLoggedIn(PageLogin)
 
-const PageOnBoardingProtected = withLoginIfNotLoggedIn(PageOnBoarding)
+const PageOnBoardingProtected = withOnboardingProtection(withLoginIfNotLoggedIn(PageOnBoarding))
 const PageDashboardProtected = withLoginIfNotLoggedIn(PageDashboard)
 const PageSubscriptionProtected = withLoginIfNotLoggedIn(PageSubscription)
 const PageAccountProtected = withLoginIfNotLoggedIn(PageAccount)
