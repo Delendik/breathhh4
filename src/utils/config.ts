@@ -1,7 +1,7 @@
 export const yahhtUrl = `https://yahht.com/`
 export const apiUrl = `https://api.breathhh.app`
-export const apiUrlFacebook = `${apiUrl}/auth/facebook`
-export const apiUrlGoogle = `${apiUrl}/auth/google_oauth2`
+export const apiUrlFacebook = `${apiUrl}/auth/facebook?reg_from=web`
+export const apiUrlGoogle = `${apiUrl}/auth/google_oauth2?reg_from=web`
 export const chromeExtUrl = `https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo`
 
 // Тут храняться еще и старые id, для обратной совместимости. Первый - актуальный
