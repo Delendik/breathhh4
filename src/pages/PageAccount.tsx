@@ -49,9 +49,11 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
   }
 
   const handleDelete = async () => {
+    // eslint-disable-next-line no-alert
     const isOk = window.confirm(
       `Do you really want to delete youre account? It will not be possible to undo this action`
     )
+
     if (isOk) {
       await UserStore.deleteMyAccount()
       navigate(`/`, { replace: true })
@@ -71,11 +73,16 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
         </Banner>
 
         <ConnectWrap>
-          <Button active={isGoogleConnected} href={isGoogleConnected ? undefined : apiUrlGoogle}>
+          <Button
+            active={isGoogleConnected}
+            disabled={isGoogleConnected}
+            href={isGoogleConnected ? undefined : apiUrlGoogle}
+          >
             {isGoogleConnected ? `Connected by` : `Connect`} Gmail
           </Button>
           <Button
             active={isFacebookConnected}
+            disabled={isFacebookConnected}
             href={isFacebookConnected ? undefined : apiUrlFacebook}
           >
             {isFacebookConnected ? `Connected by` : `Connect`} Facebook

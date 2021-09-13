@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Redirect, RouteComponentProps } from '@reach/router'
 import { UserStore } from 'src/store/UserStore'
 
