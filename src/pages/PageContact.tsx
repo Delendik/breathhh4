@@ -33,12 +33,12 @@ export const PageContact: React.FC<RouteComponentProps> = observer(() => {
         <Title>Contacts</Title>
         <Subtitle>Product developed by Yahht Team</Subtitle>
         <Row>
-          Email: <a href="mailto:mail@yahht.com">mail@yahht.com</a>
+          Email: <a href="mailto:mail@breathhh.app">mail@breathhh.app</a>
         </Row>
         <Row>
           Facebook:{` `}
-          <a href="https://www.facebook.com/YahhtTeam" target="_blank" rel="noreferrer">
-            www.facebook.com/YahhtTeam
+          <a href="https://www.facebook.com/breathhh.page" target="_blank" rel="noreferrer">
+            www.facebook.com/breathhh.page
           </a>
         </Row>
       </ContentInner>
