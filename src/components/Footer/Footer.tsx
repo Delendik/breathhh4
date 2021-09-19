@@ -1,7 +1,7 @@
 import { Link } from '@reach/router'
 import styled from 'styled-components'
 
-import { yahhtUrl } from 'src/utils/config'
+import { yahhtUrl, chromeExtUrl } from 'src/utils/config'
 
 import iconUrl from './assets/yahht-emblem.svg'
 
@@ -75,7 +75,11 @@ export const Footer: React.FC = () => {
           </Slot>
           <Slot>
             <Link to="/contacts">Contacts</Link>
-            <CurrentAction>Currently in Alpha</CurrentAction>
+            <CurrentAction>
+              <a href={chromeExtUrl} target="_blank" rel="noreferrer">
+                Currently in Alpha
+              </a>
+            </CurrentAction>
           </Slot>
         </Inner>
       </Root>
