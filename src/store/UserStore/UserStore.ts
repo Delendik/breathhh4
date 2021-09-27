@@ -74,23 +74,26 @@ export class UserStore {
   }
 
   async sendReferrer() {
-    const refLink = Referrer.getRef()
+    let data = {
+      referrer: document.referrer,
+      entry_url: window.location.href,
+    }
 
-    if (refLink && this.token) {
+    if (this.token) {
       try {
-        const data = JSON.parse(refLink) as IReferrer
+        const refLink = Referrer.getRef()
+
+        if (refLink) {
+          data = JSON.parse(refLink) as IReferrer
+        }
+
         await fetcher.post(`/users/analytics`, data, { headers: { AUTHORIZATION: this.token } })
         Referrer.clearRef()
       } catch (error) {
         console.log(`>> useReferrer`, error)
       }
-    } else if (document.referrer) {
-      const json = JSON.stringify({
-        referrer: document.referrer,
-        entry_url: window.location.href,
-      })
-
-      Referrer.safeRef(json)
+    } else {
+      Referrer.safeRef(JSON.stringify(data))
     }
   }
 
