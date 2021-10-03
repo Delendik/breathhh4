@@ -65,6 +65,14 @@ export class UserStore {
     this.logout()
   }
 
+  async patchCategories(id: number, limit: number) {
+    await fetcher.patch(
+      `/users/categories/${id}`,
+      { limit },
+      { headers: { AUTHORIZATION: this.token } }
+    )
+  }
+
   async sendDeleteFact() {
     await fetcher.delete(`/users/extension`, { headers: { AUTHORIZATION: this.token } })
   }

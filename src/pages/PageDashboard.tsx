@@ -9,13 +9,22 @@ import { ContentInner } from 'src/components/ContentInner'
 const WrapRow = styled.div`
   display: grid;
   gap: 20px;
-  max-width: 374px;
   margin-top: 50px;
 `
 
 const Row = styled.div`
   display: flex;
+  align-items: flex-start;
+`
+
+const RowText = styled.div`
+  display: flex;
   justify-content: space-between;
+`
+
+const RowContent = styled.div`
+  width: 100%;
+  max-width: 374px;
 `
 
 const RowTitle = styled.div`
@@ -70,6 +79,17 @@ const Progress = styled.div<{ color: string; progress: number | null }>`
   }
 `
 
+const Input = styled.input`
+  margin-left: 10px;
+  padding: 3px;
+  background-color: #f1f2f2;
+  border: 0;
+  border-radius: 4px;
+`
+
+const MIN_ENGAGEMENT = 0
+const MAX_ENGAGEMENT = 10
+
 export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
   return (
     <LayoutBase enableNav>
@@ -83,13 +103,29 @@ export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
         <WrapRow>
           {UserStore.engList.map((item) => {
             return (
-              <div>
-                <Row>
-                  <RowTitle>{item.category_title}</RowTitle>
-                  <RowIndex>{item.engagement ?? `-`}</RowIndex>
-                </Row>
-                <Progress color={item.color} progress={item.engagement} />
-              </div>
+              <Row key={item.category_id}>
+                <RowContent>
+                  <RowText>
+                    <RowTitle>{item.category_title}</RowTitle>
+                    <RowIndex>{item.engagement ?? `-`}</RowIndex>
+                  </RowText>
+                  <Progress color={item.color} progress={item.engagement} />
+                </RowContent>
+
+                <Input
+                  min={MIN_ENGAGEMENT}
+                  max={MAX_ENGAGEMENT}
+                  value={item.current_value}
+                  type="number"
+                  onChange={async (event) => {
+                    const { value } = event.target
+
+                    if (value && +value >= MIN_ENGAGEMENT && +value <= MAX_ENGAGEMENT) {
+                      await UserStore.patchCategories(item.category_id, +value)
+                    }
+                  }}
+                />
+              </Row>
             )
           })}
         </WrapRow>

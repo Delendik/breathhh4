@@ -6,9 +6,11 @@ export interface IMood {
 }
 
 export interface IEngagement {
+  category_id: number
   category_title: string
   engagement: null | number
   color: string
+  current_value: number
 }
 
 export enum Onboarding_state {
