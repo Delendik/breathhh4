@@ -34,7 +34,9 @@ const RowTitle = styled.div`
 `
 
 const RowIndex = styled.div`
+  min-width: 20px;
   padding: 3px;
+  text-align: center;
   background: #f1f2f2;
   border-radius: 4px;
 `
@@ -80,8 +82,13 @@ const Progress = styled.div<{ color: string; progress: number | null }>`
 `
 
 const Input = styled.input`
+  min-width: 20px;
   margin-left: 10px;
   padding: 3px;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: center;
   background-color: #f1f2f2;
   border: 0;
   border-radius: 4px;
@@ -115,7 +122,7 @@ export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
                 <Input
                   min={MIN_ENGAGEMENT}
                   max={MAX_ENGAGEMENT}
-                  value={item.current_value}
+                  value={item.limit}
                   type="number"
                   onChange={async (event) => {
                     const { value } = event.target

@@ -10,7 +10,7 @@ export interface IEngagement {
   category_title: string
   engagement: null | number
   color: string
-  current_value: number
+  limit: number
 }
 
 export enum Onboarding_state {
