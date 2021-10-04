@@ -122,7 +122,7 @@ export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
                 <Input
                   min={MIN_ENGAGEMENT}
                   max={MAX_ENGAGEMENT}
-                  value={item.limit}
+                  defaultValue={item.limit}
                   type="number"
                   onChange={async (event) => {
                     const { value } = event.target
