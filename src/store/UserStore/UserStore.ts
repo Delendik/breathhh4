@@ -130,4 +130,12 @@ export class UserStore {
       console.log(`>> fetchMoodRates`, error)
     }
   }
+
+  get isOnActiveSubscription() {
+    return this.user?.subscription_state === `subscription_active`
+  }
+
+  get isOnActiveTrial() {
+    return this.user?.subscription_state === `subscription_trial`
+  }
 }

@@ -31,7 +31,7 @@ const PageDashboardProtected = withLoginIfNotLoggedIn(PageDashboard)
 const PageSubscriptionProtected = withLoginIfNotLoggedIn(PageSubscription)
 const PageAccountProtected = withLoginIfNotLoggedIn(PageAccount)
 const PageUninstallProtected = withLoginIfNotLoggedIn(PageUninstall)
-const PPageDiaryProtected = withLoginIfNotLoggedIn(PageDiary)
+const PageDiaryProtected = withLoginIfNotLoggedIn(PageDiary)
 
 export function App() {
   const [dataLoaded] = useAuth()
@@ -43,7 +43,7 @@ export function App() {
         <PageOnBoardingProtected path="/onboarding" />
         <PageLoginProtected path="/login" />
         <PageDashboardProtected path="/dashboard" />
-        <PPageDiaryProtected path="/diary" />
+        <PageDiaryProtected path="/diary" />
         <PageSubscriptionProtected path="/subscription" />
         <PageAccountProtected path="/account" />
         <PagePrivacy path="/privacy_policy" />

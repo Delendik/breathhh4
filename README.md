@@ -31,3 +31,20 @@ docker run --init --rm -itp 5000:5000 breathhh-web
 ## swagger
 
 https://api.breathhh.app/api-docs/index.html (логин/пароль можно узнать в слаке)
+
+## payment / paddle
+
+```sql
+-- сбросить триал
+UPDATE users SET trial_from=null, trial_to=null, subscription_state='subscription_not_active' where id = '__USER_ID_HERE__';
+
+-- сбросить подписку
+UPDATE users SET subscription_state='subscription_not_active' where id = '__USER_ID_HERE__';
+```
+
+https://developer.paddle.com/getting-started/sandbox#test-cards
+
+`4242 4242 4242 4242` - карта для теста оплаты
+
+https://developer.paddle.com/guides/how-tos/checkout/post-checkout
+https://developer.paddle.com/reference/paddle-js/checkout-events

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Rollbar from 'rollbar'
+import { HelmetProvider } from 'react-helmet-async'
 // @ts-ignore
 import { Provider, ErrorBoundary } from '@rollbar/react'
 
@@ -12,13 +12,13 @@ const rollbarConfig = {
   environment: process.env.NODE_ENV === `production` ? `production` : `development`,
 }
 
-const rollbar = new Rollbar(rollbarConfig)
-
 ReactDOM.render(
   <React.StrictMode>
-    <Provider instance={rollbar}>
+    <Provider config={rollbarConfig}>
       <ErrorBoundary>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </ErrorBoundary>
     </Provider>
   </React.StrictMode>,

@@ -1,15 +1,34 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
 import { observer } from 'mobx-react-lite'
+import { Helmet } from 'react-helmet-async'
+import dayjs from 'dayjs'
+
+import { PlansStore, usePlansStore } from 'src/store/PlansStore'
+import { UserStore } from 'src/store/UserStore'
 
 import { LayoutBase } from 'src/components/LayoutBase'
 import { ContentInner } from 'src/components/ContentInner'
+import { Button } from 'src/components/Button'
+import { PADDLE_SANDBOX, PADDLE_VENDOR_ID } from 'src/utils/envs'
+
+const Content = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 70px;
+`
 
 const Banner = styled.div`
-  margin-top: 70px;
+  display: grid;
+  gap: 10px;
   padding: 12px 16px;
   background: #f1f2f2;
   border-radius: 6px;
+
+  &:first-child {
+    margin-top: 0;
+  }
 `
 
 const BannerTitle = styled.div`
@@ -19,20 +38,105 @@ const BannerTitle = styled.div`
 `
 
 const BannerText = styled.div`
-  margin-top: 8px;
   color: #71727b;
   font-size: 16px;
   line-height: 20px;
 `
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Paddle: any
+  }
+}
+
 export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
+  const { plans } = usePlansStore()
+
+  const handleCancel = async () => {
+    await PlansStore.cancel()
+  }
+
+  const handleBuy = async (id: string) => {
+    if (!id) {
+      console.log(`🍅 no product id`)
+      return
+    }
+
+    if (PADDLE_SANDBOX) {
+      console.log(`💰 PADDLE Environment sandbox`)
+      window.Paddle.Environment.set(`sandbox`)
+    }
+
+    if (PADDLE_VENDOR_ID) {
+      const setup = { vendor: PADDLE_VENDOR_ID }
+      console.log(`💰 PADDLE pay setup`, setup)
+      window.Paddle.Setup(setup)
+
+      const config = {
+        email: UserStore.user?.email,
+        product: id,
+        passthrough: JSON.stringify({ user_id: UserStore.user?.id }),
+        successCallback: () => {
+          window.location.reload()
+        },
+      }
+
+      console.log(`💰 PADDLE pay config`, config)
+
+      window.Paddle.Checkout.open(config)
+    }
+  }
+
+  const handleActivateTrial = async () => {
+    await PlansStore.enableTrial()
+  }
+
   return (
     <LayoutBase enableNav>
+      <Helmet>
+        <script src="https://cdn.paddle.com/paddle/paddle.js" />
+      </Helmet>
       <ContentInner>
-        <Banner>
-          <BannerTitle>Basic Subscription</BannerTitle>
-          <BannerText>The product is currently distributed free of charge</BannerText>
-        </Banner>
+        <Content>
+          {plans.map((plan, index) => {
+            const isPlanTrial = plan.recurring_type === `trial`
+
+            const isPlanSubscribe =
+              plan.recurring_type === `monthly` || plan.recurring_type === `yearly`
+
+            const trialStartDay = dayjs(UserStore.user?.trial_from).format(`YYYY-MM-DD`)
+
+            return (
+              <Banner key={index}>
+                <BannerTitle>{plan.title}</BannerTitle>
+                <BannerText>{plan.description}</BannerText>
+
+                {isPlanTrial &&
+                  (UserStore.isOnActiveTrial ? (
+                    <Button disabled>Activated from {trialStartDay}</Button>
+                  ) : (
+                    <Button onClick={handleActivateTrial}>Activate</Button>
+                  ))}
+
+                {isPlanSubscribe &&
+                  (UserStore.isOnActiveSubscription ? (
+                    <Button onClick={handleCancel}>Cancel Subscription</Button>
+                  ) : (
+                    <Button onClick={() => handleBuy(plan.external_id)}>Buy</Button>
+                  ))}
+              </Banner>
+            )
+          })}
+        </Content>
+
+        {UserStore.isOnActiveSubscription && (
+          <div>
+            <div>дата начала подписки (subscription.created_at)</div>
+            <div>дата следующего платежа (subscription.next_bill_date)</div>
+            <div>стоимость платежа (plan.price_cents / 100)</div>
+          </div>
+        )}
       </ContentInner>
     </LayoutBase>
   )

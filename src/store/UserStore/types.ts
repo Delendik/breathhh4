@@ -34,6 +34,11 @@ export interface IUser {
   engagement: IEngagement[]
   facebook_connected: boolean
   google_connected: boolean
+  subscription_state: `subscription_not_active` | `subscription_trial` | `subscription_active`
+  trial_to: string
+  trial_from: string
+  /** Название текущего плана */
+  subscription: string
 }
 
 export interface IDeleteFeedback {
