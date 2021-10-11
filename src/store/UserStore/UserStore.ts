@@ -2,6 +2,8 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import dayjs from 'dayjs'
 import cookie from 'js-cookie'
 
+import { PlansStore } from 'src/store/PlansStore'
+
 import { sendMessageToExt } from 'src/utils/config'
 import { fetcher } from 'src/utils/fetcher'
 import { ACTION_LOGOUT } from 'src/utils/actions'
@@ -133,6 +135,14 @@ export class UserStore {
 
   get isOnActiveSubscription() {
     return this.user?.subscription_state === `subscription_active`
+  }
+
+  get selectUserPlan() {
+    if (this.user?.active_subscription.external_plan_id) {
+      return PlansStore.selectPlanBy(this.user.active_subscription.external_plan_id)
+    }
+
+    return undefined
   }
 
   get isOnActiveTrial() {

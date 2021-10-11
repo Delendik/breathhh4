@@ -37,8 +37,13 @@ export interface IUser {
   subscription_state: `subscription_not_active` | `subscription_trial` | `subscription_active`
   trial_to: string
   trial_from: string
-  /** Название текущего плана */
-  subscription: string
+  active_subscription: {
+    external_checkout_id: null
+    external_plan_id: string
+    external_subscription_id: string
+    next_bill_date: string
+    plan_title: string
+  }
 }
 
 export interface IDeleteFeedback {

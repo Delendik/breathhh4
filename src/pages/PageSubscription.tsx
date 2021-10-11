@@ -19,6 +19,11 @@ const Content = styled.div`
   margin-top: 70px;
 `
 
+const CurrentSub = styled.div`
+  display: flex;
+  margin-top: 20px;
+`
+
 const Banner = styled.div`
   display: grid;
   gap: 10px;
@@ -120,7 +125,7 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
                   ))}
 
                 {isPlanSubscribe &&
-                  (UserStore.isOnActiveSubscription ? (
+                  (UserStore.selectUserPlan?.external_id === plan.external_id ? (
                     <Button onClick={handleCancel}>Cancel Subscription</Button>
                   ) : (
                     <Button onClick={() => handleBuy(plan.external_id)}>Buy</Button>
@@ -130,12 +135,16 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
           })}
         </Content>
 
-        {UserStore.isOnActiveSubscription && (
-          <div>
-            <div>дата начала подписки (subscription.created_at)</div>
-            <div>дата следующего платежа (subscription.next_bill_date)</div>
-            <div>стоимость платежа (plan.price_cents / 100)</div>
-          </div>
+        {UserStore.selectUserPlan && (
+          <CurrentSub>
+            <Banner>
+              <BannerTitle>Current plan: {UserStore.selectUserPlan.title}</BannerTitle>
+              <BannerText>{UserStore.selectUserPlan.description}</BannerText>
+              <BannerText>
+                Next payment: {UserStore.user!.active_subscription.next_bill_date}
+              </BannerText>
+            </Banner>
+          </CurrentSub>
         )}
       </ContentInner>
     </LayoutBase>
