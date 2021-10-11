@@ -44,8 +44,4 @@ export class PlansStore {
     await UserStore.fetchUser()
     await this.fetchPlans()
   }
-
-  selectPlanBy(id: string) {
-    return this.plans.find((plan) => plan.external_id === id)
-  }
 }

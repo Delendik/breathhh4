@@ -125,7 +125,7 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
                   ))}
 
                 {isPlanSubscribe &&
-                  (UserStore.selectUserPlan?.external_id === plan.external_id ? (
+                  (UserStore.selectUserActiveSubscription?.external_plan_id === plan.external_id ? (
                     <Button onClick={handleCancel}>Cancel Subscription</Button>
                   ) : (
                     <Button onClick={() => handleBuy(plan.external_id)}>Buy</Button>
@@ -135,13 +135,15 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
           })}
         </Content>
 
-        {UserStore.selectUserPlan && (
+        {UserStore.selectUserActiveSubscription && (
           <CurrentSub>
             <Banner>
-              <BannerTitle>Current plan: {UserStore.selectUserPlan.title}</BannerTitle>
-              <BannerText>{UserStore.selectUserPlan.description}</BannerText>
+              <BannerTitle>
+                Current plan: {UserStore.selectUserActiveSubscription.plan_title}
+              </BannerTitle>
               <BannerText>
-                Next payment: {UserStore.user!.active_subscription.next_bill_date}
+                Next payment: {UserStore.selectUserActiveSubscription.next_bill_date} ($
+                {UserStore.selectUserActiveSubscription.plan_price})
               </BannerText>
             </Banner>
           </CurrentSub>
