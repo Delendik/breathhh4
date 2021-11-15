@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { RouteComponentProps, Link } from '@reach/router'
 import { observer } from 'mobx-react-lite'
@@ -66,6 +67,11 @@ const Profile = styled.div`
 `
 
 export const PageOnBoarding: React.FC<RouteComponentProps> = observer(() => {
+  useEffect(() => {
+    if (UserStore.showOnboarding) {
+      UserStore.completeOnboarding()
+    }
+  }, [])
   return (
     <LayoutBase hideLogin>
       <ContentInner>

@@ -13,7 +13,7 @@ export interface IEngagement {
   limit: number
 }
 
-export enum Onboarding_state {
+export enum OnboardingState {
   INITIAL = `onboarding_initial`,
   INSTALLED = `onboarding_extension_installed_step`,
   COMPLETED = `onboarding_completed`,
@@ -39,7 +39,7 @@ export interface IUser {
   mood: IMood | null
   warming: null
   tabs_count: number
-  onboarding_state: Onboarding_state
+  onboarding_state: OnboardingState
   engagement: IEngagement[]
   facebook_connected: boolean
   google_connected: boolean

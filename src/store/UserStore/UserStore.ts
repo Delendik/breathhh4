@@ -7,7 +7,7 @@ import { fetcher } from 'src/utils/fetcher'
 import { ACTION_LOGOUT } from 'src/utils/actions'
 import { Referrer } from 'src/utils/localStore'
 
-import { Onboarding_state, IUser, IDeleteFeedback, IReferrer, IMoodRates } from './types'
+import { OnboardingState, IUser, IDeleteFeedback, IReferrer, IMoodRates } from './types'
 
 const today = () => dayjs().format(`YYYY-MM-DD`)
 
@@ -26,6 +26,12 @@ export class UserStore {
     this.token = token
   }
 
+  logout() {
+    cookie.remove(`token`, { path: `/`, domain: `.breathhh.app` })
+    this.user = null
+    sendMessageToExt(ACTION_LOGOUT)
+  }
+
   async fetchUser() {
     const { data } = await fetcher.get<IUser>(`/profile?date=${today()}`, {
       headers: { AUTHORIZATION: this.token },
@@ -40,24 +46,6 @@ export class UserStore {
   async setAndFetchUser(token: string) {
     this.setToken(token)
     await this.fetchUser()
-  }
-
-  get avatar() {
-    return this.user?.picture || undefined
-  }
-
-  get engList() {
-    return this.user?.engagement || []
-  }
-
-  get showOnboarding() {
-    return this.user?.onboarding_state === Onboarding_state.INITIAL
-  }
-
-  logout() {
-    cookie.remove(`token`, { path: `/`, domain: `.breathhh.app` })
-    this.user = null
-    sendMessageToExt(ACTION_LOGOUT)
   }
 
   async deleteMyAccount() {
@@ -119,16 +107,28 @@ export class UserStore {
     }
   }
 
-  async onboarding() {
+  async completeOnboarding() {
     try {
-      const { data } = await fetcher.get(`/users/onboardings`, {
+      const { data } = await fetcher.post(`/users/onboardings`, {
         headers: { AUTHORIZATION: this.token },
       })
 
       console.log(data)
     } catch (error) {
-      console.log(`>> fetchMoodRates`, error)
+      console.log(`>> onboarding`, error)
     }
+  }
+
+  get avatar() {
+    return this.user?.picture || undefined
+  }
+
+  get engList() {
+    return this.user?.engagement || []
+  }
+
+  get showOnboarding() {
+    return this.user?.onboarding_state === OnboardingState.INITIAL
   }
 
   get isOnActiveSubscription() {
