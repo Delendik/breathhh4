@@ -109,7 +109,7 @@ export class UserStore {
 
   async completeOnboarding() {
     try {
-      const { data } = await fetcher.post(`/users/onboardings`, {
+      const { data } = await fetcher.post(`/users/onboardings`, null, {
         headers: { AUTHORIZATION: this.token },
       })
 
