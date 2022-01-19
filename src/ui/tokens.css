@@ -1,0 +1,49 @@
+:root {
+  --fonts: 'TT Norms', -apple-system, system-ui;
+  --fonts-second: 'PP Neue Machina', -apple-system, system-ui;
+
+  --app-height: 600px;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-sunrise: #ffcb1a;
+  --color-vega: #04cd77;
+  --color-ground-100: #f2f2f2;
+  --color-ground-200: #e6e6e6;
+  --color-ground-300: #d9d9d9;
+  --color-ground-400: #cccccc;
+  --color-ground-500: #bfbfbf;
+  --color-ground-600: #adadad;
+  --color-ground-700: #8c8c8c;
+  --color-ground-800: #3e3e3e;
+  --color-ground-900: #252525;
+  --color-ground-1000: #0e0e10;
+
+  --transition-default: all 0.3s;
+
+  --app-bg-color: var(--color-white);
+  --app-text-color: var(--color-black);
+  --app-text-secondary-hover-color: var(--color-black);
+  --app-hover-color: var(--color-ground-100);
+  --app-icon-color: var(--color-ground-400);
+  --app-icon-hover-color: var(--color-black);
+
+  --app-engage-track: var(--color-ground-300);
+  --app-engage-fill: var(--color-black);
+  --app-engage-cursor: var(--color-ground-600);
+  --app-engage-cursor-disabled: var(--color-ground-600);
+}
+
+.theme-dark {
+  --app-bg-color: var(--color-ground-1000);
+  --app-text-color: var(--color-white);
+  --app-text-secondary-hover-color: var(--color-ground-300);
+  --app-hover-color: var(--color-ground-900);
+  --app-icon-color: var(--color-ground-700);
+  --app-icon-hover-color: var(--color-ground-400);
+
+  --app-engage-track: var(--color-ground-800);
+  --app-engage-fill: var(--color-ground-200);
+  --app-engage-cursor: var(--color-ground-200);
+  --app-engage-cursor-disabled: var(--color-ground-700);
+}
