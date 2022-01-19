@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  padding: 3px;
+  background-color: var(--app-text-color);
+  border-radius: 50px;
+}
+
+.menuItem {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 48px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+
+  & path {
+    fill: var(--app-bg-color);
+  }
+
+  &:hover path {
+    fill: var(--color-ground-400);
+  }
+
+  &:active path {
+    fill: var(--color-ground-600);
+  }
+
+  &.active {
+    background-color: var(--app-bg-color);
+
+    & path {
+      fill: var(--app-text-color);
+    }
+
+    &:hover path {
+      fill: var(--color-ground-800);
+    }
+
+    &:active path {
+      fill: var(--color-ground-700);
+    }
+  }
+}

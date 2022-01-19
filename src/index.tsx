@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 // @ts-ignore
 import { Provider, ErrorBoundary } from '@rollbar/react'
 
+import './ui/tokens.css'
 import './index.css'
 import { App } from './App'
 

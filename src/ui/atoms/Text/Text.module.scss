@@ -1,0 +1,69 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+
+  &[href] {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-default);
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &.preset-12 {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  &.preset-14 {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  &.preset-16 {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  &.preset-18 {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  &.preset-20 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &.preset-regular {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  &.preset-low {
+    color: var(--color-ground-700);
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  &.preset-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &.preset-subtitle {
+    color: var(--color-ground-700);
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  & path {
+    fill: var(--app-text-color);
+  }
+}

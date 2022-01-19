@@ -6,7 +6,9 @@ yarn start # http://localhost:5000
 
 ```sh
 yarn build
-yarn serve # http://localhost:5000
+npx serve # http://localhost:5000
+
+
 ```
 
 ## Способ авторизоваться локально
