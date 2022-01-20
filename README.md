@@ -8,7 +8,9 @@ yarn start # http://localhost:5000
 yarn build
 npx serve # http://localhost:5000
 
-
+npx eslint 'src/**/*.{js,jsx,ts,tsx}' --fix
+npx prettier 'src/**/*.{js,jsx,ts,tsx,scss,css,json}' --write
+npx stylelint "src/**/*.{css,scss}" --fix
 ```
 
 ## Способ авторизоваться локально
