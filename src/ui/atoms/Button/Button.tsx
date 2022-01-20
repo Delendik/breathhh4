@@ -5,6 +5,7 @@ import * as icons from 'src/ui/icons'
 import css from './Button.module.scss'
 
 type TButton = {
+  appearanceTransponentBlack?: `transponentBlack`
   appearanceGrey?: `onGrey`
   appearance?: `onlyOnDark`
   fullWidth?: boolean
@@ -24,6 +25,7 @@ export const Button: React.FC<TButton> = (properties) => {
     iconRight,
     appearance,
     appearanceGrey,
+    appearanceTransponentBlack,
     fullWidth,
     iconSize,
     ...rest
@@ -39,6 +41,7 @@ export const Button: React.FC<TButton> = (properties) => {
         css.root,
         appearance && css[`appearance-${appearance}`],
         appearanceGrey && css[appearanceGrey],
+        appearanceTransponentBlack && css[appearanceTransponentBlack],
         fullWidth && css.fullWidth
       ),
     },

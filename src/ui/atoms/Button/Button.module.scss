@@ -47,6 +47,31 @@
       margin-right: 5px;
     }
   }
+
+  &.transponentBlack {
+    min-width: auto;
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--app-text-color);
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-ground-800);
+    }
+
+    &:active {
+      color: var(--color-ground-700);
+    }
+
+    &:focus {
+      color: var(--app-text-color);
+    }
+
+    &:disabled {
+      color: var(--color-ground-400);
+    }
+  }
 }
 
 .content {

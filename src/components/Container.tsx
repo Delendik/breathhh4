@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+// import { respondTo } from '../_respondTo'
 
 export const device = {
   mobileS: `(min-width: 320px)`,
@@ -31,6 +32,10 @@ const Root = styled.div`
     padding: 0 100px;
   }
 `
+// ${respondTo.laptop`
+// max-width: 1120px;
+// padding: 0 100px;
+// `}
 
 export const Container: React.FC = ({ children }) => {
   return <Root>{children}</Root>

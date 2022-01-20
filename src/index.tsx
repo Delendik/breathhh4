@@ -7,6 +7,7 @@ import { Provider, ErrorBoundary } from '@rollbar/react'
 import './ui/tokens.css'
 import './index.css'
 import { App } from './App'
+import { Container } from './components/Container'
 
 const rollbarConfig = {
   accessToken: `960c63c90161452fa830caa464230012`,
@@ -18,7 +19,9 @@ ReactDOM.render(
     <Provider config={rollbarConfig}>
       <ErrorBoundary>
         <HelmetProvider>
-          <App />
+          <Container>
+            <App />
+          </Container>
         </HelmetProvider>
       </ErrorBoundary>
     </Provider>

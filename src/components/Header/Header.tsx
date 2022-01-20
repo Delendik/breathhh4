@@ -1,18 +1,18 @@
-import { Link, useLocation } from '@reach/router'
+import { useState } from 'react'
+import { Link } from '@reach/router'
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 
-import { UserStore } from 'src/store/UserStore'
-import { Profile } from 'src/components/Profile'
+import { Button } from 'src/ui/atoms'
 
-const Root = styled.header`
+const Root = styled.header<{ height: string; position: string }>`
+  position: ${(props) => props.position};
+  top: 0;
+  height: ${(props) => props.height};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 860px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 24px;
+  background-color: var(--color-white);
 `
 
 const Title = styled.div`
@@ -23,16 +23,6 @@ const Title = styled.div`
     text-decoration: none;
   }
 `
-
-const Login = styled.div`
-  font-size: 22px;
-
-  & a {
-    color: inherit;
-    text-decoration: none;
-  }
-`
-
 const Nav = styled.div`
   display: flex;
   gap: 10px;
@@ -47,6 +37,10 @@ const Nav = styled.div`
     color: inherit;
     text-decoration: none;
   }
+`
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 12px;
 `
 
 interface IProps {
@@ -69,15 +63,17 @@ const NavLink = (props: React.ComponentProps<typeof Link>) => (
 )
 
 export const Header: React.FC<IProps> = observer((props) => {
-  const { hideLogin, enableNav } = props
-  const { pathname } = useLocation()
-
-  const isCurrentPath = pathname === `/login`
-
+  const { enableNav } = props
+  const [scroll, setScroll] = useState(0)
+  window.addEventListener(`scroll`, function () {
+    setScroll(window.scrollY)
+  })
   return (
-    <Root>
+    <Root height={scroll < 300 ? `89px` : `77px`} position={scroll < 300 ? `relative` : `sticky`}>
       <Title>
-        <Link to="/">Breathhh</Link>
+        <Link to="/">
+          <img width="204" height="13" src="/assets/logo-breathhh.svg" alt="logo" />
+        </Link>
       </Title>
       {enableNav && (
         <Nav>
@@ -86,16 +82,12 @@ export const Header: React.FC<IProps> = observer((props) => {
           <NavLink to="/diary">Diary</NavLink>
         </Nav>
       )}
-
-      {!hideLogin && (
-        <Login>
-          {UserStore.user ? (
-            <Profile />
-          ) : (
-            <Link to={isCurrentPath ? `/` : `/login`}>{isCurrentPath ? `Go Back` : `Log in`}</Link>
-          )}
-        </Login>
-      )}
+      <ButtonContainer>
+        <Button type="button" appearanceTransponentBlack="transponentBlack">
+          Log in
+        </Button>
+        <Button>Add to Chrome — it’s free</Button>
+      </ButtonContainer>
     </Root>
   )
 })
