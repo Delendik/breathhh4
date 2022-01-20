@@ -6,6 +6,7 @@ import dayjs from 'dayjs'
 import { useMoodRates } from 'src/store/UserStore'
 import { LayoutBase } from 'src/components/LayoutBase'
 import { ContentInner } from 'src/components/ContentInner'
+import { Spacer } from 'src/ui/atoms'
 
 const WrapRow = styled.div`
   display: grid;
@@ -55,12 +56,13 @@ export const PageDiary: React.FC<RouteComponentProps> = observer(() => {
         <WrapRow>
           {moodRates.map((mood) => {
             return (
-              <RowTitle>
+              <RowTitle key={mood.date}>
                 {dayjs(mood.date).format(`MMMM DD`)}: {moodMap[mood.rate - 1]}
               </RowTitle>
             )
           })}
         </WrapRow>
+        <Spacer s="70" />
       </ContentInner>
     </LayoutBase>
   )

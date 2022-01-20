@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
-// @ts-ignore
 import { Provider, ErrorBoundary } from '@rollbar/react'
 
 import './ui/tokens.css'
@@ -9,22 +8,28 @@ import './index.css'
 import { App } from './App'
 import { Container } from './components/Container'
 
-const rollbarConfig = {
+const isProd = process.env.NODE_ENV === `production`
+
+const rollBarConfig = {
   accessToken: `960c63c90161452fa830caa464230012`,
-  environment: process.env.NODE_ENV === `production` ? `production` : `development`,
+  environment: isProd ? `production` : `development`,
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider config={rollbarConfig}>
-      <ErrorBoundary>
-        <HelmetProvider>
-          <Container>
+    {isProd ? (
+      <Provider config={rollBarConfig}>
+        <ErrorBoundary>
+          <HelmetProvider>
             <App />
-          </Container>
-        </HelmetProvider>
-      </ErrorBoundary>
-    </Provider>
+          </HelmetProvider>
+        </ErrorBoundary>
+      </Provider>
+    ) : (
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    )}
   </React.StrictMode>,
   document.getElementById(`root`)
 )
