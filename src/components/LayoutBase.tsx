@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from '@reach/router'
 import { Header } from 'src/components/Header'
 import { Footer } from 'src/components/Footer'
 
@@ -7,7 +8,34 @@ const Root = styled.div`
   grid-template-rows: 1fr auto;
   min-height: 100vh;
 `
+const Nav = styled.div`
+  display: flex;
+  gap: 10px;
+  color: #232a34;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
+`
+const NavLink = (props: React.ComponentProps<typeof Link>) => (
+  <Link
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...props}
+    getProps={({ isCurrent }) => {
+      return {
+        style: {
+          opacity: isCurrent ? `1` : `0.5`,
+        },
+      }
+    }}
+  />
+)
 export const LayoutBase: React.FC<{ hideLogin?: boolean; enableNav?: boolean }> = ({
   children,
   hideLogin,
@@ -17,6 +45,13 @@ export const LayoutBase: React.FC<{ hideLogin?: boolean; enableNav?: boolean }> 
     <Root>
       <div>
         <Header hideLogin={hideLogin} enableNav={enableNav} />
+        {enableNav && (
+          <Nav>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/subscription">Subscirption</NavLink>
+            <NavLink to="/diary">Diary</NavLink>
+          </Nav>
+        )}
         {children}
       </div>
       <Footer />

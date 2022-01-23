@@ -7,6 +7,7 @@ import css from './Button.module.scss'
 type TButton = {
   appearanceTransponentBlack?: `transponentBlack`
   appearanceGrey?: `onGrey`
+  appearanceGreyRound?: `onGreyRound`
   appearance?: `onlyOnDark`
   fullWidth?: boolean
   tag?: string
@@ -25,6 +26,7 @@ export const Button: React.FC<TButton> = (properties) => {
     iconRight,
     appearance,
     appearanceGrey,
+    appearanceGreyRound,
     appearanceTransponentBlack,
     fullWidth,
     iconSize,
@@ -41,6 +43,7 @@ export const Button: React.FC<TButton> = (properties) => {
         css.root,
         appearance && css[`appearance-${appearance}`],
         appearanceGrey && css[appearanceGrey],
+        appearanceGreyRound && css[appearanceGreyRound],
         appearanceTransponentBlack && css[appearanceTransponentBlack],
         fullWidth && css.fullWidth
       ),

@@ -21,13 +21,17 @@ ReactDOM.render(
       <Provider config={rollBarConfig}>
         <ErrorBoundary>
           <HelmetProvider>
-            <App />
+            <Container>
+              <App />
+            </Container>
           </HelmetProvider>
         </ErrorBoundary>
       </Provider>
     ) : (
       <HelmetProvider>
-        <App />
+        <Container>
+          <App />
+        </Container>
       </HelmetProvider>
     )}
   </React.StrictMode>,

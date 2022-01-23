@@ -1,10 +1,10 @@
 import { css } from 'styled-components'
 
 const breakpoints = {
-  ms: `320px`,
   mobile: `375px`,
   tablet: `720px`,
   laptop: `1150px`,
+  laptopX: `1245px`,
 }
 
 const keys = Object.keys(breakpoints) as Array<keyof typeof breakpoints>
@@ -12,7 +12,7 @@ const keys = Object.keys(breakpoints) as Array<keyof typeof breakpoints>
 export const media = keys.reduce((accumulator, label) => {
   accumulator[label] = (...args: Parameters<typeof css>) => {
     return css`
-      @media (min-width: ${breakpoints[label]}) {
+      @media (max-width: ${breakpoints[label]}) {
         ${css(...args)};
       }
     `
