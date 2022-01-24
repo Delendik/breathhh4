@@ -6,7 +6,6 @@ import { Provider, ErrorBoundary } from '@rollbar/react'
 import './ui/tokens.css'
 import './index.css'
 import { App } from './App'
-import { Container } from './components/Container'
 
 const isProd = process.env.NODE_ENV === `production`
 
@@ -21,17 +20,13 @@ ReactDOM.render(
       <Provider config={rollBarConfig}>
         <ErrorBoundary>
           <HelmetProvider>
-            <Container>
-              <App />
-            </Container>
+            <App />
           </HelmetProvider>
         </ErrorBoundary>
       </Provider>
     ) : (
       <HelmetProvider>
-        <Container>
-          <App />
-        </Container>
+        <App />
       </HelmetProvider>
     )}
   </React.StrictMode>,

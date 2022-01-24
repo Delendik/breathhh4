@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
 import { MadeBy } from 'src/components/MadeBy'
+import { Container } from 'src/components/Container'
 
 const H1 = styled.h1`
   margin-bottom: 25px;
@@ -38,7 +39,7 @@ const Pad = styled.div`
 
 export const PageTerms: React.FC<RouteComponentProps> = () => {
   return (
-    <div>
+    <Container>
       <Top>
         <MadeBy />
       </Top>
@@ -119,6 +120,6 @@ export const PageTerms: React.FC<RouteComponentProps> = () => {
         <a href="mailto:mail@breathhh.app">mail@breathhh.app</a>
       </p>
       <Pad />
-    </div>
+    </Container>
   )
 }

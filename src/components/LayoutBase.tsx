@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Link } from '@reach/router'
 import { Header } from 'src/components/Header'
 import { Footer } from 'src/components/Footer'
+import { Container } from './Container'
 
 const Root = styled.div`
   display: grid;
@@ -44,16 +45,20 @@ export const LayoutBase: React.FC<{ hideLogin?: boolean; enableNav?: boolean }> 
     <Root>
       <div>
         <Header hideLogin={hideLogin} enableNav={enableNav} />
-        {enableNav && (
-          <Nav>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/subscription">Subscirption</NavLink>
-            <NavLink to="/diary">Diary</NavLink>
-          </Nav>
-        )}
-        {children}
+        <Container>
+          {enableNav && (
+            <Nav>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink to="/subscription">Subscirption</NavLink>
+              <NavLink to="/diary">Diary</NavLink>
+            </Nav>
+          )}
+          {children}
+        </Container>
       </div>
-      <Footer />
+      <Container>
+        <Footer />
+      </Container>
     </Root>
   )
 }

@@ -7,7 +7,7 @@ import { media } from 'src/media'
 
 import { Button } from 'src/ui/atoms'
 
-const Root = styled.header<{ height: string; position: string }>`
+const Root = styled.header<{ height: string; position: string; marginR: string }>`
   position: ${(props) => props.position};
   top: 0;
   height: ${(props) => props.height};
@@ -15,6 +15,8 @@ const Root = styled.header<{ height: string; position: string }>`
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-white);
+  margin-left: 34px;
+  margin-right: ${(props) => props.marginR};
 `
 
 const Title = styled.div`
@@ -68,13 +70,21 @@ export const Header: React.FC<IProps> = observer((props) => {
   //   setScroll(window.scrollY)
   // })
   return (
-    <Root height={enableNav ? `89px` : `77px`} position={enableNav ? `relative` : `sticky`}>
-      <Title />
+    <Root
+      height={enableNav ? `89px` : `77px`}
+      position={enableNav ? `relative` : `sticky`}
+      marginR={UserStore.showOnboarding ? `34px` : `10px`}
+    >
+      <Link to="/">
+        <Title />
+      </Link>
       <ButtonContainer>
         {!enableNav ? (
-          <Button type="button" appearanceTransponentBlack="transponentBlack">
-            Sign in
-          </Button>
+          <Link to="/login">
+            <Button type="button" appearanceTransponentBlack="transponentBlack">
+              Sign in
+            </Button>
+          </Link>
         ) : (
           <Link to="/dashboard">
             <Avatar width="45" height="45" src={UserStore.user.picture} alt="user's avatar" />
@@ -88,7 +98,11 @@ export const Header: React.FC<IProps> = observer((props) => {
               </Button>
             </BigButton>
             <SmallButton>
-              <Button type="button" appearanceTransponentBlack="transponentBlack">
+              <Button
+                type="button"
+                appearanceTransponentBlack="transponentBlack"
+                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+              >
                 Install
               </Button>
             </SmallButton>
