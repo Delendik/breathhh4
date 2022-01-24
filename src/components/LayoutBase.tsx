@@ -6,7 +6,6 @@ import { Footer } from 'src/components/Footer'
 const Root = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
-  min-height: 100vh;
 `
 const Nav = styled.div`
   display: flex;

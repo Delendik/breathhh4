@@ -33,13 +33,10 @@ const DATA = [
 ]
 
 const Content = styled.div`
-  max-width: 864px;
   margin-top: 72px;
   margin-right: auto;
   margin-bottom: 180px;
   margin-left: auto;
-  padding-right: 20px;
-  padding-left: 20px;
 `
 
 const Title = styled.h1`
