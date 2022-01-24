@@ -5,7 +5,6 @@ import { observer } from 'mobx-react-lite'
 
 import { UserStore } from 'src/store/UserStore'
 import { LayoutBase } from 'src/components/LayoutBase'
-import { ContentInner } from 'src/components/ContentInner'
 
 const Title = styled.div`
   margin-top: 70px;
@@ -74,7 +73,7 @@ export const PageOnBoarding: React.FC<RouteComponentProps> = observer(() => {
   }, [])
   return (
     <LayoutBase hideLogin>
-      <ContentInner>
+      <div>
         <Title>How it works</Title>
         <WrapBadge>
           <div>
@@ -100,7 +99,7 @@ export const PageOnBoarding: React.FC<RouteComponentProps> = observer(() => {
           <img width="24" height="24" src={UserStore.avatar} alt="avatar" />
           <Link to="/dashboard">Go to my personal space</Link>
         </Profile>
-      </ContentInner>
+      </div>
     </LayoutBase>
   )
 })

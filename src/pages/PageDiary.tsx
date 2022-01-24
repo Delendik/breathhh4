@@ -5,7 +5,6 @@ import dayjs from 'dayjs'
 
 import { useMoodRates } from 'src/store/UserStore'
 import { LayoutBase } from 'src/components/LayoutBase'
-import { ContentInner } from 'src/components/ContentInner'
 import { Spacer } from 'src/ui/atoms'
 
 const WrapRow = styled.div`
@@ -48,7 +47,7 @@ export const PageDiary: React.FC<RouteComponentProps> = observer(() => {
 
   return (
     <LayoutBase enableNav>
-      <ContentInner>
+      <div>
         <Banner>
           <BannerTitle>Mood Diary</BannerTitle>
           <BannerText>Here you can see your moods in dynamics</BannerText>
@@ -63,7 +62,7 @@ export const PageDiary: React.FC<RouteComponentProps> = observer(() => {
           })}
         </WrapRow>
         <Spacer s="70" />
-      </ContentInner>
+      </div>
     </LayoutBase>
   )
 })

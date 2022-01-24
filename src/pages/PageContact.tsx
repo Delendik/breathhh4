@@ -3,7 +3,6 @@ import { RouteComponentProps } from '@reach/router'
 import { observer } from 'mobx-react-lite'
 
 import { LayoutBase } from 'src/components/LayoutBase'
-import { ContentInner } from 'src/components/ContentInner'
 
 const Title = styled.div`
   margin-top: 70px;
@@ -29,7 +28,7 @@ const Row = styled.p`
 export const PageContact: React.FC<RouteComponentProps> = observer(() => {
   return (
     <LayoutBase>
-      <ContentInner>
+      <div>
         <Title>Contacts</Title>
         <Subtitle>Product developed by Yahht Team</Subtitle>
         <Row>
@@ -41,7 +40,7 @@ export const PageContact: React.FC<RouteComponentProps> = observer(() => {
             www.facebook.com/breathhh.page
           </a>
         </Row>
-      </ContentInner>
+      </div>
     </LayoutBase>
   )
 })

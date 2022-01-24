@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite'
 
 import { UserStore } from 'src/store/UserStore'
 import { LayoutBase } from 'src/components/LayoutBase'
-import { ContentInner } from 'src/components/ContentInner'
 
 const WrapRow = styled.div`
   display: grid;
@@ -100,7 +99,7 @@ const MAX_ENGAGEMENT = 10
 export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
   return (
     <LayoutBase enableNav>
-      <ContentInner>
+      <div>
         <Banner>
           <BannerTitle>Here is your engagement when surfing the web</BannerTitle>
           <BannerText>
@@ -136,7 +135,7 @@ export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
             )
           })}
         </WrapRow>
-      </ContentInner>
+      </div>
     </LayoutBase>
   )
 })

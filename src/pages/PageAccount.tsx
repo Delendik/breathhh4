@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite'
 
 import { UserStore } from 'src/store/UserStore'
 import { LayoutBase } from 'src/components/LayoutBase'
-import { ContentInner } from 'src/components/ContentInner'
 import { Button } from 'src/components/Button'
 import { apiUrlFacebook, apiUrlGoogle } from 'src/utils/config'
 
@@ -66,7 +65,7 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
 
   return (
     <LayoutBase enableNav>
-      <ContentInner>
+      <div>
         <Banner>
           <BannerTitle>{UserStore.user?.name}</BannerTitle>
           <BannerText>{UserStore.user?.id}</BannerText>
@@ -93,7 +92,7 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
           <Button onClick={handleReset}>Logout</Button>
           <Button onClick={handleDelete}>Delete account</Button>
         </ControlsWrap>
-      </ContentInner>
+      </div>
     </LayoutBase>
   )
 })

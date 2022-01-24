@@ -8,7 +8,6 @@ import { PlansStore, usePlansStore } from 'src/store/PlansStore'
 import { UserStore } from 'src/store/UserStore'
 
 import { LayoutBase } from 'src/components/LayoutBase'
-import { ContentInner } from 'src/components/ContentInner'
 import { Button } from 'src/components/Button'
 import { PADDLE_SANDBOX, PADDLE_VENDOR_ID } from 'src/utils/envs'
 
@@ -102,7 +101,7 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
       <Helmet>
         <script src="https://cdn.paddle.com/paddle/paddle.js" />
       </Helmet>
-      <ContentInner>
+      <div>
         <Content>
           {plans.map((plan, index) => {
             const isPlanTrial = plan.recurring_type === `trial`
@@ -148,7 +147,7 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
             </Banner>
           </CurrentSub>
         )}
-      </ContentInner>
+      </div>
     </LayoutBase>
   )
 })
