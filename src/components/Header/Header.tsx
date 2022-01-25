@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from '@reach/router'
 import { observer } from 'mobx-react-lite'
 import { UserStore } from 'src/store/UserStore'
@@ -7,7 +7,12 @@ import { media } from 'src/media'
 
 import { Button } from 'src/ui/atoms'
 
-const Root = styled.header<{ height: string; position: string; marginR: string }>`
+const Root = styled.header<{
+  height: string
+  position: string
+  marginR: string
+  animation: string
+}>`
   position: ${(props) => props.position};
   top: 0;
   height: ${(props) => props.height};
@@ -17,6 +22,45 @@ const Root = styled.header<{ height: string; position: string; marginR: string }
   background-color: var(--color-white);
   margin-left: 34px;
   margin-right: ${(props) => props.marginR};
+  /* animation: headerFadeIn linear 2s; */
+  animation: ${(props) => props.animation};
+
+  @keyframes headerFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`
+
+// export const headerFadeIn = keyframes`
+//     from {
+//     opacity: 0;
+//     transform: translateY(-100%);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// `
+
+const Border = styled.div`
+  height: 77px;
+  position: absolute;
+  width: 100%;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 77px;
+    right: 24px;
+    left: 0px;
+    height: 1px;
+    border-top: solid 1px var(--color-ground-100);
+  }
 `
 
 const Title = styled.div`
@@ -64,17 +108,25 @@ interface IProps {
 
 export const Header: React.FC<IProps> = observer((props) => {
   const { enableNav } = props
-  console.log(UserStore.showOnboarding)
-  // const [scroll, setScroll] = useState(0)
-  // window.addEventListener(`scroll`, function x() {
-  //   setScroll(window.scrollY)
-  // })
+  const [scroll, setScroll] = useState(0)
+  useEffect(() => {
+    const doSomething = () => {
+      setScroll(window.scrollY)
+    }
+
+    window.addEventListener(`scroll`, doSomething)
+    return () => {
+      window.removeEventListener(`scroll`, doSomething)
+    }
+  }, [])
   return (
     <Root
-      height={enableNav ? `89px` : `77px`}
-      position={enableNav ? `relative` : `sticky`}
+      height={scroll < 700 ? `89px` : `77px`}
+      position={scroll < 700 ? `relative` : `sticky`}
       marginR={UserStore.showOnboarding ? `34px` : `10px`}
+      animation={scroll >= 700 && `headerFadeIn linear 0.5s`}
     >
+      {scroll >= 700 && <Border />}
       <Link to="/">
         <Title />
       </Link>

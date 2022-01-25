@@ -14,7 +14,7 @@ body {
 body {
   color: var(--color-text);
   margin: 0;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+  font-family: 'TTNormsPro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, 'Helvetica Neue', sans-serif;
   font-size: 15px;
   line-height: 1.7;
@@ -23,4 +23,10 @@ body {
 
 a {
   color: var(--brand);
+  text-decoration: none;
+}
+
+button{
+  font-family: 'TTNormsPro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Helvetica Neue', sans-serif;
 }
