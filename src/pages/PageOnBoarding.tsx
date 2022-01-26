@@ -4,7 +4,7 @@ import { RouteComponentProps, Link } from '@reach/router'
 import { observer } from 'mobx-react-lite'
 
 import { UserStore } from 'src/store/UserStore'
-import { LayoutBase } from 'src/components/LayoutBase'
+import { LayoutBaseWithoutFooter } from 'src/components/LayoutBaseWithoutFooter'
 
 const Title = styled.div`
   margin-top: 70px;
@@ -72,7 +72,7 @@ export const PageOnBoarding: React.FC<RouteComponentProps> = observer(() => {
     }
   }, [])
   return (
-    <LayoutBase hideLogin>
+    <LayoutBaseWithoutFooter hideLogin>
       <div>
         <Title>How it works</Title>
         <WrapBadge>
@@ -100,6 +100,6 @@ export const PageOnBoarding: React.FC<RouteComponentProps> = observer(() => {
           <Link to="/dashboard">Go to my personal space</Link>
         </Profile>
       </div>
-    </LayoutBase>
+    </LayoutBaseWithoutFooter>
   )
 })

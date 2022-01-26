@@ -3,6 +3,7 @@ import { css } from 'styled-components'
 const breakpoints = {
   mobile: `375px`,
   tablet: `720px`,
+  pretablet: `768px`,
   laptop: `1150px`,
   laptopX: `1245px`,
 }

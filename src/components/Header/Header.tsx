@@ -67,6 +67,7 @@ const Title = styled.div`
   width: 204px;
   height: 13px;
   background: no-repeat url(/assets/logo-breathhh.svg);
+  z-index: 10;
 
   ${media.tablet`
     width: 45px;
@@ -79,6 +80,7 @@ const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+  z-index: 10;
 `
 const Avatar = styled.img`
   width: 45px;
@@ -127,9 +129,11 @@ export const Header: React.FC<IProps> = observer((props) => {
       animation={scroll >= 700 && `headerFadeIn linear 0.5s`}
     >
       {scroll >= 700 && <Border />}
-      <Link to="/">
-        <Title />
-      </Link>
+      <ButtonContainer>
+        <Link to="/">
+          <Title />
+        </Link>
+      </ButtonContainer>
       <ButtonContainer>
         {!enableNav ? (
           <Link to="/login">

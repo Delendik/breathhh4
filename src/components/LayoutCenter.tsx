@@ -1,10 +1,13 @@
 import styled from 'styled-components'
-import { DevelopedBy } from './DevelopedBy'
+import { Footer } from 'src/components/Footer'
+import { Header } from 'src/components/Header'
+import { Container } from './Container'
 
 const Root = styled.div`
-  display: grid;
-  grid-template-rows: 1fr auto;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const Main = styled.main`
@@ -13,17 +16,14 @@ const Main = styled.main`
   justify-content: center;
 `
 
-const Footer = styled.footer`
-  padding: 40px;
-`
-
 export const LayoutCenter: React.FC = ({ children }) => {
   return (
     <Root>
-      <Main>{children}</Main>
-      <Footer>
-        <DevelopedBy />
-      </Footer>
+      <Header />
+      <Container>
+        <Main>{children}</Main>
+        <Footer />
+      </Container>
     </Root>
   )
 }

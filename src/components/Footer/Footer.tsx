@@ -5,7 +5,7 @@ import { Button, Spacer } from 'src/ui/atoms'
 
 import { yahhtUrl, facebook, twitter, medium, breathUltima } from 'src/utils/config'
 
-const Root = styled.div`
+const Root = styled.footer`
   padding-top: 134px;
   padding-bottom: 34px;
 
@@ -34,9 +34,11 @@ const Inner = styled.div`
     gap: 48px 24px;
   `}
 
-  ${media.tablet`
+  ${media.pretablet`
     gap: 31px;
+    max-width: 200px;
     justify-content: center;
+    margin: 0 auto;
   `}
 `
 
@@ -45,7 +47,7 @@ const InnerDown = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 
-  ${media.tablet`
+  ${media.pretablet`
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
@@ -80,7 +82,7 @@ const Block = styled.div`
   min-width: 208px;
   `}
 
-  ${media.tablet`
+  ${media.pretablet`
     align-items: center;
   `}
 `
@@ -107,7 +109,7 @@ const InfoText = styled.p`
   padding: 0;
   color: var(--color-ground-600);
 
-  ${media.tablet`
+  ${media.pretablet`
     font-size: 16px;
     line-height: 25px;
   `}
@@ -131,7 +133,7 @@ const InfoLinkSmall = styled(InfoText)`
     color: var(--color-ground-800);
   }
 
-  ${media.tablet`
+  ${media.pretablet`
     font-size: 14px;
     line-height: 22px;
   `}
@@ -142,7 +144,7 @@ const Line = styled.div`
   border: 1px solid var(--color-ground-100);
   margin-top: 48px;
 
-  ${media.tablet`
+  ${media.pretablet`
     display: none;
   `}
 `
@@ -153,7 +155,7 @@ const LineSmall = styled.div`
   border: 1px solid var(--color-ground-100);
   margin: 24px 0;
 
-  ${media.tablet`
+  ${media.pretablet`
     display: block;
   `}
 `
@@ -166,7 +168,7 @@ const BlockTitle = styled.p`
   padding: 0;
   color: var(--color-ground-600);
 
-  ${media.tablet`
+  ${media.pretablet`
     font-size: 16px;
     line-height: 25px;
   `}
@@ -184,6 +186,7 @@ const Badge = styled.a`
 `
 
 export const Footer: React.FC = () => {
+  const year = new Date().getFullYear()
   return (
     <Root>
       <Inner>
@@ -218,7 +221,7 @@ export const Footer: React.FC = () => {
           <Block>
             <BlockTitle>PRODUCT</BlockTitle>
             <Space display="block" height="18px" />
-            <Link to="/privacy_policy">
+            <Link to="/how-it-works" target="_blank">
               <BlockLink>How it works</BlockLink>
             </Link>
             <Space display="block" height="12px" />
@@ -229,19 +232,19 @@ export const Footer: React.FC = () => {
           <Block>
             <BlockTitle>COMPANY</BlockTitle>
             <Space display="block" height="18px" />
-            <Badge href={yahhtUrl} target="_blank">
+            <Link to="/about">
               <BlockLink>About</BlockLink>
-            </Badge>
+            </Link>
             <Space display="block" height="12px" />
-            <Link to="/privacy_policy">
+            <Link to="/partnership">
               <BlockLink>For partnership</BlockLink>
             </Link>
           </Block>
           <Block>
             <BlockTitle>HELP</BlockTitle>
             <Space display="block" height="18px" />
-            <Link to="/privacy_policy">
-              <BlockLink>FAQ</BlockLink>
+            <Link to="/faq">
+              <BlockLink>FAQS</BlockLink>
             </Link>
             <Space display="block" height="12px" />
             <Link to="/contacts">
@@ -254,7 +257,7 @@ export const Footer: React.FC = () => {
       <Space display="block" height="34px" />
       <InnerDown>
         <InfoBlock>
-          <InfoTextSmall>© 2021, Breathhh</InfoTextSmall>
+          <InfoTextSmall>© 2021 - {year}, Breathhh</InfoTextSmall>
           <Badge href={yahhtUrl} target="_blank">
             <InfoLinkSmall>Developed by Yahht</InfoLinkSmall>
           </Badge>
