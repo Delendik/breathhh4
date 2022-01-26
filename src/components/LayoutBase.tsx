@@ -23,6 +23,10 @@ const Nav = styled.div`
     text-decoration: none;
   }
 `
+
+const ForReview = styled.div`
+  height: 800px;
+`
 const NavLink = (props: React.ComponentProps<typeof Link>) => (
   <Link
     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -55,6 +59,7 @@ export const LayoutBase: React.FC<{ hideLogin?: boolean; enableNav?: boolean }> 
           )}
           {children}
         </Container>
+        <ForReview />
       </div>
       <Container>
         <Footer />
