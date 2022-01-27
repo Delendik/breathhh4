@@ -98,7 +98,7 @@ const MAX_ENGAGEMENT = 10
 
 export const PageDashboard: React.FC<RouteComponentProps> = observer(() => {
   return (
-    <LayoutBase enableNav>
+    <LayoutBase enableNav showSticky={false}>
       <div>
         <Banner>
           <BannerTitle>Here is your engagement when surfing the web</BannerTitle>

@@ -14,7 +14,7 @@ body {
 body {
   color: var(--color-text);
   margin: 0;
-  font-family: 'TT Norms', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+  font-family: 'TTNormsPro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, 'Helvetica Neue', sans-serif;
   font-size: 15px;
   line-height: 1.7;

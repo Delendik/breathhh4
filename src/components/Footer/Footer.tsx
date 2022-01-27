@@ -102,7 +102,7 @@ const InfoBlock = styled.div`
 `
 
 const InfoText = styled.p`
-  font-weight: 400;
+  font-weight: 500;
   font-size: 12px;
   line-height: 18px;
   margin: 0;
@@ -244,7 +244,7 @@ export const Footer: React.FC = () => {
             <BlockTitle>HELP</BlockTitle>
             <Space display="block" height="18px" />
             <Link to="/faq">
-              <BlockLink>FAQS</BlockLink>
+              <BlockLink>FAQs</BlockLink>
             </Link>
             <Space display="block" height="12px" />
             <Link to="/contacts">

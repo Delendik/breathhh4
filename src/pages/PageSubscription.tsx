@@ -97,7 +97,7 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
   }
 
   return (
-    <LayoutBase enableNav>
+    <LayoutBase enableNav showSticky={false}>
       <Helmet>
         <script src="https://cdn.paddle.com/paddle/paddle.js" />
       </Helmet>

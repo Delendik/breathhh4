@@ -56,8 +56,8 @@ const Border = styled.div`
     content: '';
     position: absolute;
     top: 77px;
-    right: 24px;
-    left: 0px;
+    right: -34px;
+    left: -34px;
     height: 1px;
     border-top: solid 1px var(--color-ground-100);
   }
@@ -106,10 +106,11 @@ const BigButton = styled.div`
 interface IProps {
   hideLogin?: boolean
   enableNav?: boolean
+  showSticky?: boolean
 }
 
 export const Header: React.FC<IProps> = observer((props) => {
-  const { enableNav } = props
+  const { enableNav, showSticky } = props
   const [scroll, setScroll] = useState(0)
   useEffect(() => {
     const doSomething = () => {
@@ -121,12 +122,13 @@ export const Header: React.FC<IProps> = observer((props) => {
       window.removeEventListener(`scroll`, doSomething)
     }
   }, [])
+  const sticky = showSticky === undefined ? `sticky` : `relative`
   return (
     <Root
       height={scroll < 700 ? `89px` : `77px`}
-      position={scroll < 700 ? `relative` : `sticky`}
+      position={scroll < 700 ? `relative` : sticky}
       marginR={UserStore.showOnboarding ? `34px` : `10px`}
-      animation={scroll >= 700 && `headerFadeIn linear 0.5s`}
+      animation={scroll >= 700 && `headerFadeIn ease-in 0.5s`}
     >
       {scroll >= 700 && <Border />}
       <ButtonContainer>

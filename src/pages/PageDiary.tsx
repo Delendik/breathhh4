@@ -46,7 +46,7 @@ export const PageDiary: React.FC<RouteComponentProps> = observer(() => {
   const { moodRates } = useMoodRates()
 
   return (
-    <LayoutBase enableNav>
+    <LayoutBase enableNav showSticky={false}>
       <div>
         <Banner>
           <BannerTitle>Mood Diary</BannerTitle>

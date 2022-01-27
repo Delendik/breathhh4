@@ -64,7 +64,7 @@ export const PageAccount: React.FC<RouteComponentProps> = observer(() => {
   const isFacebookConnected = UserStore.user?.facebook_connected
 
   return (
-    <LayoutBase enableNav>
+    <LayoutBase enableNav showSticky={false}>
       <div>
         <Banner>
           <BannerTitle>{UserStore.user?.name}</BannerTitle>
