@@ -1,4 +1,4 @@
-import ReactPixel from 'react-facebook-pixel'
+// import ReactPixel from 'react-facebook-pixel'
 import styled from 'styled-components'
 import { Link } from '@reach/router'
 import { Header } from 'src/components/Header'
@@ -46,14 +46,14 @@ export const LayoutBase: React.FC<{
   enableNav?: boolean
   showSticky?: boolean
 }> = ({ children, hideLogin, enableNav, showSticky }) => {
-  const options = {
-    autoConfig: true,
-    debug: false,
-  }
-  // @ts-ignore
-  ReactPixel.init(`218867823794422`, options)
+  // const options = {
+  //   autoConfig: true,
+  //   debug: false,
+  // }
+  // // @ts-ignore
+  // ReactPixel.init(`218867823794422`, options)
 
-  ReactPixel.pageView()
+  // ReactPixel.pageView()
   return (
     <Root>
       <div>

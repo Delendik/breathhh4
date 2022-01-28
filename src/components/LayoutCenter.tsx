@@ -1,4 +1,4 @@
-import ReactPixel from 'react-facebook-pixel'
+// import ReactPixel from 'react-facebook-pixel'
 import styled from 'styled-components'
 import { Footer } from 'src/components/Footer'
 import { Header } from 'src/components/Header'
@@ -18,14 +18,14 @@ const Main = styled.main`
 `
 
 export const LayoutCenter: React.FC = ({ children }) => {
-  const options = {
-    autoConfig: true,
-    debug: false,
-  }
-  // @ts-ignore
-  ReactPixel.init(`218867823794422`, options)
+  // const options = {
+  //   autoConfig: true,
+  //   debug: false,
+  // }
+  // // @ts-ignore
+  // ReactPixel.init(`218867823794422`, options)
 
-  ReactPixel.pageView()
+  // ReactPixel.pageView()
   return (
     <Root>
       <Header />
