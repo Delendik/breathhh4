@@ -7,46 +7,60 @@ import { media } from 'src/media'
 
 import { Button } from 'src/ui/atoms'
 
-const Root = styled.header<{
-  height: string
-  position: string
-  marginR: string
-  animation: string
-}>`
-  position: ${(props) => props.position};
+// const Root = styled.header<{
+//   height: string
+//   position: string
+//   marginR: string
+//   animation: string
+// }>`
+const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   top: 0;
-  height: ${(props) => props.height};
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-white);
   margin-left: 34px;
-  margin-right: ${(props) => props.marginR};
-  /* animation: headerFadeIn linear 2s; */
-  animation: ${(props) => props.animation};
+
+  &.top {
+    position: relative;
+  }
+
+  &.hide {
+    height: 89px;
+    animation: headerFadeOut ease-in 0.5s forwards;
+  }
+
+  &.show {
+    height: 77px;
+    animation: headerFadeIn ease-in 0.5s forwards;
+  }
 
   @keyframes headerFadeIn {
     from {
+      position: relative;
       opacity: 0;
       transform: translateY(-100%);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+      position: sticky;
+    }
+  }
+
+  @keyframes headerFadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+      position: sticky;
+    }
+    to {
+      position: relative;
+      opacity: 0;
+      transform: translateY(-100%);
     }
   }
 `
-
-// export const headerFadeIn = keyframes`
-//     from {
-//     opacity: 0;
-//     transform: translateY(-100%);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// `
 
 const Border = styled.div`
   height: 77px;
@@ -112,9 +126,16 @@ interface IProps {
 export const Header: React.FC<IProps> = observer((props) => {
   const { enableNav, showSticky } = props
   const [scroll, setScroll] = useState(0)
+  const [up, setUp] = useState(false)
   useEffect(() => {
     const doSomething = () => {
       setScroll(window.scrollY)
+      if (window.scrollY >= 700) {
+        setUp(true)
+      }
+      if (window.scrollY < 200) {
+        setUp(false)
+      }
     }
 
     window.addEventListener(`scroll`, doSomething)
@@ -122,14 +143,9 @@ export const Header: React.FC<IProps> = observer((props) => {
       window.removeEventListener(`scroll`, doSomething)
     }
   }, [])
-  const sticky = showSticky === undefined ? `sticky` : `relative`
+  const sticky = scroll >= 700 ? `show` : scroll < 700 && up && `hide`
   return (
-    <Root
-      height={scroll < 700 ? `89px` : `77px`}
-      position={scroll < 700 ? `relative` : sticky}
-      marginR={UserStore.showOnboarding ? `34px` : `10px`}
-      animation={scroll >= 700 && `headerFadeIn ease-in 0.5s`}
-    >
+    <Root className={scroll < 200 || showSticky !== undefined ? `top` : sticky}>
       {scroll >= 700 && <Border />}
       <ButtonContainer>
         <Link to="/">
@@ -139,7 +155,12 @@ export const Header: React.FC<IProps> = observer((props) => {
       <ButtonContainer>
         {!enableNav ? (
           <Link to="/login">
-            <Button type="button" appearanceTransponentBlack="transponentBlack">
+            <Button
+              type="button"
+              appearanceTransponentBlack="transponentBlack"
+              // @ts-ignore
+              onClick="ga('send', 'event', 'button', 'click', 'to_webstore')"
+            >
               Sign in
             </Button>
           </Link>
@@ -151,7 +172,15 @@ export const Header: React.FC<IProps> = observer((props) => {
         {UserStore.showOnboarding && (
           <div>
             <BigButton>
-              <Button href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo">
+              <Button
+                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                // @ts-ignore
+                onClick={
+                  scroll < 200
+                    ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
+                    : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
+                }
+              >
                 Add to Chrome — it’s free
               </Button>
             </BigButton>
@@ -160,6 +189,12 @@ export const Header: React.FC<IProps> = observer((props) => {
                 type="button"
                 appearanceTransponentBlack="transponentBlack"
                 href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                // @ts-ignore
+                onClick={
+                  scroll < 200
+                    ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
+                    : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
+                }
               >
                 Install
               </Button>
