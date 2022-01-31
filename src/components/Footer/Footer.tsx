@@ -2,7 +2,6 @@ import { Link } from '@reach/router'
 import styled from 'styled-components'
 import { media } from 'src/media'
 import { Button, Spacer } from 'src/ui/atoms'
-import FontStyles from 'src/fontStyle'
 
 import { yahhtUrl, facebook, twitter, medium, breathUltima } from 'src/utils/config'
 
@@ -190,7 +189,6 @@ export const Footer: React.FC = () => {
   const year = new Date().getFullYear()
   return (
     <Root>
-      <FontStyles />
       <Inner>
         <Block>
           <Title />
