@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider, ErrorBoundary } from '@rollbar/react'
 
+import 'normalize.css'
 import './ui/tokens.css'
 import './ui/fonts.css'
 import './index.css'
