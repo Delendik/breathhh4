@@ -7,12 +7,6 @@ import { media } from 'src/media'
 
 import { Button } from 'src/ui/atoms'
 
-// const Root = styled.header<{
-//   height: string
-//   position: string
-//   marginR: string
-//   animation: string
-// }>`
 const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   top: 0;
   display: flex;
