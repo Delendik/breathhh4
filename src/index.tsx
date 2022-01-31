@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider, ErrorBoundary } from '@rollbar/react'
 
+import 'normalize.css'
 import './ui/tokens.css'
+import './ui/fonts.css'
 import './index.css'
+
 import { App } from './App'
 
 const isProd = process.env.NODE_ENV === `production`
