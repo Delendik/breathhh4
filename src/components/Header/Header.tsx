@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from '@reach/router'
 import { observer } from 'mobx-react-lite'
 import { UserStore } from 'src/store/UserStore'
@@ -119,85 +119,118 @@ interface IProps {
 
 export const Header: React.FC<IProps> = observer((props) => {
   const { enableNav, showSticky } = props
-  const [scroll, setScroll] = useState(0)
+  const [scroll, setScroll] = useState(false)
   const [up, setUp] = useState(false)
+
+  const watcherRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    const doSomething = () => {
-      setScroll(window.scrollY)
-      if (window.scrollY >= 700) {
-        setUp(true)
-      }
-      if (window.scrollY < 200) {
-        setUp(false)
-      }
+    const options = {
+      root: document,
+      rootMargin: `700px`,
+      threshold: 0,
     }
 
-    window.addEventListener(`scroll`, doSomething)
-    return () => {
-      window.removeEventListener(`scroll`, doSomething)
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setScroll(false)
+        } else {
+          setUp(true)
+          setScroll(true)
+        }
+      })
     }
-  }, [])
-  const sticky = scroll >= 700 ? `show` : scroll < 700 && up && `hide`
+
+    const options2 = {
+      root: document,
+      rootMargin: `200px`,
+      threshold: 0,
+    }
+
+    const callback2 = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setUp(false)
+        }
+      })
+    }
+
+    const scrollObserver = new IntersectionObserver(callback, options)
+    const scrollObserver2 = new IntersectionObserver(callback2, options2)
+
+    scrollObserver.observe(watcherRef.current)
+    scrollObserver2.observe(watcherRef.current)
+    return () => {
+      scrollObserver.unobserve(headerRef.current)
+      scrollObserver2.unobserve(headerRef.current)
+    }
+  }, [headerRef])
+  const sticky = scroll ? `show` : !scroll && up && `hide`
   return (
-    <Root className={scroll < 200 || showSticky !== undefined ? `top` : sticky}>
-      {scroll >= 700 && <Border />}
-      <ButtonContainer>
-        <Link to="/">
-          <Title />
-        </Link>
-      </ButtonContainer>
-      <ButtonContainer>
-        {!enableNav ? (
-          <Link to="/login">
-            <Button
-              type="button"
-              appearanceTransponentBlack="transponentBlack"
-              // onClick={gtag('event', 'click', {
-              //   event_category: 'button',
-              //   event_label: 'to_webstore',
-              // })}
-            >
-              Sign in
-            </Button>
+    <>
+      <div ref={watcherRef} />
+      <Root ref={headerRef} className={!up || showSticky !== undefined ? `top` : sticky}>
+        {scroll && <Border />}
+        <ButtonContainer>
+          <Link to="/">
+            <Title />
           </Link>
-        ) : (
-          <Link to="/dashboard">
-            <Avatar width="45" height="45" src={UserStore.user.picture} alt="user's avatar" />
-          </Link>
-        )}
-        {UserStore.showOnboarding && (
-          <div>
-            <BigButton>
-              <Button
-                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                // @ts-ignore
-                // onClick={
-                //   scroll < 200
-                //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
-                //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
-                // }
-              >
-                Add to Chrome — it’s free
-              </Button>
-            </BigButton>
-            <SmallButton>
+        </ButtonContainer>
+        <ButtonContainer>
+          {!enableNav ? (
+            <Link to="/login">
               <Button
                 type="button"
                 appearanceTransponentBlack="transponentBlack"
-                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                // @ts-ignore
-                // onClick={
-                //   scroll < 200
-                //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
-                //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
-                // }
+                // onClick={gtag('event', 'click', {
+                //   event_category: 'button',
+                //   event_label: 'to_webstore',
+                // })}
               >
-                Install
+                Sign in
               </Button>
-            </SmallButton>
-          </div>
-        )}
-      </ButtonContainer>
-    </Root>
+            </Link>
+          ) : (
+            <Link to="/dashboard">
+              <Avatar width="45" height="45" src={UserStore.user.picture} alt="user's avatar" />
+            </Link>
+          )}
+          {UserStore.showOnboarding && (
+            <div>
+              <BigButton>
+                <Button
+                  href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                  // @ts-ignore
+                  // onClick={
+                  //   scroll < 200
+                  //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
+                  //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
+                  // }
+                >
+                  Add to Chrome — it’s free
+                </Button>
+              </BigButton>
+              <SmallButton>
+                <Button
+                  type="button"
+                  appearanceTransponentBlack="transponentBlack"
+                  href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                  // @ts-ignore
+                  // onClick={
+                  //   scroll < 200
+                  //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
+                  //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
+                  // }
+                >
+                  Install
+                </Button>
+              </SmallButton>
+            </div>
+          )}
+        </ButtonContainer>
+      </Root>
+    </>
   )
 })
