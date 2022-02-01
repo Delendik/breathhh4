@@ -8,7 +8,7 @@
 
 @font-face {
   font-weight: 400;
-  font-family: 'TTNormsProRg';
+  font-family: 'TTNormsPro';
   font-style: normal;
   src: url('../fonts/TTNormsPro/TTNormsProRg/font.woff2') format('woff2');
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-weight: 500;
-  font-family: 'TTNormsProMd';
+  font-family: 'TTNormsPro';
   font-style: bold;
   src: url('../fonts/TTNormsPro/TTNormsProMd/font.woff2') format('woff2');
   font-display: swap;

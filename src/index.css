@@ -14,6 +14,7 @@ body {
 body {
   color: var(--color-text);
   font-family: var(--fonts);
+  font-weight: 500;
   font-size: 15px;
   line-height: 1.7;
   overflow-y: scroll;

@@ -152,8 +152,10 @@ export const Header: React.FC<IProps> = observer((props) => {
             <Button
               type="button"
               appearanceTransponentBlack="transponentBlack"
-              // @ts-ignore
-              onClick="ga('send', 'event', 'button', 'click', 'to_webstore')"
+              // onClick={gtag('event', 'click', {
+              //   event_category: 'button',
+              //   event_label: 'to_webstore',
+              // })}
             >
               Sign in
             </Button>
@@ -169,11 +171,11 @@ export const Header: React.FC<IProps> = observer((props) => {
               <Button
                 href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
                 // @ts-ignore
-                onClick={
-                  scroll < 200
-                    ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
-                    : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
-                }
+                // onClick={
+                //   scroll < 200
+                //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
+                //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
+                // }
               >
                 Add to Chrome — it’s free
               </Button>
@@ -184,11 +186,11 @@ export const Header: React.FC<IProps> = observer((props) => {
                 appearanceTransponentBlack="transponentBlack"
                 href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
                 // @ts-ignore
-                onClick={
-                  scroll < 200
-                    ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
-                    : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
-                }
+                // onClick={
+                //   scroll < 200
+                //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
+                //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
+                // }
               >
                 Install
               </Button>

@@ -79,7 +79,7 @@ const Block = styled.div`
   min-width: 170px;
 
   ${media.laptop`
-  min-width: 208px;
+    min-width: 208px;
   `}
 
   ${media.pretablet`
@@ -102,7 +102,6 @@ const InfoBlock = styled.div`
 `
 
 const InfoText = styled.p`
-  font-weight: 500;
   font-size: 12px;
   line-height: 18px;
   margin: 0;
@@ -161,7 +160,6 @@ const LineSmall = styled.div`
 `
 
 const BlockTitle = styled.p`
-  font-weight: 500;
   font-size: 14px;
   line-height: 22px;
   margin: 0;

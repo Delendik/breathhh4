@@ -1,5 +1,5 @@
 :root {
-  --fonts: 'TTNormsProMd', -apple-system, system-ui;
+  --fonts: 'TTNormsPro', -apple-system, system-ui;
   --fonts-second: 'PP Neue Machina', -apple-system, system-ui;
 
   --app-height: 600px;
