@@ -1,3 +1,4 @@
+import ReactGa from 'react-ga'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from '@reach/router'
 import { observer } from 'mobx-react-lite'
@@ -7,6 +8,7 @@ import { media } from 'src/media'
 
 import { Button } from 'src/ui/atoms'
 
+ReactGa.initialize(`UA-196308133-3`)
 const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   top: 0;
   display: flex;
@@ -168,6 +170,14 @@ export const Header: React.FC<IProps> = observer((props) => {
     }
   }, [headerRef])
   const sticky = scroll ? `show` : !scroll && up && `hide`
+  const eventTrack = (category, action, label) => {
+    console.log(`GA event:`, category, `:`, action, `:`, label)
+    ReactGa.event({
+      category,
+      action,
+      label,
+    })
+  }
   return (
     <>
       <div ref={watcherRef} />
@@ -184,10 +194,8 @@ export const Header: React.FC<IProps> = observer((props) => {
               <Button
                 type="button"
                 appearanceTransponentBlack="transponentBlack"
-                // onClick={gtag('event', 'click', {
-                //   event_category: 'button',
-                //   event_label: 'to_webstore',
-                // })}
+                // @ts-ignore
+                onClick={eventTrack(`button`, `click`, `to_webstore`)}
               >
                 Sign in
               </Button>
@@ -203,11 +211,11 @@ export const Header: React.FC<IProps> = observer((props) => {
                 <Button
                   href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
                   // @ts-ignore
-                  // onClick={
-                  //   scroll < 200
-                  //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
-                  //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
-                  // }
+                  onClick={
+                    !scroll
+                      ? eventTrack(`button`, `click`, `to_webstore`)
+                      : eventTrack(`button`, `click`, `to_webstore_sticky`)
+                  }
                 >
                   Add to Chrome — it’s free
                 </Button>
@@ -218,11 +226,11 @@ export const Header: React.FC<IProps> = observer((props) => {
                   appearanceTransponentBlack="transponentBlack"
                   href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
                   // @ts-ignore
-                  // onClick={
-                  //   scroll < 200
-                  //     ? `ga('send', 'event', 'button', 'click', 'to_webstore')`
-                  //     : `ga('send', 'event', 'button', 'click', 'to_webstore_sticky')`
-                  // }
+                  onClick={
+                    !scroll
+                      ? eventTrack(`button`, `click`, `to_webstore`)
+                      : eventTrack(`button`, `click`, `to_webstore_sticky`)
+                  }
                 >
                   Install
                 </Button>
