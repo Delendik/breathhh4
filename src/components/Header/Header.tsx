@@ -191,12 +191,7 @@ export const Header: React.FC<IProps> = observer((props) => {
         <ButtonContainer>
           {!enableNav ? (
             <Link to="/login">
-              <Button
-                type="button"
-                appearanceTransponentBlack="transponentBlack"
-                // @ts-ignore
-                onClick={eventTrack(`button`, `click`, `to_webstore`)}
-              >
+              <Button type="button" appearanceTransponentBlack="transponentBlack">
                 Sign in
               </Button>
             </Link>
