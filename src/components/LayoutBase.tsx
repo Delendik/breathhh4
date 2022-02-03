@@ -25,9 +25,9 @@ const Nav = styled.div`
   }
 `
 
-const ForReview = styled.div`
-  height: 800px;
-`
+// const ForReview = styled.div`
+//   height: 800px;
+// `
 const NavLink = (props: React.ComponentProps<typeof Link>) => (
   <Link
     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -68,7 +68,7 @@ export const LayoutBase: React.FC<{
           )}
           {children}
         </Container>
-        <ForReview />
+        {/* <ForReview /> */}
       </div>
       <Container>
         <Footer />

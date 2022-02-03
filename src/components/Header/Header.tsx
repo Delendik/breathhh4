@@ -208,8 +208,8 @@ export const Header: React.FC<IProps> = observer((props) => {
                   // @ts-ignore
                   onClick={
                     !scroll
-                      ? eventTrack(`button`, `click`, `to_webstore`)
-                      : eventTrack(`button`, `click`, `to_webstore_sticky`)
+                      ? () => eventTrack(`button`, `click`, `to_webstore`)
+                      : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
                   }
                 >
                   Add to Chrome — it’s free
@@ -223,8 +223,8 @@ export const Header: React.FC<IProps> = observer((props) => {
                   // @ts-ignore
                   onClick={
                     !scroll
-                      ? eventTrack(`button`, `click`, `to_webstore`)
-                      : eventTrack(`button`, `click`, `to_webstore_sticky`)
+                      ? () => eventTrack(`button`, `click`, `to_webstore`)
+                      : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
                   }
                 >
                   Install
