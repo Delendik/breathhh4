@@ -1,13 +1,19 @@
 import styled from 'styled-components'
 import { media } from 'src/media'
 
-import { Spacer } from 'src/ui/atoms'
-
 import * as icons from 'src/ui/icons'
 
 const Root = styled.div`
   font-family: var(--fonts-second);
-  margin: 0 auto;
+  margin: 96px auto;
+
+  ${media.laptop`
+    margin: 68px auto;
+  `}
+
+  ${media.tablet`
+    margin: 48px auto;
+  `}
 `
 
 const Title = styled.h2`
@@ -35,6 +41,16 @@ const Cards = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: 48px;
+
+  ${media.laptop`
+    gap: 24px;
+  `}
+
+  ${media.tablet`
+    gap: 20px;
+    margin-top: 34px;
+  `}
 `
 const Card = styled.div`
   display: flex;
@@ -46,6 +62,16 @@ const Card = styled.div`
   padding: 24px;
   background: var(--color-ground-100);
   border-radius: 34px;
+
+  ${media.laptop`
+    width: 324px;
+    height: 324px;
+  `}
+
+  ${media.tablet`
+    width: 320px;
+    height: 320px;
+  `}
 `
 
 const CardBlack = styled(Card)`
@@ -62,6 +88,15 @@ const CardText = styled.p`
   line-height: 38px;
   text-transform: uppercase;
   white-space: pre-line;
+
+  ${media.laptop`
+    white-space: normal;
+  `}
+
+  ${media.tablet`
+    font-size: 28px;
+    line-height: 32px;
+  `}
 `
 
 const CardTextWhite = styled(CardText)`
@@ -72,30 +107,23 @@ const CardTextGrey = styled(CardText)`
   color: var(--color-ground-700);
 `
 
-// const Avatar = styled.img`
-//   width: 45px;
-//   height: 45px;
-//   border-radius: 50%;
-// `
-// const SmallButton = styled.div`
-//   display: none;
+const Space = styled.div`
+  height: 8px;
 
-//   ${media.tablet`
-//     display: block;
-//   `}
-// `
+  ${media.tablet`
+    height: 4px;
+  `}
+`
 
 export const Benefits: React.FC = () => {
   return (
     <Root>
-      <Spacer s="96" />
       <Title>Try a new way to feel  better with Breathhh</Title>
-      <Spacer s="48" />
       <Cards>
         <Card>
           <TextWrapper>
-            <CardText>easy {`\n`} to use</CardText>
-            <Spacer s="8" />
+            <CardText>easy{`\n`}to use</CardText>
+            <Space />
             <CardTextGrey>No need to develop {`\n`} the habit</CardTextGrey>
           </TextWrapper>
           <icons.Stars />
@@ -103,7 +131,7 @@ export const Benefits: React.FC = () => {
         <Card>
           <TextWrapper>
             <CardText>Freemium {`\n`} Option</CardText>
-            <Spacer s="8" />
+            <Space />
             <CardTextGrey>
               Can be {`\n`} used free {`\n`} of charge
             </CardTextGrey>
@@ -113,7 +141,7 @@ export const Benefits: React.FC = () => {
         <Card>
           <TextWrapper>
             <CardText>Adjustable settings</CardText>
-            <Spacer s="8" />
+            <Space />
             <CardTextGrey>Include what's needed</CardTextGrey>
           </TextWrapper>
           <icons.Moon />
@@ -121,7 +149,7 @@ export const Benefits: React.FC = () => {
         <CardBlack>
           <TextWrapper>
             <CardTextWhite>Private {`\n`} and secure</CardTextWhite>
-            <Spacer s="8" />
+            <Space />
             <CardTextGrey>Reliable storage and protection</CardTextGrey>
           </TextWrapper>
           <icons.Lock />
