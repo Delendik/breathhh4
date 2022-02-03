@@ -24,3 +24,7 @@ a {
   color: var(--brand);
   text-decoration: none;
 }
+
+p{
+  margin: 0;
+}

@@ -3,6 +3,7 @@ import { RouteComponentProps } from '@reach/router'
 
 import { LayoutBase } from 'src/components/LayoutBase'
 import { chromeExtUrl } from 'src/utils/config'
+import { Benefits } from 'src/components/Benefits'
 
 import iconSimulator from './assets/icon-breathing-simulator.svg'
 import iconEngagement from './assets/icon-engagement.svg'
@@ -138,6 +139,7 @@ export const PageIndex: React.FC<RouteComponentProps> = () => {
             )
           })}
         </BenefitsContainer>
+        <Benefits />
       </Content>
     </LayoutBase>
   )
