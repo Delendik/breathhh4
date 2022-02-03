@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { RouteComponentProps } from '@reach/router'
-import { Container } from 'src/components/Container'
 import { MadeBy } from 'src/components/MadeBy'
+import { Container } from 'src/components/Container'
 
 const H1 = styled.h1`
   margin-bottom: 25px;

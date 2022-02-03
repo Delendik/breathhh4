@@ -2,7 +2,6 @@
 import styled from 'styled-components'
 import { Link } from '@reach/router'
 import { Header } from 'src/components/Header'
-import { Footer } from 'src/components/Footer'
 import { Container } from './Container'
 
 const Root = styled.div`
@@ -41,11 +40,11 @@ const NavLink = (props: React.ComponentProps<typeof Link>) => (
     }}
   />
 )
-export const LayoutBase: React.FC<{
-  hideLogin?: boolean
-  enableNav?: boolean
-  showSticky?: boolean
-}> = ({ children, hideLogin, enableNav, showSticky }) => {
+export const LayoutBaseWithoutFooter: React.FC<{ hideLogin?: boolean; enableNav?: boolean }> = ({
+  children,
+  hideLogin,
+  enableNav,
+}) => {
   // const options = {
   //   autoConfig: true,
   //   debug: false,
@@ -57,7 +56,7 @@ export const LayoutBase: React.FC<{
   return (
     <Root>
       <div>
-        <Header hideLogin={hideLogin} enableNav={enableNav} showSticky={showSticky} />
+        <Header hideLogin={hideLogin} enableNav={enableNav} />
         <Container>
           {enableNav && (
             <Nav>
@@ -70,9 +69,6 @@ export const LayoutBase: React.FC<{
         </Container>
         {/* <ForReview /> */}
       </div>
-      <Container>
-        <Footer />
-      </Container>
     </Root>
   )
 }

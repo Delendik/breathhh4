@@ -6,7 +6,6 @@ import { RouteComponentProps } from '@reach/router'
 import * as Yup from 'yup'
 
 import { UserStore } from 'src/store/UserStore'
-import { Container } from 'src/components/Container'
 import { Button } from 'src/components/Button'
 import { chromeExtUrl } from 'src/utils/config'
 
@@ -38,7 +37,7 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
   }, [])
 
   return (
-    <Container>
+    <div>
       <h1>Sorry! Please, help us improve</h1>
       <h2>Why did you uninstall Breathhh? Check all that apply.</h2>
 
@@ -93,6 +92,6 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
           )}
         </Formik>
       )}
-    </Container>
+    </div>
   )
 })

@@ -11,6 +11,7 @@ export const useAuth = () => {
   // INFO: Логин
   useEffect(() => {
     ;(async () => {
+      // const AUTHORIZATION = `b13c1OLkXS2IruQdY9W6YA`
       const AUTHORIZATION = cookie.get(`token`)
 
       if (AUTHORIZATION) {

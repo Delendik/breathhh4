@@ -21,6 +21,10 @@ import { PageUninstall } from 'src/pages/PageUninstall'
 import { PageContact } from 'src/pages/PageContact'
 import { Page404 } from 'src/pages/Page404'
 import { PageDiary } from 'src/pages/PageDiary'
+import { PageAbout } from 'src/pages/PageAbout'
+import { PageFaq } from 'src/pages/PageFaq'
+import { PageHowItWorks } from 'src/pages/PageHowItWorks'
+import { PagePartnership } from 'src/pages/PagePartnership'
 
 const PageIndexProtected = withAccountRedirectIfLoggedIn(PageIndex)
 
@@ -50,6 +54,10 @@ export function App() {
         <PageTerms path="/terms_of_use" />
         <PageUninstallProtected path="/uninstall_ext" />
         <PageContact path="/contacts" />
+        <PageAbout path="/about" />
+        <PageFaq path="/faq" />
+        <PageHowItWorks path="/how-it-works" />
+        <PagePartnership path="/partnership" />
 
         <Page404 path="/404" />
         <Redirect from="*" to="/404" noThrow />

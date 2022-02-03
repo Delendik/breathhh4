@@ -46,6 +46,58 @@
     .iconLeft {
       margin-right: 5px;
     }
+
+    .iconRight {
+      margin: 0;
+    }
+  }
+
+  &.onGreyRound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--app-text-color);
+    background-color: var(--color-ground-100);
+    padding: 0;
+
+    &:hover {
+      color: var(--app-text-color);
+      background-color: var(--color-ground-200);
+      opacity: 1;
+    }
+
+    .iconRight {
+      margin: 0;
+    }
+  }
+
+  &.transponentBlack {
+    min-width: auto;
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--app-text-color);
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-ground-800);
+    }
+
+    &:active {
+      color: var(--color-ground-700);
+    }
+
+    &:focus {
+      color: var(--app-text-color);
+    }
+
+    &:disabled {
+      color: var(--color-ground-400);
+    }
   }
 }
 
@@ -64,6 +116,10 @@
   .root.onGrey & path {
     fill: var(--app-text-color);
   }
+
+  .root.onGreyRound & path {
+    fill: var(--app-text-color);
+  }
 }
 
 .iconRight {
@@ -72,5 +128,13 @@
 
   & path {
     fill: var(--app-bg-color);
+  }
+
+  .root.onGrey & path {
+    fill: var(--app-text-color);
+  }
+
+  .root.onGreyRound & path {
+    fill: var(--app-text-color);
   }
 }
