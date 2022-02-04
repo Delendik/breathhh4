@@ -38,28 +38,28 @@ const Button = styled.button`
 
   @keyframes animate {
     from {
-      background: url(/assets/1.png);
-      background-size: contain;
+      background: no-repeat url(/assets/1.png);
+      background-size: cover;
     }
     20% {
-      background: url(/assets/2.png);
-      background-size: contain;
+      background: no-repeat url(/assets/2.png);
+      background-size: cover;
     }
     40% {
-      background: url(/assets/3.png);
-      background-size: contain;
+      background: no-repeat url(/assets/3.png);
+      background-size: cover;
     }
     60% {
-      background: url(/assets/4.png);
-      background-size: contain;
+      background: no-repeat url(/assets/4.png);
+      background-size: cover;
     }
     80% {
-      background: url(/assets/5.png);
-      background-size: contain;
+      background: no-repeat url(/assets/5.png);
+      background-size: cover;
     }
     to {
-      background: url(/assets/6.png);
-      background-size: contain;
+      background: no-repeat url(/assets/6.png);
+      background-size: cover;
     }
   }
   ${media.laptop`
@@ -94,22 +94,22 @@ const Button = styled.button`
 
 //   @keyframes animate {
 //     from {
-//       background: url(/assets/1.png);
+//       background: no-repeat url(/assets/1.png);
 //     }
 //     20% {
-//       background: url(/assets/2.png);
+//       background: no-repeat url(/assets/2.png);
 //     }
 //     40% {
-//       background: url(/assets/3.png);
+//       background: no-repeat url(/assets/3.png);
 //     }
 //     60% {
-//       background: url(/assets/4.png);
+//       background: no-repeat url(/assets/4.png);
 //     }
 //     80% {
-//       background: url(/assets/5.png);
+//       background: no-repeat url(/assets/5.png);
 //     }
 //     to {
-//       background: url(/assets/6.png);
+//       background: no-repeat url(/assets/6.png);
 //     }
 //   }
 // `
