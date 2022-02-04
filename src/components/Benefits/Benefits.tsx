@@ -3,6 +3,23 @@ import { media } from 'src/media'
 
 import * as icons from 'src/ui/icons'
 
+const DATA = [
+  {
+    title: `easy \n to use`,
+    text: `No need to develop \n the habit`,
+    icon: <icons.Stars />,
+  },
+  {
+    title: `Freemium \n Option`,
+    text: `Can be \n used free \n of charge`,
+    icon: <icons.Wallet />,
+  },
+  {
+    title: `Adjustable settings`,
+    text: `Include what's needed`,
+    icon: <icons.Moon />,
+  },
+]
 const Root = styled.div`
   font-family: var(--fonts-second);
   margin: 96px auto;
@@ -120,32 +137,18 @@ export const Benefits: React.FC = () => {
     <Root>
       <Title>Try a new way to feel  better with Breathhh</Title>
       <Cards>
-        <Card>
-          <TextWrapper>
-            <CardText>easy{`\n`}to use</CardText>
-            <Space />
-            <CardTextGrey>No need to develop {`\n`} the habit</CardTextGrey>
-          </TextWrapper>
-          <icons.Stars />
-        </Card>
-        <Card>
-          <TextWrapper>
-            <CardText>Freemium {`\n`} Option</CardText>
-            <Space />
-            <CardTextGrey>
-              Can be {`\n`} used free {`\n`} of charge
-            </CardTextGrey>
-          </TextWrapper>
-          <icons.Wallet />
-        </Card>
-        <Card>
-          <TextWrapper>
-            <CardText>Adjustable settings</CardText>
-            <Space />
-            <CardTextGrey>Include what's needed</CardTextGrey>
-          </TextWrapper>
-          <icons.Moon />
-        </Card>
+        {DATA.map((item, index) => {
+          return (
+            <Card key={index}>
+              <TextWrapper>
+                <CardText>{item.title}</CardText>
+                <Space />
+                <CardTextGrey>{item.text}</CardTextGrey>
+              </TextWrapper>
+              {item.icon}
+            </Card>
+          )
+        })}
         <CardBlack>
           <TextWrapper>
             <CardTextWhite>Private {`\n`} and secure</CardTextWhite>
