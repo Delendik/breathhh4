@@ -70,6 +70,7 @@ const Title = styled.div`
   width: 182px;
   height: 13px;
   background: no-repeat url(/assets/logo-breathhh.svg);
+  background-size: contain;
 `
 
 const Block = styled.div`
