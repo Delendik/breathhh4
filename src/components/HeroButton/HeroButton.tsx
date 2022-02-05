@@ -73,15 +73,21 @@ const Button = styled.a`
     width: 320px;
     height: 112px;
     font-size: 44px;
+  `}
+
+  @media (pointer:coarse) {
+    width: 320px;
+    height: 112px;
+    font-size: 44px;
 
     :hover {
-    animation: none;
-  }
+      animation: none;
+    }
 
-    :focus{
+    :focus {
       background: var(--color-sunrise);
     }
-  `}
+  }
 `
 // const Cards = styled.div`
 //   width: 100%;
