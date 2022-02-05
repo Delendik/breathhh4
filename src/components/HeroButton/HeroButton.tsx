@@ -17,7 +17,7 @@ const Root = styled.div`
   `}
 `
 
-const Button = styled.button`
+const Button = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,6 +30,7 @@ const Button = styled.button`
   color: var(--color-white);
   text-align: center;
   border: none;
+  text-decoration: none;
 
   :hover {
     cursor: pointer;
@@ -179,7 +180,10 @@ const Button = styled.button`
 export const HeroButton: React.FC = () => {
   return (
     <Root>
-      <Button>
+      <Button
+        href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+        target="blank"
+      >
         {/* <Cards> */}
         Get started
         {/* </Cards> */}

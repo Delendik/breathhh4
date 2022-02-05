@@ -132,7 +132,7 @@ const Space = styled.div`
   `}
 `
 
-export const Benefits: React.FC = () => {
+export const Reviews: React.FC = () => {
   return (
     <Root>
       <Title>Try a new way to feel better with Breathhh</Title>
