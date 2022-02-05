@@ -34,7 +34,7 @@ const Button = styled.a`
 
   :hover {
     cursor: pointer;
-    animation: animate infinite 2s;
+    animation: animate infinite 1s;
   }
 
   @keyframes animate {
@@ -89,99 +89,6 @@ const Button = styled.a`
     }
   }
 `
-// const Cards = styled.div`
-//   width: 100%;
-//   height: 100%;
-
-//   :hover {
-//     cursor: pointer;
-//     animation: animate linear 5s;
-//     color: green;
-//   }
-
-//   @keyframes animate {
-//     from {
-//       background: no-repeat url(/assets/1.png);
-//     }
-//     20% {
-//       background: no-repeat url(/assets/2.png);
-//     }
-//     40% {
-//       background: no-repeat url(/assets/3.png);
-//     }
-//     60% {
-//       background: no-repeat url(/assets/4.png);
-//     }
-//     80% {
-//       background: no-repeat url(/assets/5.png);
-//     }
-//     to {
-//       background: no-repeat url(/assets/6.png);
-//     }
-//   }
-// `
-// const Card = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   box-sizing: border-box;
-//   width: 265px;
-//   height: 400px;
-//   padding: 24px;
-//   background: var(--color-ground-100);
-//   border-radius: 34px;
-
-//   ${media.laptop`
-//     width: 324px;
-//     height: 324px;
-//   `}
-
-//   ${media.tablet`
-//     width: 320px;
-//     height: 320px;
-//   `}
-// `
-
-// const CardBlack = styled(Card)`
-//   background: var(--color-black);
-// `
-
-// const TextWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `
-
-// const CardText = styled.p`
-//   font-size: 34px;
-//   line-height: 38px;
-//   text-transform: uppercase;
-//   white-space: pre-line;
-
-//   ${media.laptop`
-//     white-space: normal;
-//   `}
-
-//   ${media.tablet`
-//     font-size: 28px;
-//     line-height: 32px;
-//   `}
-// `
-
-// const CardTextWhite = styled(CardText)`
-//   color: var(--color-white);
-// `
-
-// const CardTextGrey = styled(CardText)`
-//   color: var(--color-ground-700);
-// `
-
-// const Space = styled.div`
-//   height: 8px;
-
-//   ${media.tablet`
-//     height: 4px;
-//   `}
-// `
 
 export const HeroButton: React.FC = () => {
   return (

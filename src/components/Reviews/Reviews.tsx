@@ -3,161 +3,188 @@ import { media } from 'src/media'
 
 import * as icons from 'src/ui/icons'
 
-const DATA = [
-  {
-    title: `easy \n to use`,
-    text: `No need to develop \n the habit`,
-    icon: <icons.Stars />,
-  },
-  {
-    title: `Freemium \n Option`,
-    text: `Can be \n used free \n of charge`,
-    icon: <icons.Wallet />,
-  },
-  {
-    title: `Adjustable settings`,
-    text: `Include what's needed`,
-    icon: <icons.Moon />,
-  },
-]
 const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 96px;
   font-family: var(--fonts-second);
-  margin: 96px auto;
+  margin: 96px -400px;
 
   ${media.laptop`
     margin: 68px auto;
+    gap: 100px;
   `}
 
   ${media.tablet`
     margin: 48px auto;
+    gap: 72px;
   `}
 `
 
-const Title = styled.h2`
-  margin: 0 auto;
-  max-width: 700px;
-  font-size: 56px;
-  line-height: 60px;
-  text-align: center;
-  text-transform: uppercase;
+const ReviewBlock = styled.div`
+  max-width: 550px;
 
   ${media.laptop`
-    max-width: 600px;
-    font-size: 62px;
-    line-height: 64px;
+    max-width: 672px;
   `}
 
   ${media.tablet`
     max-width: 320px;
-    font-size: 42px;
-    line-height: 44px;
-  `}
-`
-const Cards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 48px;
-
-  ${media.laptop`
-    gap: 24px;
-  `}
-
-  ${media.tablet`
-    gap: 20px;
-    margin-top: 34px;
-  `}
-`
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  width: 265px;
-  height: 400px;
-  padding: 24px;
-  background: var(--color-ground-100);
-  border-radius: 34px;
-
-  ${media.laptop`
-    width: 324px;
-    height: 324px;
-  `}
-
-  ${media.tablet`
-    width: 320px;
-    height: 320px;
   `}
 `
 
-const CardBlack = styled(Card)`
-  background: var(--color-black);
-`
-
-const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const CardText = styled.p`
-  font-size: 34px;
-  line-height: 38px;
-  text-transform: uppercase;
+const ReviewText = styled.p`
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 48px;
   white-space: pre-line;
 
   ${media.laptop`
-    white-space: normal;
+    margin-bottom: 24px;
   `}
 
   ${media.tablet`
-    font-size: 28px;
-    line-height: 32px;
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 18px;
   `}
 `
 
-const CardTextWhite = styled(CardText)`
-  color: var(--color-white);
+const ReviewName = styled.p`
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 24px;
+  margin-bottom: 6px;
+
+  ${media.laptop`
+    margin-top: 18px;
+  `}
+
+  ${media.tablet`
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  `}
 `
 
-const CardTextGrey = styled(CardText)`
+const ReviewInfo = styled.p`
+  font-size: 24px;
+  line-height: 28px;
   color: var(--color-ground-700);
-`
+  margin-bottom: 21px;
 
-const Space = styled.div`
-  height: 8px;
+  ${media.laptop`
+    margin-bottom: 20px;
+  `}
 
   ${media.tablet`
-    height: 4px;
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 18px;
+  `}
+`
+
+const BlockWrapper = styled.div`
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 50% 50%;
+
+  ${media.laptop`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 34px;
+  `}
+
+  ${media.tablet`
+    gap: 24px;
+  `}
+`
+
+const BlockWrapperReverse = styled(BlockWrapper)`
+  ${media.laptop`
+    flex-direction: column-reverse;
+  `}
+`
+
+const Picture = styled.img`
+  max-width: 950px;
+  object-fit: cover;
+  margin-left: -400px;
+
+  ${media.laptop`
+    max-width: 672px;
+    max-height: 500px;
+    margin: 0;
+  `}
+
+  ${media.tablet`
+    max-width: 320px;
+    max-height: 400px;
+  `}
+`
+
+const PictureRight = styled(Picture)`
+  margin-left: 0;
+  margin-right: -400px;
+
+  ${media.laptop`
+    margin: 0;
   `}
 `
 
 export const Reviews: React.FC = () => {
   return (
     <Root>
-      <Title>Try a new way to feel better with Breathhh</Title>
-      <Cards>
-        {DATA.map((item, index) => {
-          return (
-            <Card key={index}>
-              <TextWrapper>
-                <CardText>{item.title}</CardText>
-                <Space />
-                <CardTextGrey>{item.text}</CardTextGrey>
-              </TextWrapper>
-              {item.icon}
-            </Card>
-          )
-        })}
-        <CardBlack>
-          <TextWrapper>
-            <CardTextWhite>Private {`\n`} and secure</CardTextWhite>
-            <Space />
-            <CardTextGrey>Reliable storage and protection</CardTextGrey>
-          </TextWrapper>
-          <icons.Lock />
-        </CardBlack>
-      </Cards>
+      <BlockWrapper>
+        <Picture width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
+        <ReviewBlock>
+          <ReviewText>
+            “Breathhh is not only {`\n`} a digital whiteboard but a breakthrough application of a
+            what whiteboards can be in the digital age”
+          </ReviewText>
+          <icons.Stars />
+          <ReviewName>Evgeny Kasyanov</ReviewName>
+          <ReviewInfo>
+            Member of the Russian National Consortium for Psychiatric Genetics
+          </ReviewInfo>
+          <icons.Twitter />
+        </ReviewBlock>
+      </BlockWrapper>
+      <BlockWrapperReverse>
+        <ReviewBlock>
+          <ReviewText>
+            “Breathhh is not only {`\n`} a digital whiteboard but a breakthrough application of a
+            what whiteboards can be in the digital age”
+          </ReviewText>
+          <icons.Stars />
+          <ReviewName>Evgeny Kasyanov</ReviewName>
+          <ReviewInfo>
+            Member of the Russian National Consortium for Psychiatric Genetics
+          </ReviewInfo>
+          <icons.Twitter />
+        </ReviewBlock>
+        <PictureRight width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
+      </BlockWrapperReverse>
+      <BlockWrapper>
+        <Picture width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
+        <ReviewBlock>
+          <ReviewText>
+            “Breathhh is not only {`\n`} a digital whiteboard but a breakthrough application of a
+            what whiteboards can be in the digital age”
+          </ReviewText>
+          <icons.Stars />
+          <ReviewName>Evgeny Kasyanov</ReviewName>
+          <ReviewInfo>
+            Member of the Russian National Consortium for Psychiatric Genetics
+          </ReviewInfo>
+          <icons.Twitter />
+        </ReviewBlock>
+      </BlockWrapper>
     </Root>
   )
 }
