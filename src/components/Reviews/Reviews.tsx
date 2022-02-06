@@ -74,16 +74,16 @@ const ReviewInfo = styled.p`
   font-size: 24px;
   line-height: 28px;
   color: var(--color-ground-700);
-  margin-bottom: 21px;
+  margin-bottom: 12px;
 
-  ${media.laptop`
+  /* ${media.laptop`
     margin-bottom: 20px;
-  `}
+  `} */
 
   ${media.tablet`
     font-size: 16px;
     line-height: 16px;
-    margin-bottom: 18px;
+    /* margin-bottom: 18px; */
   `}
 `
 

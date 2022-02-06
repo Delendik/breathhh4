@@ -1,45 +1,45 @@
 import styled from 'styled-components'
 import { media } from 'src/media'
 
-import * as icons from 'src/ui/icons'
-
 const DATA = [
   {
     title: `easy \n to use`,
     text: `No need to develop \n the habit`,
-    icon: <icons.Stars />,
+    icon: `/assets/stars.svg`,
   },
   {
     title: `Freemium \n Option`,
     text: `Can be \n used free \n of charge`,
-    icon: <icons.Wallet />,
+    icon: `/assets/wallet.svg`,
   },
   {
     title: `Adjustable settings`,
     text: `Include what's needed`,
-    icon: <icons.Moon />,
+    icon: `/assets/moon.svg`,
   },
 ]
 const Root = styled.div`
   font-family: var(--fonts-second);
-  margin: 96px auto;
+  padding: 96px 0;
 
   ${media.laptop`
-    margin: 68px auto;
+    padding: 68px 0;
   `}
 
   ${media.tablet`
-    margin: 48px auto;
+    padding: 48px 0;
   `}
 `
 
 const Title = styled.h2`
   margin: 0 auto;
   max-width: 700px;
+  font-weight: 500;
   font-size: 56px;
   line-height: 60px;
   text-align: center;
   text-transform: uppercase;
+  color: var(--color-black);
 
   ${media.laptop`
     max-width: 600px;
@@ -105,6 +105,7 @@ const CardText = styled.p`
   line-height: 38px;
   text-transform: uppercase;
   white-space: pre-line;
+  color: var(--color-black);
 
   ${media.laptop`
     white-space: normal;
@@ -145,7 +146,7 @@ export const Benefits: React.FC = () => {
                 <Space />
                 <CardTextGrey>{item.text}</CardTextGrey>
               </TextWrapper>
-              {item.icon}
+              <img width="34" height="34" src={item.icon} alt="avatar" />
             </Card>
           )
         })}
@@ -155,7 +156,7 @@ export const Benefits: React.FC = () => {
             <Space />
             <CardTextGrey>Reliable storage and protection</CardTextGrey>
           </TextWrapper>
-          <icons.Lock />
+          <img width="34" height="34" src="/assets/lock.svg" alt="avatar" />
         </CardBlack>
       </Cards>
     </Root>

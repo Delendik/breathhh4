@@ -15,7 +15,7 @@ const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-white);
-  margin-left: 34px;
+  padding-left: 34px;
 
   &.top {
     position: relative;

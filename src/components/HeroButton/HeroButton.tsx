@@ -34,7 +34,7 @@ const Button = styled.a`
 
   :hover {
     cursor: pointer;
-    animation: animate infinite 1s;
+    animation: animate infinite 2s;
   }
 
   @keyframes animate {
@@ -42,20 +42,44 @@ const Button = styled.a`
       background: no-repeat url(/assets/1.png);
       background-size: cover;
     }
-    20% {
+    15% {
+      background: no-repeat url(/assets/1.png);
+      background-size: cover;
+    }
+    16% {
       background: no-repeat url(/assets/2.png);
       background-size: cover;
     }
-    40% {
+    31% {
+      background: no-repeat url(/assets/2.png);
+      background-size: cover;
+    }
+    32% {
       background: no-repeat url(/assets/3.png);
       background-size: cover;
     }
-    60% {
+    47% {
+      background: no-repeat url(/assets/3.png);
+      background-size: cover;
+    }
+    48% {
       background: no-repeat url(/assets/4.png);
+      background-size: cover;
+    }
+    63% {
+      background: no-repeat url(/assets/4.png);
+      background-size: cover;
+    }
+    64% {
+      background: no-repeat url(/assets/5.png);
       background-size: cover;
     }
     80% {
       background: no-repeat url(/assets/5.png);
+      background-size: cover;
+    }
+    81% {
+      background: no-repeat url(/assets/6.png);
       background-size: cover;
     }
     to {
@@ -73,9 +97,15 @@ const Button = styled.a`
     width: 320px;
     height: 112px;
     font-size: 44px;
-  `}
 
-  @media (pointer:coarse) {
+    :hover {
+      animation: none;
+    }
+
+    :focus {
+      background: var(--color-sunrise);
+    }
+  `} /* @media (pointer:coarse) {
     width: 320px;
     height: 112px;
     font-size: 44px;
@@ -87,7 +117,7 @@ const Button = styled.a`
     :focus {
       background: var(--color-sunrise);
     }
-  }
+  } */
 `
 
 export const HeroButton: React.FC = () => {
@@ -97,9 +127,7 @@ export const HeroButton: React.FC = () => {
         href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
         target="blank"
       >
-        {/* <Cards> */}
         Get started
-        {/* </Cards> */}
       </Button>
     </Root>
   )

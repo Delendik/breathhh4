@@ -6,6 +6,7 @@ const Root = styled.div`
   justify-content: center;
   flex-direction: column;
   max-width: 1120px;
+  width: 100%;
   padding: 0 100px;
   margin: 0 auto;
 
