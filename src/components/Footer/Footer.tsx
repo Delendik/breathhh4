@@ -66,6 +66,12 @@ const Space = styled.div<{ height: string }>`
   `}
 `
 
+const SpaceStatic = styled(Space)`
+  ${media.mobile`
+    height: 34px;
+  `}
+`
+
 const Title = styled.div`
   width: 182px;
   height: 13px;
@@ -252,7 +258,7 @@ export const Footer: React.FC = () => {
         </Inner>
       </Inner>
       <Line />
-      <Space height="34px" />
+      <SpaceStatic height="34px" />
       <InnerDown>
         <InfoBlock>
           <InfoTextSmall>© 2021 - {year}, Breathhh</InfoTextSmall>

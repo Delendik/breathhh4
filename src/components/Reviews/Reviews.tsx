@@ -144,45 +144,44 @@ export const Reviews: React.FC = () => {
         <Picture width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
         <ReviewBlock>
           <ReviewText>
-            “Breathhh is not only {`\n`} a digital whiteboard but a breakthrough application of a
-            what whiteboards can be in the digital age”
+            “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
+            application of a what {`\n`} whiteboards can {`\n`} be in the digital age”
           </ReviewText>
-          <icons.Stars />
+          <icons.Kasyanov />
           <ReviewName>Evgeny Kasyanov</ReviewName>
           <ReviewInfo>
-            Member of the Russian National Consortium for Psychiatric Genetics
+            Member of the Russian National {`\n`} Consortium for Psychiatric Genetics
           </ReviewInfo>
-          <icons.Twitter />
+          <icons.TwitterGrey />
         </ReviewBlock>
       </BlockWrapper>
       <BlockWrapperReverse>
         <ReviewBlock>
           <ReviewText>
-            “Breathhh is not only {`\n`} a digital whiteboard but a breakthrough application of a
-            what whiteboards can be in the digital age”
+            “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
+            application of a what {`\n`} whiteboards can {`\n`} be in the digital age”
           </ReviewText>
           <icons.Stars />
           <ReviewName>Evgeny Kasyanov</ReviewName>
           <ReviewInfo>
-            Member of the Russian National Consortium for Psychiatric Genetics
+            Member of the Russian National {`\n`} Consortium for Psychiatric Genetics
           </ReviewInfo>
-          <icons.Twitter />
+          <icons.TwitterGrey />
         </ReviewBlock>
         <PictureRight width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
       </BlockWrapperReverse>
       <BlockWrapper>
-        <Picture width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
+        <Picture width="950" height="600" src="/assets/kacey.png" alt="evgeny" />
         <ReviewBlock>
           <ReviewText>
-            “Breathhh is not only {`\n`} a digital whiteboard but a breakthrough application of a
-            what whiteboards can be in the digital age”
+            “When the pandemic hit, {`\n`} those of us who thrive on {`\n`} in-person collaboration
+            {`\n`} were worried that our {`\n`} creativity and {`\n`} productivity would {`\n`}
+            suffer”
           </ReviewText>
-          <icons.Stars />
-          <ReviewName>Evgeny Kasyanov</ReviewName>
-          <ReviewInfo>
-            Member of the Russian National Consortium for Psychiatric Genetics
-          </ReviewInfo>
-          <icons.Twitter />
+          <icons.Mc />
+          <ReviewName>Kacey Gillar</ReviewName>
+          <ReviewInfo>Accounting Assistant</ReviewInfo>
+          <icons.TwitterGrey />
         </ReviewBlock>
       </BlockWrapper>
     </Root>
