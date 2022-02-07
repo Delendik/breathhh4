@@ -25,6 +25,7 @@ import { PageAbout } from 'src/pages/PageAbout'
 import { PageFaq } from 'src/pages/PageFaq'
 import { PageHowItWorks } from 'src/pages/PageHowItWorks'
 import { PagePartnership } from 'src/pages/PagePartnership'
+import { PageExtension } from 'src/pages/PageExtension'
 
 const PageIndexProtected = withAccountRedirectIfLoggedIn(PageIndex)
 
@@ -60,11 +61,12 @@ export function App() {
         <PageHowItWorks path="/how-it-works" />
         <PagePartnership path="/partnership" />
         <Page404 path="/404" />
-        <Redirect
+        <PageExtension path="/extension" />
+        {/* <Redirect
           from="/extension"
           to="https://chrome.google.com/webstore/detail/breathhh-mental-rejuvenat/niipedbmjiopjpmjcpigiflabghcckeo"
           noThrow
-        />
+        /> */}
         <Redirect from="*" to="/404" noThrow />
       </Root>
     </Router>
