@@ -18,6 +18,14 @@ const Content = styled.div`
   margin-top: 70px;
 `
 
+const Promo = styled.p`
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 35px;
+  margin: 10px auto;
+  color: red;
+`
+
 const CurrentSub = styled.div`
   display: flex;
   margin-top: 20px;
@@ -102,6 +110,7 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
         <script src="https://cdn.paddle.com/paddle/paddle.js" />
       </Helmet>
       <div>
+        <Promo>100% DISCOUNT PROMOCODE: EARLYBIRDFEB</Promo>
         <Content>
           {plans.map((plan, index) => {
             const isPlanTrial = plan.recurring_type === `trial`

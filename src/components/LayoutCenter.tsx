@@ -5,10 +5,14 @@ import { Header } from 'src/components/Header'
 import { Container } from './Container'
 
 const Root = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+`
+
+const Test = styled.div`
+  height: 2000px;
 `
 
 const Main = styled.main`
@@ -31,6 +35,7 @@ export const LayoutCenter: React.FC = ({ children }) => {
       <Header />
       <Container>
         <Main>{children}</Main>
+        <Test />
         <Footer />
       </Container>
     </Root>

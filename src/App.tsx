@@ -39,7 +39,8 @@ const PageDiaryProtected = withLoginIfNotLoggedIn(PageDiary)
 
 export function App() {
   const [dataLoaded] = useAuth()
-
+  // window.location.href =
+  //   'https://chrome.google.com/webstore/detail/breathhh-mental-rejuvenat/niipedbmjiopjpmjcpigiflabghcckeo'
   return dataLoaded ? (
     <Router>
       <Root path="/">
@@ -58,8 +59,12 @@ export function App() {
         <PageFaq path="/faq" />
         <PageHowItWorks path="/how-it-works" />
         <PagePartnership path="/partnership" />
-
         <Page404 path="/404" />
+        <Redirect
+          from="/extension"
+          to="https://chrome.google.com/webstore/detail/breathhh-mental-rejuvenat/niipedbmjiopjpmjcpigiflabghcckeo"
+          noThrow
+        />
         <Redirect from="*" to="/404" noThrow />
       </Root>
     </Router>

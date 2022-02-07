@@ -12,10 +12,14 @@ ReactGa.initialize(`UA-196308133-3`)
 const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   top: 0;
   display: flex;
+  height: 89px;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-white);
   padding-left: 34px;
+  overflow: hidden;
+  padding-bottom: 1px;
+  padding-right: 34px;
 
   &.top {
     position: relative;
@@ -62,21 +66,15 @@ const Border = styled.div`
   height: 77px;
   position: absolute;
   width: 100%;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 77px;
-    right: -34px;
-    left: -34px;
-    height: 1px;
-    border-top: solid 1px var(--color-ground-100);
-  }
+  border: solid 1px var(--color-ground-100);
+  margin-right: -34px;
+  margin-left: -34px;
 `
 
-const Title = styled.div`
-  width: 204px;
-  height: 13px;
-  background: no-repeat url(/assets/logo-breathhh.svg);
+const Title = styled.div<{ h: string; w: string; bg: string }>`
+  width: ${(props) => props.w};
+  height: ${(props) => props.h};
+  background: ${(props) => props.bg};
   z-index: 10;
 
   ${media.tablet`
@@ -92,6 +90,15 @@ const ButtonContainer = styled.div`
   gap: 12px;
   z-index: 10;
 `
+
+const WrapperAvatar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`
+
 const Avatar = styled.img`
   width: 45px;
   height: 45px;
@@ -178,6 +185,7 @@ export const Header: React.FC<IProps> = observer((props) => {
       label,
     })
   }
+  console.log(UserStore.showOnboarding)
   return (
     <>
       <div ref={watcherRef} />
@@ -185,7 +193,15 @@ export const Header: React.FC<IProps> = observer((props) => {
         {scroll && <Border />}
         <ButtonContainer>
           <Link to="/">
-            <Title />
+            <Title
+              bg={
+                !up || showSticky !== undefined
+                  ? `no-repeat url(/assets/logo-breathhh.svg)`
+                  : `no-repeat url(/assets/icon-breathhh.svg)`
+              }
+              w={!up || showSticky !== undefined ? `204px` : `45px`}
+              h={!up || showSticky !== undefined ? `13px` : `45px`}
+            />
           </Link>
         </ButtonContainer>
         <ButtonContainer>
@@ -197,41 +213,43 @@ export const Header: React.FC<IProps> = observer((props) => {
             </Link>
           ) : (
             <Link to="/dashboard">
-              <Avatar width="45" height="45" src={UserStore.user.picture} alt="user's avatar" />
+              <WrapperAvatar>
+                <Avatar width="45" height="45" src={UserStore.user.picture} alt="user's avatar" />
+              </WrapperAvatar>
             </Link>
           )}
-          {UserStore.showOnboarding && (
-            <div>
-              <BigButton>
-                <Button
-                  href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                  // @ts-ignore
-                  onClick={
-                    !scroll
-                      ? () => eventTrack(`button`, `click`, `to_webstore`)
-                      : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                  }
-                >
-                  Add to Chrome — it’s free
-                </Button>
-              </BigButton>
-              <SmallButton>
-                <Button
-                  type="button"
-                  appearanceTransponentBlack="transponentBlack"
-                  href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                  // @ts-ignore
-                  onClick={
-                    !scroll
-                      ? () => eventTrack(`button`, `click`, `to_webstore`)
-                      : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                  }
-                >
-                  Install
-                </Button>
-              </SmallButton>
-            </div>
-          )}
+          {/* {!UserStore.showOnboarding && ( */}
+          <div>
+            <BigButton>
+              <Button
+                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                // @ts-ignore
+                onClick={
+                  !scroll
+                    ? () => eventTrack(`button`, `click`, `to_webstore`)
+                    : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                }
+              >
+                Add to Chrome — it’s free
+              </Button>
+            </BigButton>
+            <SmallButton>
+              <Button
+                type="button"
+                appearanceTransponentBlack="transponentBlack"
+                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                // @ts-ignore
+                onClick={
+                  !scroll
+                    ? () => eventTrack(`button`, `click`, `to_webstore`)
+                    : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                }
+              >
+                Install
+              </Button>
+            </SmallButton>
+          </div>
+          {/* )} */}
         </ButtonContainer>
       </Root>
     </>

@@ -64,6 +64,7 @@ export const LayoutBase: React.FC<{
               <NavLink to="/dashboard">Dashboard</NavLink>
               <NavLink to="/subscription">Subscirption</NavLink>
               <NavLink to="/diary">Diary</NavLink>
+              <NavLink to="/account">Account</NavLink>
             </Nav>
           )}
           {children}
