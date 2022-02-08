@@ -4,15 +4,15 @@ import { LayoutCenter } from 'src/components/LayoutCenter'
 
 const Root = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 `
 
-export const PageHowItWorks: React.FC<RouteComponentProps> = () => {
+export const PageExtension: React.FC<RouteComponentProps> = () => {
+  window.location.href = `https://chrome.google.com/webstore/detail/breathhh-mental-rejuvenat/niipedbmjiopjpmjcpigiflabghcckeo`
   return (
     <LayoutCenter>
-      <Root>how-it-works</Root>
+      <Root>404</Root>&nbsp;<Root>Not Found</Root>
     </LayoutCenter>
   )
 }

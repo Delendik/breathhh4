@@ -58,12 +58,17 @@ const InnerDown = styled.div`
   `}
 `
 
-const Space = styled.div<{ display: string; height: string }>`
-  display: ${(props) => props.display};
+const Space = styled.div<{ height: string }>`
   height: ${(props) => props.height};
 
   ${media.mobile`
     height: 9px;
+  `}
+`
+
+const SpaceStatic = styled(Space)`
+  ${media.mobile`
+    height: 34px;
   `}
 `
 
@@ -219,33 +224,33 @@ export const Footer: React.FC = () => {
         <Inner>
           <Block>
             <BlockTitle>PRODUCT</BlockTitle>
-            <Space display="block" height="18px" />
+            <Space height="18px" />
             <Link to="/how-it-works" target="_blank">
               <BlockLink>How it works</BlockLink>
             </Link>
-            <Space display="block" height="12px" />
+            <Space height="12px" />
             <Badge href={breathUltima} target="_blank">
               <BlockLink>Breathhh Ultima</BlockLink>
             </Badge>
           </Block>
           <Block>
             <BlockTitle>COMPANY</BlockTitle>
-            <Space display="block" height="18px" />
+            <Space height="18px" />
             <Link to="/about">
               <BlockLink>About</BlockLink>
             </Link>
-            <Space display="block" height="12px" />
+            <Space height="12px" />
             <Link to="/partnership">
               <BlockLink>For partnership</BlockLink>
             </Link>
           </Block>
           <Block>
             <BlockTitle>HELP</BlockTitle>
-            <Space display="block" height="18px" />
+            <Space height="18px" />
             <Link to="/faq">
               <BlockLink>FAQs</BlockLink>
             </Link>
-            <Space display="block" height="12px" />
+            <Space height="12px" />
             <Link to="/contacts">
               <BlockLink>Contacts</BlockLink>
             </Link>
@@ -253,7 +258,7 @@ export const Footer: React.FC = () => {
         </Inner>
       </Inner>
       <Line />
-      <Space display="block" height="34px" />
+      <SpaceStatic height="34px" />
       <InnerDown>
         <InfoBlock>
           <InfoTextSmall>© 2021 - {year}, Breathhh</InfoTextSmall>
