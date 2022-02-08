@@ -13,13 +13,12 @@ const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   top: 0;
   display: flex;
   height: 89px;
+  width: 100vw;
   align-items: center;
   justify-content: space-between;
   background-color: var(--color-white);
-  padding-left: 34px;
   overflow: hidden;
   padding-bottom: 1px;
-  padding-right: 34px;
 
   &.top {
     position: relative;
@@ -33,6 +32,7 @@ const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   &.show {
     height: 77px;
     animation: headerFadeIn ease-in 0.5s forwards;
+    overflow: hidden;
   }
 
   @keyframes headerFadeIn {
@@ -66,9 +66,8 @@ const Border = styled.div`
   height: 77px;
   position: absolute;
   width: 100%;
-  border: solid 1px var(--color-ground-100);
+  border-bottom: solid 1px var(--color-ground-100);
   margin-right: -34px;
-  margin-left: -34px;
 `
 
 const Title = styled.div<{ h: string; w: string; bg: string }>`
@@ -76,10 +75,12 @@ const Title = styled.div<{ h: string; w: string; bg: string }>`
   height: ${(props) => props.h};
   background: ${(props) => props.bg};
   z-index: 10;
+  margin-left: 34px;
 
   ${media.tablet`
     width: 45px;
     height: 45px;
+    margin-left: 20px;
     background-image: url(/assets/icon-breathhh.svg);
   `}
 `
@@ -89,6 +90,11 @@ const ButtonContainer = styled.div`
   align-items: center;
   gap: 12px;
   z-index: 10;
+  margin-right: 34px;
+
+  ${media.tablet`
+    margin-right: 20px;
+  `}
 `
 
 const WrapperAvatar = styled.div`

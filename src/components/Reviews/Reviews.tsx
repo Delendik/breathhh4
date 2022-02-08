@@ -12,6 +12,10 @@ const Root = styled.div`
   font-family: var(--fonts-second);
   margin: 96px -400px;
 
+  @media (max-width: 1940px) {
+    margin: 96px 0;
+  }
+
   ${media.laptop`
     margin: 68px auto;
     gap: 100px;
@@ -25,6 +29,7 @@ const Root = styled.div`
 
 const ReviewBlock = styled.div`
   max-width: 550px;
+  width: 100%;
 
   ${media.laptop`
     max-width: 672px;
@@ -76,14 +81,9 @@ const ReviewInfo = styled.p`
   color: var(--color-ground-700);
   margin-bottom: 12px;
 
-  /* ${media.laptop`
-    margin-bottom: 20px;
-  `} */
-
   ${media.tablet`
     font-size: 16px;
     line-height: 16px;
-    /* margin-bottom: 18px; */
   `}
 `
 
@@ -98,6 +98,7 @@ const BlockWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 34px;
+    width: 100%;
   `}
 
   ${media.tablet`
@@ -113,10 +114,20 @@ const BlockWrapperReverse = styled(BlockWrapper)`
 
 const Picture = styled.img`
   max-width: 950px;
+  max-height: 600px;
   object-fit: cover;
   margin-left: -400px;
+  width: 950px;
+  height: 600px;
+
+  @media (max-width: 1940px) {
+    width: calc(100vw / 2);
+    height: 100%;
+    margin-left: calc(-100vw / 2 + 560px);
+  }
 
   ${media.laptop`
+    width: 100%;
     max-width: 672px;
     max-height: 500px;
     margin: 0;
@@ -133,6 +144,7 @@ const PictureRight = styled(Picture)`
   margin-right: -400px;
 
   ${media.laptop`
+    width: 100%;
     margin: 0;
   `}
 `
@@ -141,7 +153,8 @@ export const Reviews: React.FC = () => {
   return (
     <Root>
       <BlockWrapper>
-        <Picture width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
+        {/* width="950" height="600" */}
+        <Picture src="/assets/evgeny.png" alt="evgeny" />
         <ReviewBlock>
           <ReviewText>
             “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
@@ -161,17 +174,17 @@ export const Reviews: React.FC = () => {
             “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
             application of a what {`\n`} whiteboards can {`\n`} be in the digital age”
           </ReviewText>
-          <icons.Stars />
+          <icons.Kasyanov />
           <ReviewName>Evgeny Kasyanov</ReviewName>
           <ReviewInfo>
             Member of the Russian National {`\n`} Consortium for Psychiatric Genetics
           </ReviewInfo>
           <icons.TwitterGrey />
         </ReviewBlock>
-        <PictureRight width="950" height="600" src="/assets/evgeny.png" alt="evgeny" />
+        <PictureRight src="/assets/evgeny.png" alt="evgeny" />
       </BlockWrapperReverse>
       <BlockWrapper>
-        <Picture width="950" height="600" src="/assets/kacey.png" alt="evgeny" />
+        <Picture src="/assets/kacey.png" alt="evgeny" />
         <ReviewBlock>
           <ReviewText>
             “When the pandemic hit, {`\n`} those of us who thrive on {`\n`} in-person collaboration

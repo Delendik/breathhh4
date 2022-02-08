@@ -63,6 +63,7 @@
     color: var(--app-text-color);
     background-color: var(--color-ground-100);
     padding: 0;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
     &:hover {
       color: var(--app-text-color);

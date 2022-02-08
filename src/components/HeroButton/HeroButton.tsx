@@ -105,7 +105,8 @@ const Button = styled.a`
     :focus {
       background: var(--color-sunrise);
     }
-  `} /* @media (pointer:coarse) {
+  `}
+  @media (pointer:coarse) {
     width: 320px;
     height: 112px;
     font-size: 44px;
@@ -117,7 +118,7 @@ const Button = styled.a`
     :focus {
       background: var(--color-sunrise);
     }
-  } */
+  }
 `
 
 export const HeroButton: React.FC = () => {
