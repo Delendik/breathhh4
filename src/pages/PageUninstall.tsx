@@ -26,7 +26,7 @@ const ControlsWrap = styled.div`
 `
 
 const validationSchema = Yup.object().shape({
-  comment: Yup.string().min(2, `Too Short!`).max(1_000, `Too Long!`).required(`Required`),
+  comment: Yup.string().min(2, `Too Short!`).max(1_000, `Too Long!`),
 })
 
 export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
