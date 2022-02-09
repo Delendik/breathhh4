@@ -69,7 +69,6 @@ export const LayoutBase: React.FC<{
           )}
           {children}
         </Container>
-        {/* <ForReview /> */}
       </div>
       <Container>
         <Footer />
