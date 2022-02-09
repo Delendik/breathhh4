@@ -133,7 +133,7 @@ interface IProps {
 }
 
 export const Header: React.FC<IProps> = observer((props) => {
-  const { enableNav, showSticky } = props
+  const { showSticky } = props
   const [scroll, setScroll] = useState(false)
   const [up, setUp] = useState(false)
 
@@ -211,7 +211,7 @@ export const Header: React.FC<IProps> = observer((props) => {
           </Link>
         </ButtonContainer>
         <ButtonContainer>
-          {!enableNav ? (
+          {!UserStore.user ? (
             <Link to="/login">
               <Button type="button" appearanceTransponentBlack="transponentBlack">
                 Sign in
