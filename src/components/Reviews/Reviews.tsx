@@ -25,10 +25,12 @@ const Root = styled.div`
     margin: 48px auto;
     gap: 72px;
   `}
+  ${media.mobile`
+    max-width: 320px;
+  `}
 `
 
 const ReviewBlock = styled.div`
-  max-width: 550px;
   width: 100%;
 
   ${media.laptop`

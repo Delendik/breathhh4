@@ -14,6 +14,7 @@ const Root = styled.div`
 
   ${media.tablet`
     margin: 48px auto;
+    max-width: 320px;
   `}
 `
 
@@ -94,7 +95,7 @@ const Button = styled.a`
   `}
 
   ${media.tablet`
-    width: 320px;
+    max-width: 320px;
     height: 112px;
     font-size: 44px;
 
@@ -102,8 +103,9 @@ const Button = styled.a`
       animation: none;
     }
 
-    :focus {
+    :active {
       background: var(--color-sunrise);
+      outline: none;
     }
   `}
   @media (pointer:coarse) {
@@ -115,8 +117,9 @@ const Button = styled.a`
       animation: none;
     }
 
-    :focus {
+    :active {
       background: var(--color-sunrise);
+      outline: none;
     }
   }
 `

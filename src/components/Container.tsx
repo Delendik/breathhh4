@@ -4,9 +4,9 @@ import { media } from 'src/media'
 const Root = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   max-width: 1120px;
-  /* width: 100%; */
   padding: 0 100px;
   margin: 0 auto;
 
@@ -19,6 +19,8 @@ const Root = styled.div`
   `}
   ${media.mobile`
     padding: 0 20px;
+    margin: 0;
+    max-width: 320px;
   `}
 `
 

@@ -86,7 +86,7 @@ const Card = styled.div`
   `}
 
   ${media.tablet`
-    width: 320px;
+    max-width: 320px;
     height: 320px;
   `}
 `
