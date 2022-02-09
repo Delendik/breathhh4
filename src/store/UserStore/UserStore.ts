@@ -131,6 +131,10 @@ export class UserStore {
     return this.user?.onboarding_state === OnboardingState.INITIAL
   }
 
+  get showCompleted() {
+    return this.user?.onboarding_state === OnboardingState.COMPLETED
+  }
+
   get isOnActiveSubscription() {
     return this.user?.subscription_state === `subscription_active`
   }
