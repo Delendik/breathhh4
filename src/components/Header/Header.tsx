@@ -191,7 +191,7 @@ export const Header: React.FC<IProps> = observer((props) => {
       label,
     })
   }
-  console.log(UserStore.showOnboarding)
+
   return (
     <>
       <div ref={watcherRef} />
@@ -224,38 +224,38 @@ export const Header: React.FC<IProps> = observer((props) => {
               </WrapperAvatar>
             </Link>
           )}
-          {/* {!UserStore.showOnboarding && ( */}
-          <div>
-            <BigButton>
-              <Button
-                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                // @ts-ignore
-                onClick={
-                  !scroll
-                    ? () => eventTrack(`button`, `click`, `to_webstore`)
-                    : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                }
-              >
-                Add to Chrome — it’s free
-              </Button>
-            </BigButton>
-            <SmallButton>
-              <Button
-                type="button"
-                appearanceTransponentBlack="transponentBlack"
-                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                // @ts-ignore
-                onClick={
-                  !scroll
-                    ? () => eventTrack(`button`, `click`, `to_webstore`)
-                    : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                }
-              >
-                Install
-              </Button>
-            </SmallButton>
-          </div>
-          {/* )} */}
+          {UserStore.showCompleted && (
+            <div>
+              <BigButton>
+                <Button
+                  href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                  // @ts-ignore
+                  onClick={
+                    !scroll
+                      ? () => eventTrack(`button`, `click`, `to_webstore`)
+                      : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                  }
+                >
+                  Add to Chrome — it’s free
+                </Button>
+              </BigButton>
+              <SmallButton>
+                <Button
+                  type="button"
+                  appearanceTransponentBlack="transponentBlack"
+                  href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                  // @ts-ignore
+                  onClick={
+                    !scroll
+                      ? () => eventTrack(`button`, `click`, `to_webstore`)
+                      : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                  }
+                >
+                  Install
+                </Button>
+              </SmallButton>
+            </div>
+          )}
         </ButtonContainer>
       </Root>
     </>
