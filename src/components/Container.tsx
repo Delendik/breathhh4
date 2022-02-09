@@ -14,9 +14,11 @@ const Root = styled.div`
     max-width: 672px;
     padding: 0 48px;
   `}
+
   ${media.tablet`
     padding: 0 35px;
   `}
+
   ${media.mobile`
     padding: 0 20px;
     margin: 0;

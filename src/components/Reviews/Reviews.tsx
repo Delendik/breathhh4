@@ -93,6 +93,7 @@ const BlockWrapper = styled.div`
   display: grid;
   gap: 20px;
   grid-template-columns: 50% 50%;
+  max-width: 1120px;
 
   ${media.laptop`
     display: flex;
