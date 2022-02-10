@@ -16,10 +16,10 @@ const Root = styled.div`
     margin: 96px 0;
   }
 
-  ${media.laptop`
+  @media (max-width: 1325px) {
     margin: 68px auto;
     gap: 100px;
-  `}
+  }
 
   ${media.tablet`
     margin: 48px auto;
@@ -33,12 +33,12 @@ const Root = styled.div`
 const ReviewBlock = styled.div`
   width: 100%;
 
-  ${media.laptop`
+  @media (max-width: 1325px) {
     max-width: 672px;
-  `}
+  }
 
   ${media.tablet`
-    max-width: 320px;
+    width: 100%;
   `}
 `
 
@@ -53,6 +53,10 @@ const ReviewText = styled.p`
   `}
 
   ${media.tablet`
+    white-space: normal;
+  `}
+
+  ${media.mobile`
     font-size: 24px;
     line-height: 30px;
     margin-bottom: 18px;
@@ -69,7 +73,7 @@ const ReviewName = styled.p`
     margin-top: 18px;
   `}
 
-  ${media.tablet`
+  ${media.mobile`
     font-size: 16px;
     line-height: 16px;
     margin-top: 16px;
@@ -83,7 +87,7 @@ const ReviewInfo = styled.p`
   color: var(--color-ground-700);
   margin-bottom: 12px;
 
-  ${media.tablet`
+  ${media.mobile`
     font-size: 16px;
     line-height: 16px;
   `}
@@ -95,18 +99,23 @@ const BlockWrapper = styled.div`
   grid-template-columns: 50% 50%;
   max-width: 1120px;
 
-  ${media.laptop`
+  @media (max-width: 1325px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 34px;
     width: 100%;
-  `}
+  }
 
-  ${media.tablet`
+  ${media.mobile`
     gap: 24px;
   `}
+
+  /* @supports not (gap: 34px) {
+    /* margin: 24; */
+    /* background: red; */
+  /* } */ */
 `
 
 const BlockWrapperReverse = styled(BlockWrapper)`
@@ -114,8 +123,23 @@ const BlockWrapperReverse = styled(BlockWrapper)`
     flex-direction: column-reverse;
   `}
 `
+// const WrapPicture = styled.div`
+//   width: 550px;
+//   height: 100%;
+//   position: relative;
+
+//   /* ${media.laptop`
+//     max-width: 672px;
+//   `}
+
+//   ${media.tablet`
+//     width: 100%;
+//   `} */
+// `
 
 const Picture = styled.img`
+  /* position: absolute; */
+  right: 0;
   max-width: 950px;
   max-height: 600px;
   object-fit: cover;
@@ -129,15 +153,15 @@ const Picture = styled.img`
     margin-left: calc(-100vw / 2 + 560px);
   }
 
-  ${media.laptop`
+  @media (max-width: 1325px) {
     width: 100%;
     max-width: 672px;
     max-height: 500px;
     margin: 0;
-  `}
+  }
 
   ${media.tablet`
-    max-width: 320px;
+    width: 100%;
     max-height: 400px;
   `}
 `
@@ -145,11 +169,21 @@ const Picture = styled.img`
 const PictureRight = styled(Picture)`
   margin-left: 0;
   margin-right: -400px;
+  left: 0;
 
-  ${media.laptop`
+  @media (max-width: 1325px) {
     width: 100%;
     margin: 0;
-  `}
+  }
+`
+
+const Icon = styled.a`
+  &:hover {
+    cursor: pointer;
+    & path {
+      fill: var(--color-ground-700);
+    }
+  }
 `
 
 export const Reviews: React.FC = () => {
@@ -157,7 +191,9 @@ export const Reviews: React.FC = () => {
     <Root>
       <BlockWrapper>
         {/* width="950" height="600" */}
+        {/* <WrapPicture> */}
         <Picture src="/assets/evgeny.png" alt="evgeny" />
+        {/* </WrapPicture> */}
         <ReviewBlock>
           <ReviewText>
             “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
@@ -168,7 +204,9 @@ export const Reviews: React.FC = () => {
           <ReviewInfo>
             Member of the Russian National {`\n`} Consortium for Psychiatric Genetics
           </ReviewInfo>
-          <icons.TwitterGrey />
+          <Icon href="https://twitter.com/BreathhhApp" target="blank">
+            <icons.TwitterGrey />
+          </Icon>
         </ReviewBlock>
       </BlockWrapper>
       <BlockWrapperReverse>
@@ -182,12 +220,18 @@ export const Reviews: React.FC = () => {
           <ReviewInfo>
             Member of the Russian National {`\n`} Consortium for Psychiatric Genetics
           </ReviewInfo>
-          <icons.TwitterGrey />
+          <Icon href="https://twitter.com/BreathhhApp" target="blank">
+            <icons.TwitterGrey />
+          </Icon>
         </ReviewBlock>
+        {/* <WrapPicture> */}
         <PictureRight src="/assets/evgeny.png" alt="evgeny" />
+        {/* </WrapPicture> */}
       </BlockWrapperReverse>
       <BlockWrapper>
+        {/* <WrapPicture> */}
         <Picture src="/assets/kacey.png" alt="evgeny" />
+        {/* </WrapPicture> */}
         <ReviewBlock>
           <ReviewText>
             “When the pandemic hit, {`\n`} those of us who thrive on {`\n`} in-person collaboration
@@ -197,7 +241,9 @@ export const Reviews: React.FC = () => {
           <icons.Mc />
           <ReviewName>Kacey Gillar</ReviewName>
           <ReviewInfo>Accounting Assistant</ReviewInfo>
-          <icons.TwitterGrey />
+          <Icon href="https://twitter.com/BreathhhApp" target="blank">
+            <icons.TwitterGrey />
+          </Icon>
         </ReviewBlock>
       </BlockWrapper>
     </Root>
