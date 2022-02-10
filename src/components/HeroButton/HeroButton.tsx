@@ -14,6 +14,11 @@ const Root = styled.div`
 
   ${media.tablet`
     margin: 48px auto;
+    max-width: 672px;
+  `}
+
+  ${media.mobile`
+    margin: 48px auto;
     max-width: 320px;
   `}
 `
@@ -89,13 +94,12 @@ const Button = styled.a`
     }
   }
   ${media.laptop`
-    width: 672px;
+    width: 100%;
     height: 256px;
     font-size: 96px;
   `}
 
-  ${media.tablet`
-    max-width: 320px;
+  ${media.mobile`
     height: 112px;
     font-size: 44px;
 
