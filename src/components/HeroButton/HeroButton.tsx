@@ -7,6 +7,7 @@ const Root = styled.div`
   display: flex;
   justify-content: center;
   margin: 96px auto;
+  max-width: 1120px;
 
   ${media.laptop`
     margin: 68px auto;
@@ -27,7 +28,8 @@ const Button = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1120px;
+  max-width: 1120px;
+  width: 100%;
   height: 416px;
   background: var(--color-black);
   border-radius: 500px;
@@ -112,19 +114,6 @@ const Button = styled.a`
       outline: none;
     }
   `}
-  @media (pointer:coarse) {
-    width: 320px;
-    height: 112px;
-    font-size: 44px;
-
-    :hover {
-      animation: none;
-    }
-
-    :active {
-      background: var(--color-sunrise);
-      outline: none;
-    }
   }
 `
 

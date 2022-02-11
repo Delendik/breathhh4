@@ -16,10 +16,10 @@ const Root = styled.div`
     margin: 96px 0;
   }
 
-  @media (max-width: 1325px) {
+  ${media.laptop`
     margin: 68px auto;
     gap: 100px;
-  }
+  `}
 
   ${media.tablet`
     margin: 48px auto;
@@ -33,9 +33,9 @@ const Root = styled.div`
 const ReviewBlock = styled.div`
   width: 100%;
 
-  @media (max-width: 1325px) {
+  ${media.laptop`
     max-width: 672px;
-  }
+  `}
 
   ${media.tablet`
     width: 100%;
@@ -98,24 +98,23 @@ const BlockWrapper = styled.div`
   gap: 20px;
   grid-template-columns: 50% 50%;
   max-width: 1120px;
+  width: 100%;
 
-  @media (max-width: 1325px) {
+  ${media.laptop`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 34px;
     width: 100%;
-  }
+  `}
 
   ${media.mobile`
     gap: 24px;
-  `}
-
-  /* @supports not (gap: 34px) {
+  `} /* @supports not (gap: 34px) {
     /* margin: 24; */
     /* background: red; */
-  /* } */ */
+  /* } */
 `
 
 const BlockWrapperReverse = styled(BlockWrapper)`
@@ -123,22 +122,8 @@ const BlockWrapperReverse = styled(BlockWrapper)`
     flex-direction: column-reverse;
   `}
 `
-// const WrapPicture = styled.div`
-//   width: 550px;
-//   height: 100%;
-//   position: relative;
-
-//   /* ${media.laptop`
-//     max-width: 672px;
-//   `}
-
-//   ${media.tablet`
-//     width: 100%;
-//   `} */
-// `
 
 const Picture = styled.img`
-  /* position: absolute; */
   right: 0;
   max-width: 950px;
   max-height: 600px;
@@ -154,11 +139,17 @@ const Picture = styled.img`
   }
 
   @media (max-width: 1325px) {
+    width: calc(50vw - 20px);
+    height: 100%;
+    margin-left: -100px;
+  }
+
+  ${media.laptop`
     width: 100%;
     max-width: 672px;
     max-height: 500px;
     margin: 0;
-  }
+  `}
 
   ${media.tablet`
     width: 100%;
@@ -171,10 +162,10 @@ const PictureRight = styled(Picture)`
   margin-right: -400px;
   left: 0;
 
-  @media (max-width: 1325px) {
+  ${media.laptop`
     width: 100%;
     margin: 0;
-  }
+  `}
 `
 
 const Icon = styled.a`
@@ -190,10 +181,7 @@ export const Reviews: React.FC = () => {
   return (
     <Root>
       <BlockWrapper>
-        {/* width="950" height="600" */}
-        {/* <WrapPicture> */}
         <Picture src="/assets/evgeny.png" alt="evgeny" />
-        {/* </WrapPicture> */}
         <ReviewBlock>
           <ReviewText>
             “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
@@ -224,14 +212,10 @@ export const Reviews: React.FC = () => {
             <icons.TwitterGrey />
           </Icon>
         </ReviewBlock>
-        {/* <WrapPicture> */}
         <PictureRight src="/assets/evgeny.png" alt="evgeny" />
-        {/* </WrapPicture> */}
       </BlockWrapperReverse>
       <BlockWrapper>
-        {/* <WrapPicture> */}
         <Picture src="/assets/kacey.png" alt="evgeny" />
-        {/* </WrapPicture> */}
         <ReviewBlock>
           <ReviewText>
             “When the pandemic hit, {`\n`} those of us who thrive on {`\n`} in-person collaboration
