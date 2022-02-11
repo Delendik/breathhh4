@@ -8,7 +8,6 @@ const Root = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 96px;
   font-family: var(--fonts-second);
   margin: 96px -400px;
 
@@ -18,13 +17,12 @@ const Root = styled.div`
 
   ${media.laptop`
     margin: 68px auto;
-    gap: 100px;
   `}
 
   ${media.tablet`
     margin: 48px auto;
-    gap: 72px;
   `}
+
   ${media.mobile`
     max-width: 320px;
   `}
@@ -100,26 +98,61 @@ const BlockWrapper = styled.div`
   max-width: 1120px;
   width: 100%;
 
+  &:not(:first-child) {
+    margin-top: 96px;
+  }
+
   ${media.laptop`
+    gap: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 34px;
     width: 100%;
+    margin-top: -34px;
+    margin-left: -34px;
+
+    & > * {
+      margin-top: 34px;
+      margin-left: 34px;
+    }
+
+    &:not(:first-child) {
+      margin-top: 100px;
+    }
   `}
 
   ${media.mobile`
-    gap: 24px;
-  `} /* @supports not (gap: 34px) {
-    /* margin: 24; */
-    /* background: red; */
-  /* } */
+    margin-top: -24px;
+    margin-left: -24px;
+
+    & > * {
+      margin-top: 24px;
+      margin-left: 24px;
+    }
+
+    &:not(:first-child) {
+      margin-top: 72px;
+    }
+  `}
+`
+
+const ReviewTextLeft = styled(ReviewText)`
+  ${media.mobile`
+    margin-top: 24px;
+  `}
 `
 
 const BlockWrapperReverse = styled(BlockWrapper)`
   ${media.laptop`
     flex-direction: column-reverse;
+  `}
+`
+
+const PictureWrapper = styled.div`
+  ${media.laptop`
+    width: 100%;
+    max-width: 672px;
   `}
 `
 
@@ -181,7 +214,9 @@ export const Reviews: React.FC = () => {
   return (
     <Root>
       <BlockWrapper>
-        <Picture src="/assets/evgeny.png" alt="evgeny" />
+        <PictureWrapper>
+          <Picture src="/assets/evgeny.png" alt="evgeny" />
+        </PictureWrapper>
         <ReviewBlock>
           <ReviewText>
             “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
@@ -199,10 +234,10 @@ export const Reviews: React.FC = () => {
       </BlockWrapper>
       <BlockWrapperReverse>
         <ReviewBlock>
-          <ReviewText>
+          <ReviewTextLeft>
             “Breathhh is not only {`\n`} a digital whiteboard but {`\n`} a breakthrough {`\n`}
             application of a what {`\n`} whiteboards can {`\n`} be in the digital age”
-          </ReviewText>
+          </ReviewTextLeft>
           <icons.Kasyanov />
           <ReviewName>Evgeny Kasyanov</ReviewName>
           <ReviewInfo>
@@ -212,10 +247,14 @@ export const Reviews: React.FC = () => {
             <icons.TwitterGrey />
           </Icon>
         </ReviewBlock>
-        <PictureRight src="/assets/evgeny.png" alt="evgeny" />
+        <PictureWrapper>
+          <PictureRight src="/assets/evgeny.png" alt="evgeny" />
+        </PictureWrapper>
       </BlockWrapperReverse>
       <BlockWrapper>
-        <Picture src="/assets/kacey.png" alt="evgeny" />
+        <PictureWrapper>
+          <Picture src="/assets/kacey.png" alt="evgeny" />
+        </PictureWrapper>
         <ReviewBlock>
           <ReviewText>
             “When the pandemic hit, {`\n`} those of us who thrive on {`\n`} in-person collaboration
