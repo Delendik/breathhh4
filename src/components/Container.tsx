@@ -21,7 +21,7 @@ const Root = styled.div`
 
   ${media.mobile`
     padding: 0 20px;
-    margin: 0;
+    margin: 0 auto;
     max-width: 320px;
   `}
 `
