@@ -74,6 +74,10 @@ const Border = styled.div`
   margin-right: -34px;
 `
 
+const Wrap = styled.div<{ display: string }>`
+  display: ${(props) => props.display};
+`
+
 const Title = styled.div<{ h: string; w: string; bg: string }>`
   width: ${(props) => props.w};
   height: ${(props) => props.h};
@@ -138,10 +142,9 @@ interface IProps {
 }
 
 export const Header: React.FC<IProps> = observer((props) => {
-  const { showSticky } = props
+  const { showSticky, hideLogin } = props
   const [scroll, setScroll] = useState(false)
   const [up, setUp] = useState(false)
-
   const watcherRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
 
@@ -196,7 +199,7 @@ export const Header: React.FC<IProps> = observer((props) => {
       label,
     })
   }
-
+  console.log(hideLogin)
   return (
     <>
       <div ref={watcherRef} />
@@ -218,9 +221,11 @@ export const Header: React.FC<IProps> = observer((props) => {
         <ButtonContainer>
           {!UserStore.user ? (
             <Link to="/login">
-              <Button type="button" appearanceTransponentBlack="transponentBlack">
-                Sign in
-              </Button>
+              <Wrap display={hideLogin !== undefined ? `none` : `block`}>
+                <Button type="button" appearanceTransponentBlack="transponentBlack">
+                  Sign in
+                </Button>
+              </Wrap>
             </Link>
           ) : (
             <Link to="/dashboard">
