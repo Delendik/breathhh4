@@ -32,7 +32,6 @@
     "react-facebook-pixel": "^1.0.4",
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.2.2",
-    "react-player": "^2.9.0",
     "react-scripts": "5.0.0",
     "rollbar": "^2.24.0",
     "serve": "^13.0.2",

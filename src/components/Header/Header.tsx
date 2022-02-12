@@ -199,7 +199,6 @@ export const Header: React.FC<IProps> = observer((props) => {
       label,
     })
   }
-  console.log(hideLogin)
   return (
     <>
       <div ref={watcherRef} />

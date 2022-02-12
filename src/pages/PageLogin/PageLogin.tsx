@@ -1,15 +1,10 @@
 import styled from 'styled-components'
 import { RouteComponentProps, Link } from '@reach/router'
-import ReactPlayer from 'react-player'
 
-import { LayoutBase } from 'src/components/LayoutBase'
+import { media } from 'src/media'
 import { LayoutBaseWithoutFooter } from 'src/components/LayoutBaseWithoutFooter'
-import { ContentInner } from 'src/components/ContentInner'
 import { apiUrlFacebook, apiUrlGoogle } from 'src/utils/config'
 import { Button, Spacer } from 'src/ui/atoms'
-
-import iconFlash from './assets/flash_auto_24px.svg'
-import iconVerified from './assets/verified_user_24px.svg'
 
 const Root = styled.div`
   height: calc(100vh - 90px);
@@ -22,6 +17,11 @@ const Root = styled.div`
 const Video = styled.video`
   width: 320px;
   height: 320px;
+
+  ${media.mobile`
+    max-width: 320px;
+    width: 100%;
+  `}
 `
 
 const Subtitle = styled.div`
@@ -37,6 +37,11 @@ const Subtitle = styled.div`
 const WrapButtons = styled.div`
   display: grid;
   gap: 12px;
+
+  ${media.mobile`
+    max-width: 320px;
+    width: 100%;
+  `}
 `
 
 const LinkTo = styled(Subtitle)`
@@ -53,7 +58,6 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
           <track default kind="captions" />
           Sorry, your browser doesn't support embedded videos.
         </Video>
-        {/* <ReactPlayer url="assets/signin.mp4" loop preload="auto" /> */}
         <WrapButtons>
           <Button type="button" iconLeft="Google" iconSize="20" href={apiUrlGoogle}>
             Sign&nbsp;in&nbsp;with&nbsp;Google
