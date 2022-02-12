@@ -24,6 +24,10 @@ const Root = styled.header.attrs((props) => ({ classname: props.className }))`
     width: 100%;
   `}
 
+  ${media.mobile`
+    height: 73px;
+  `}
+
   &.top {
     position: relative;
   }

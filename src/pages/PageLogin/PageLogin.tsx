@@ -7,11 +7,15 @@ import { apiUrlFacebook, apiUrlGoogle } from 'src/utils/config'
 import { Button, Spacer } from 'src/ui/atoms'
 
 const Root = styled.div`
-  height: calc(100vh - 90px);
+  height: calc(100vh - 89px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${media.mobile`
+  height: calc(100vh - 73px);
+  `}
 `
 
 const Video = styled.video`
