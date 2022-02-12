@@ -8,11 +8,17 @@ import { yahhtUrl, facebook, twitter, medium, breathUltima } from 'src/utils/con
 const Root = styled.footer`
   padding-top: 134px;
   padding-bottom: 34px;
+  max-width: 1120px;
+  width: 1120px;
 
   & a {
     color: inherit;
     text-decoration: none;
   }
+
+  ${media.laptop`
+    width: 100%;
+  `}
 
   ${media.tablet`
     padding-top: 96px;
@@ -34,7 +40,7 @@ const Inner = styled.div`
     gap: 48px 24px;
   `}
 
-  ${media.pretablet`
+  ${media.mobile`
     gap: 31px;
     max-width: 200px;
     justify-content: center;
@@ -47,7 +53,7 @@ const InnerDown = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 
-  ${media.pretablet`
+  ${media.mobile`
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
@@ -82,13 +88,22 @@ const Title = styled.div`
 const Block = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 170px;
+  width: 170px;
 
   ${media.laptop`
-    min-width: 208px;
+    width: 208px;
   `}
 
   ${media.pretablet`
+    max-width: 208px;
+    min-width: 140px;
+  `}
+
+  ${media.tablet`
+    width: auto;
+  `}
+
+  ${media.mobile`
     align-items: center;
   `}
 `
@@ -114,7 +129,7 @@ const InfoText = styled.p`
   padding: 0;
   color: var(--color-ground-600);
 
-  ${media.pretablet`
+  ${media.mobile`
     font-size: 16px;
     line-height: 25px;
   `}
@@ -138,7 +153,7 @@ const InfoLinkSmall = styled(InfoText)`
     color: var(--color-ground-800);
   }
 
-  ${media.pretablet`
+  ${media.mobile`
     font-size: 14px;
     line-height: 22px;
   `}
@@ -149,7 +164,7 @@ const Line = styled.div`
   border: 1px solid var(--color-ground-100);
   margin-top: 48px;
 
-  ${media.pretablet`
+  ${media.mobile`
     display: none;
   `}
 `
@@ -160,7 +175,7 @@ const LineSmall = styled.div`
   border: 1px solid var(--color-ground-100);
   margin: 24px 0;
 
-  ${media.pretablet`
+  ${media.mobile`
     display: block;
   `}
 `
@@ -172,7 +187,7 @@ const BlockTitle = styled.p`
   padding: 0;
   color: var(--color-ground-600);
 
-  ${media.pretablet`
+  ${media.mobile`
     font-size: 16px;
     line-height: 25px;
   `}
