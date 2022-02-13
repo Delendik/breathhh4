@@ -1,9 +1,9 @@
 import { Link } from '@reach/router'
 import styled from 'styled-components'
 import { media } from 'src/media'
-import { Button, Spacer } from 'src/ui/atoms'
+import { Spacer } from 'src/ui/atoms'
 
-import { yahhtUrl, facebook, twitter, medium, breathUltima } from 'src/utils/config'
+import { yahhtUrl, breathUltima } from 'src/utils/config'
 
 const Root = styled.footer`
   padding-top: 134px;
