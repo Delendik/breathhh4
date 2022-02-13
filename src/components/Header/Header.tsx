@@ -139,6 +139,34 @@ const BigButton = styled.div`
   `}
 `
 
+const ButtonInstall = styled.a`
+    min-width: auto;
+    padding: 16px 24px;
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--app-text-color);
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-ground-800);
+      opacity: 0.8;
+    }
+
+    &:active {
+      color: var(--color-ground-700);
+    }
+
+    &:focus {
+      color: var(--app-text-color);
+    }
+
+    &:disabled {
+      color: var(--color-ground-400);
+    }
+  }
+`
+
 interface IProps {
   hideLogin?: boolean
   enableNav?: boolean
@@ -254,7 +282,19 @@ export const Header: React.FC<IProps> = observer((props) => {
                   </Button>
                 </BigButton>
                 <SmallButton>
-                  <Button
+                  <ButtonInstall
+                    href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                    target="_blank"
+                    // @ts-ignore
+                    onClick={
+                      !scroll
+                        ? () => eventTrack(`button`, `click`, `to_webstore`)
+                        : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                    }
+                  >
+                    Install
+                  </ButtonInstall>
+                  {/* <Button
                     type="button"
                     appearanceTransponentBlack="transponentBlack"
                     href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
@@ -266,7 +306,7 @@ export const Header: React.FC<IProps> = observer((props) => {
                     }
                   >
                     Install
-                  </Button>
+                  </Button> */}
                 </SmallButton>
               </div>
             ))}

@@ -110,7 +110,13 @@ const Block = styled.div`
 
 const SocialBlock = styled.div`
   display: flex;
-  gap: 12px;
+  margin-top: -12px;
+  margin-left: -12px;
+
+  & > * {
+    margin-top: 12px;
+    margin-left: 12px;
+  }
 
   ${media.mobile`
     margin-bottom: 3px;
@@ -192,6 +198,7 @@ const BlockTitle = styled.p`
     line-height: 25px;
   `}
 `
+
 const BlockLink = styled(BlockTitle)`
   color: var(--color-black);
 
@@ -204,6 +211,29 @@ const Badge = styled.a`
   display: flex;
 `
 
+const ButtonRound = styled.a<{ bg: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--app-text-color);
+  background-color: var(--color-ground-100);
+  background-image: ${(props) => props.bg};
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+  border: 0px solid red;
+
+  &:hover {
+    color: var(--app-text-color);
+    background-color: var(--color-ground-200);
+    opacity: 1;
+  }
+`
+
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear()
   return (
@@ -213,26 +243,21 @@ export const Footer: React.FC = () => {
           <Title />
           <Spacer s="28" />
           <SocialBlock>
-            <Button
-              type="button"
-              iconRight="FacebookBlack"
-              iconSize="16"
-              appearanceGreyRound="onGreyRound"
-              href={facebook}
+            <ButtonRound
+              href="https://www.facebook.com/breathhh.page"
+              target="_blank"
+              bg="url(/assets/facebook-black.svg)"
             />
-            <Button
-              type="button"
-              iconRight="Twitter"
-              iconSize="16"
-              appearanceGreyRound="onGreyRound"
-              href={twitter}
+
+            <ButtonRound
+              href="https://www.facebook.com/breathhh.page"
+              target="_blank"
+              bg="url(/assets/twitter.svg)"
             />
-            <Button
-              type="button"
-              iconRight="Medium"
-              iconSize="16"
-              appearanceGreyRound="onGreyRound"
-              href={medium}
+            <ButtonRound
+              href="https://www.facebook.com/breathhh.page"
+              target="_blank"
+              bg="url(/assets/medium.svg)"
             />
           </SocialBlock>
         </Block>
