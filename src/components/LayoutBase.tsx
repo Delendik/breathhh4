@@ -1,4 +1,5 @@
 // import ReactPixel from 'react-facebook-pixel'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from '@reach/router'
 import { Header } from 'src/components/Header'
@@ -54,6 +55,9 @@ export const LayoutBase: React.FC<{
   // ReactPixel.init(`218867823794422`, options)
 
   // ReactPixel.pageView()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Root>
       <div>

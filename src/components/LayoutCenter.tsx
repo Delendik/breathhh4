@@ -1,4 +1,5 @@
 // import ReactPixel from 'react-facebook-pixel'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Footer } from 'src/components/Footer'
 import { Header } from 'src/components/Header'
@@ -30,6 +31,9 @@ export const LayoutCenter: React.FC = ({ children }) => {
   // ReactPixel.init(`218867823794422`, options)
 
   // ReactPixel.pageView()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Root>
       <Header />
