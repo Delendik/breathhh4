@@ -1,9 +1,9 @@
 import { Link } from '@reach/router'
 import styled from 'styled-components'
 import { media } from 'src/media'
-import { Spacer } from 'src/ui/atoms'
+import { Spacer, Button } from 'src/ui/atoms'
 
-import { yahhtUrl, breathUltima } from 'src/utils/config'
+import { yahhtUrl, breathUltima, facebook, twitter, medium } from 'src/utils/config'
 
 const Root = styled.footer`
   padding-top: 134px;
@@ -211,29 +211,6 @@ const Badge = styled.a`
   display: flex;
 `
 
-const ButtonRound = styled.a<{ bg: string }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: var(--app-text-color);
-  background-color: var(--color-ground-100);
-  background-image: ${(props) => props.bg};
-  background-repeat: no-repeat;
-  background-position: center;
-  padding: 0;
-  border: 0px solid red;
-
-  &:hover {
-    color: var(--app-text-color);
-    background-color: var(--color-ground-200);
-    opacity: 1;
-  }
-`
-
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear()
   return (
@@ -243,21 +220,23 @@ export const Footer: React.FC = () => {
           <Title />
           <Spacer s="28" />
           <SocialBlock>
-            <ButtonRound
-              href="https://www.facebook.com/breathhh.page"
-              target="_blank"
-              bg="url(/assets/facebook-black.svg)"
+            <Button
+              iconRight="FacebookBlack"
+              iconSize="16"
+              appearanceGreyRound="onGreyRound"
+              href={facebook}
             />
-
-            <ButtonRound
-              href="https://www.facebook.com/breathhh.page"
-              target="_blank"
-              bg="url(/assets/twitter.svg)"
+            <Button
+              iconRight="Twitter"
+              iconSize="16"
+              appearanceGreyRound="onGreyRound"
+              href={twitter}
             />
-            <ButtonRound
-              href="https://www.facebook.com/breathhh.page"
-              target="_blank"
-              bg="url(/assets/medium.svg)"
+            <Button
+              iconRight="Medium"
+              iconSize="16"
+              appearanceGreyRound="onGreyRound"
+              href={medium}
             />
           </SocialBlock>
         </Block>

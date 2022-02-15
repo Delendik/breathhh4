@@ -78,10 +78,6 @@ const Border = styled.div`
   margin-right: -34px;
 `
 
-const Wrap = styled.div<{ display: string }>`
-  display: ${(props) => props.display};
-`
-
 const Title = styled.div<{ h: string; w: string; bg: string }>`
   width: ${(props) => props.w};
   height: ${(props) => props.h};
@@ -137,34 +133,6 @@ const BigButton = styled.div`
   ${media.tablet`
     display: none;
   `}
-`
-
-const ButtonInstall = styled.a`
-    min-width: auto;
-    padding: 16px 24px;
-    font-size: 16px;
-    line-height: 25px;
-    color: var(--app-text-color);
-    background-color: transparent;
-    cursor: pointer;
-
-    &:hover {
-      color: var(--color-ground-800);
-      opacity: 0.8;
-    }
-
-    &:active {
-      color: var(--color-ground-700);
-    }
-
-    &:focus {
-      color: var(--app-text-color);
-    }
-
-    &:disabled {
-      color: var(--color-ground-400);
-    }
-  }
 `
 
 interface IProps {
@@ -252,11 +220,11 @@ export const Header: React.FC<IProps> = observer((props) => {
         <ButtonContainer>
           {!UserStore.user ? (
             <Link to="/login">
-              <Wrap display={hideLogin !== undefined ? `none` : `block`}>
+              {!hideLogin && (
                 <Button type="button" appearanceTransponentBlack="transponentBlack">
                   Sign in
                 </Button>
-              </Wrap>
+              )}
             </Link>
           ) : (
             <Link to="/dashboard">
@@ -282,20 +250,7 @@ export const Header: React.FC<IProps> = observer((props) => {
                   </Button>
                 </BigButton>
                 <SmallButton>
-                  <ButtonInstall
-                    href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                    target="_blank"
-                    // @ts-ignore
-                    onClick={
-                      !scroll
-                        ? () => eventTrack(`button`, `click`, `to_webstore`)
-                        : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                    }
-                  >
-                    Install
-                  </ButtonInstall>
-                  {/* <Button
-                    type="button"
+                  <Button
                     appearanceTransponentBlack="transponentBlack"
                     href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
                     // @ts-ignore
@@ -306,7 +261,7 @@ export const Header: React.FC<IProps> = observer((props) => {
                     }
                   >
                     Install
-                  </Button> */}
+                  </Button>
                 </SmallButton>
               </div>
             ))}

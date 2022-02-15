@@ -58,15 +58,15 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
   return (
     <LayoutBaseWithoutFooter hideLogin>
       <Root>
-        <Video src="assets/signin.mp4" autoPlay loop>
+        <Video src="assets/signin.mp4" autoPlay loop playsInline>
           <track default kind="captions" />
           Sorry, your browser doesn't support embedded videos.
         </Video>
         <WrapButtons>
-          <Button type="button" iconLeft="Google" iconSize="20" href={apiUrlGoogle}>
+          <Button iconLeft="Google" iconSize="20" href={apiUrlGoogle}>
             Sign&nbsp;in&nbsp;with&nbsp;Google
           </Button>
-          <Button type="button" iconLeft="Facebook" iconSize="20" href={apiUrlFacebook}>
+          <Button iconLeft="Facebook" iconSize="20" href={apiUrlFacebook}>
             Sign&nbsp;in&nbsp;with&nbsp;Facebook
           </Button>
         </WrapButtons>
