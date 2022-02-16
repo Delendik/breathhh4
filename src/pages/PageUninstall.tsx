@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 import { UserStore } from 'src/store/UserStore'
 import { Button } from 'src/components/Button'
 import { chromeExtUrl } from 'src/utils/config'
+import { LayoutBaseWithoutFooter } from 'src/components/LayoutBaseWithoutFooter'
 
 const DATA = [
   { text: `Don't understand how it works` },
@@ -37,61 +38,63 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
   }, [])
 
   return (
-    <div>
-      <h1>Sorry! Please, help us improve</h1>
-      <h2>Why did you uninstall Breathhh? Check all that apply.</h2>
+    <LayoutBaseWithoutFooter>
+      <div>
+        <h1>Sorry! Please, help us improve</h1>
+        <h2>Why did you uninstall Breathhh? Check all that apply.</h2>
 
-      {isDataSend ? (
-        <div>
-          <p>🥶</p>
-        </div>
-      ) : (
-        <Formik
-          initialValues={{
-            reason: ``,
-            comment: ``,
-          }}
-          validationSchema={validationSchema}
-          onSubmit={async (values) => {
-            await UserStore.sendDeleteFeedback(values)
-            setDataSend(true)
-          }}
-        >
-          {({ values, errors, touched }) => (
-            <Form>
-              {DATA.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <label>
-                      <Field type="radio" name="reason" value={item.text} />
-                      {item.text}
-                    </label>
+        {isDataSend ? (
+          <div>
+            <p>🥶</p>
+          </div>
+        ) : (
+          <Formik
+            initialValues={{
+              reason: ``,
+              comment: ``,
+            }}
+            validationSchema={validationSchema}
+            onSubmit={async (values) => {
+              await UserStore.sendDeleteFeedback(values)
+              setDataSend(true)
+            }}
+          >
+            {({ values, errors, touched }) => (
+              <Form>
+                {DATA.map((item, index) => {
+                  return (
+                    <div key={index}>
+                      <label>
+                        <Field type="radio" name="reason" value={item.text} />
+                        {item.text}
+                      </label>
 
-                    {item?.type === `textArea` && (
-                      <div>
-                        <Field
-                          name="comment"
-                          as="textarea"
-                          disabled={values.reason !== item.text}
-                        />
-                        {errors.comment && touched.comment && errors.comment}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-              <ControlsWrap>
-                <Button type="submit" disabled={!values.reason}>
-                  Submit
-                </Button>
-                <a href={chromeExtUrl} target="_blank" rel="noreferrer">
-                  Reinstall extension
-                </a>
-              </ControlsWrap>
-            </Form>
-          )}
-        </Formik>
-      )}
-    </div>
+                      {item?.type === `textArea` && (
+                        <div>
+                          <Field
+                            name="comment"
+                            as="textarea"
+                            disabled={values.reason !== item.text}
+                          />
+                          {errors.comment && touched.comment && errors.comment}
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+                <ControlsWrap>
+                  <Button type="submit" disabled={!values.reason}>
+                    Submit
+                  </Button>
+                  <a href={chromeExtUrl} target="_blank" rel="noreferrer">
+                    Reinstall extension
+                  </a>
+                </ControlsWrap>
+              </Form>
+            )}
+          </Formik>
+        )}
+      </div>
+    </LayoutBaseWithoutFooter>
   )
 })

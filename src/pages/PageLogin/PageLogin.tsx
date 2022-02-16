@@ -58,8 +58,7 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
   return (
     <LayoutBaseWithoutFooter hideLogin>
       <Root>
-        <Video src="assets/signin.mp4" autoPlay loop playsInline>
-          <track default kind="captions" />
+        <Video src="assets/signin.webm" autoPlay loop playsInline>
           Sorry, your browser doesn't support embedded videos.
         </Video>
         <WrapButtons>
