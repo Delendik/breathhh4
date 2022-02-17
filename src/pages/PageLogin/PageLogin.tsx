@@ -35,12 +35,17 @@ const Subtitle = styled.div`
   font-size: 14px;
   line-height: 22px;
   text-align: center;
-  font-weight: 400;
+  font-weight: 500;
 `
 
 const WrapButtons = styled.div`
   display: grid;
   gap: 12px;
+  width: 320px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 500;
 
   ${media.mobile`
     max-width: 320px;
@@ -56,17 +61,19 @@ const LinkTo = styled(Subtitle)`
 `
 export const PageLogin: React.FC<RouteComponentProps> = () => {
   return (
-    <LayoutBaseWithoutFooter hideLogin>
+    <LayoutBaseWithoutFooter hideLogin hideInstall>
       <Root>
-        <Video src="assets/signin.webm" autoPlay loop playsInline>
+        <Video src="assets/signin.mp4" muted autoPlay loop playsInline>
+          <source src="video/signin.webm" type='video/webm; codecs="vp8, vorbis"' />
+          <source src="assets/signin.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
           Sorry, your browser doesn't support embedded videos.
         </Video>
         <WrapButtons>
           <Button iconLeft="Google" iconSize="20" href={apiUrlGoogle}>
-            Sign&nbsp;in&nbsp;with&nbsp;Google
+            Continue&nbsp;with&nbsp;Google
           </Button>
           <Button iconLeft="Facebook" iconSize="20" href={apiUrlFacebook}>
-            Sign&nbsp;in&nbsp;with&nbsp;Facebook
+            Continue&nbsp;with&nbsp;Facebook
           </Button>
         </WrapButtons>
         <Spacer s="24" />

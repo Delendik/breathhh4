@@ -41,11 +41,11 @@ const NavLink = (props: React.ComponentProps<typeof Link>) => (
     }}
   />
 )
-export const LayoutBaseWithoutFooter: React.FC<{ hideLogin?: boolean; enableNav?: boolean }> = ({
-  children,
-  hideLogin,
-  enableNav,
-}) => {
+export const LayoutBaseWithoutFooter: React.FC<{
+  hideLogin?: boolean
+  enableNav?: boolean
+  hideInstall?: boolean
+}> = ({ children, hideLogin, enableNav, hideInstall }) => {
   // const options = {
   //   autoConfig: true,
   //   debug: false,
@@ -60,7 +60,7 @@ export const LayoutBaseWithoutFooter: React.FC<{ hideLogin?: boolean; enableNav?
   return (
     <Root>
       <div>
-        <Header hideLogin={hideLogin} enableNav={enableNav} />
+        <Header hideLogin={hideLogin} enableNav={enableNav} hideInstall={hideInstall} />
         <Container>
           {enableNav && (
             <Nav>

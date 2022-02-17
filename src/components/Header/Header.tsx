@@ -137,12 +137,13 @@ const BigButton = styled.div`
 
 interface IProps {
   hideLogin?: boolean
+  hideInstall?: boolean
   enableNav?: boolean
   showSticky?: boolean
 }
 
 export const Header: React.FC<IProps> = observer((props) => {
-  const { showSticky, hideLogin } = props
+  const { showSticky, hideLogin, hideInstall } = props
   const [scroll, setScroll] = useState(false)
   const [up, setUp] = useState(false)
   const watcherRef = useRef<HTMLDivElement>(null)
@@ -237,31 +238,35 @@ export const Header: React.FC<IProps> = observer((props) => {
             (!UserStore.user && (
               <div>
                 <BigButton>
-                  <Button
-                    href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                    // @ts-ignore
-                    onClick={
-                      !scroll
-                        ? () => eventTrack(`button`, `click`, `to_webstore`)
-                        : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                    }
-                  >
-                    Add to Chrome — it’s free
-                  </Button>
+                  {!hideInstall && (
+                    <Button
+                      href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                      // @ts-ignore
+                      onClick={
+                        !scroll
+                          ? () => eventTrack(`button`, `click`, `to_webstore`)
+                          : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                      }
+                    >
+                      Add to Chrome — it’s free
+                    </Button>
+                  )}
                 </BigButton>
                 <SmallButton>
-                  <Button
-                    appearanceTransponentBlack="transponentBlack"
-                    href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                    // @ts-ignore
-                    onClick={
-                      !scroll
-                        ? () => eventTrack(`button`, `click`, `to_webstore`)
-                        : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                    }
-                  >
-                    Install
-                  </Button>
+                  {!hideInstall && (
+                    <Button
+                      appearanceTransponentBlack="transponentBlack"
+                      href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                      // @ts-ignore
+                      onClick={
+                        !scroll
+                          ? () => eventTrack(`button`, `click`, `to_webstore`)
+                          : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                      }
+                    >
+                      Install
+                    </Button>
+                  )}
                 </SmallButton>
               </div>
             ))}
