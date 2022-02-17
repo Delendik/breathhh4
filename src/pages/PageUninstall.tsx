@@ -26,6 +26,39 @@ const ControlsWrap = styled.div`
   align-items: center;
 `
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 500px;
+  height: 500px;
+`
+
+export const Label = styled.label`
+  height: 20px;
+  width: 20px;
+  background: transparent;
+  border: 1px solid #034464;
+  cursor: pointer;
+  border: 2px solid #000000;
+  border-radius: 2px;
+  color: #000;
+  font-size: 14px;
+  margin: 0 16px 16px 0;
+  padding: 8px 12px;
+
+  :hover {
+    border-color: red;
+  }
+
+  :active {
+    border-color: red;
+    background-color: #a4e0fd;
+  }
+`
+
 const validationSchema = Yup.object().shape({
   comment: Yup.string().min(2, `Too Short!`).max(1_000, `Too Long!`),
 })
@@ -61,35 +94,37 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
           >
             {({ values, errors, touched }) => (
               <Form>
-                {DATA.map((item, index) => {
-                  return (
-                    <div key={index}>
-                      <label>
-                        <Field type="radio" name="reason" value={item.text} />
-                        {item.text}
-                      </label>
+                <Wrapper>
+                  {DATA.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <Label>
+                          <Field type="checkbox" name="reason" value={item.text} />
+                          {item.text}
+                        </Label>
 
-                      {item?.type === `textArea` && (
-                        <div>
-                          <Field
-                            name="comment"
-                            as="textarea"
-                            disabled={values.reason !== item.text}
-                          />
-                          {errors.comment && touched.comment && errors.comment}
-                        </div>
-                      )}
-                    </div>
-                  )
-                })}
-                <ControlsWrap>
-                  <Button type="submit" disabled={!values.reason}>
-                    Submit
-                  </Button>
-                  <a href={chromeExtUrl} target="_blank" rel="noreferrer">
-                    Reinstall extension
-                  </a>
-                </ControlsWrap>
+                        {item?.type === `textArea` && (
+                          <div>
+                            <Field
+                              name="comment"
+                              as="textarea"
+                              disabled={values.reason !== item.text}
+                            />
+                            {errors.comment && touched.comment && errors.comment}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                  <ControlsWrap>
+                    <Button type="submit" disabled={!values.reason}>
+                      Submit
+                    </Button>
+                    <a href={chromeExtUrl} target="_blank" rel="noreferrer">
+                      Reinstall extension
+                    </a>
+                  </ControlsWrap>
+                </Wrapper>
               </Form>
             )}
           </Formik>
