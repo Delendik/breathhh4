@@ -1,9 +1,9 @@
 import { Link } from '@reach/router'
 import styled from 'styled-components'
 import { media } from 'src/media'
-import { Button, Spacer } from 'src/ui/atoms'
+import { Spacer, Button } from 'src/ui/atoms'
 
-import { yahhtUrl, facebook, twitter, medium, breathUltima } from 'src/utils/config'
+import { yahhtUrl, breathUltima, facebook, twitter, medium } from 'src/utils/config'
 
 const Root = styled.footer`
   padding-top: 134px;
@@ -110,7 +110,13 @@ const Block = styled.div`
 
 const SocialBlock = styled.div`
   display: flex;
-  gap: 12px;
+  margin-top: -12px;
+  margin-left: -12px;
+
+  & > * {
+    margin-top: 12px;
+    margin-left: 12px;
+  }
 
   ${media.mobile`
     margin-bottom: 3px;
@@ -192,6 +198,7 @@ const BlockTitle = styled.p`
     line-height: 25px;
   `}
 `
+
 const BlockLink = styled(BlockTitle)`
   color: var(--color-black);
 
@@ -214,21 +221,18 @@ export const Footer: React.FC = () => {
           <Spacer s="28" />
           <SocialBlock>
             <Button
-              type="button"
               iconRight="FacebookBlack"
               iconSize="16"
               appearanceGreyRound="onGreyRound"
               href={facebook}
             />
             <Button
-              type="button"
               iconRight="Twitter"
               iconSize="16"
               appearanceGreyRound="onGreyRound"
               href={twitter}
             />
             <Button
-              type="button"
               iconRight="Medium"
               iconSize="16"
               appearanceGreyRound="onGreyRound"

@@ -24,6 +24,10 @@ const Root = styled.header.attrs((props) => ({ classname: props.className }))`
     width: 100%;
   `}
 
+  ${media.mobile`
+    height: 73px;
+  `}
+
   &.top {
     position: relative;
   }
@@ -133,15 +137,15 @@ const BigButton = styled.div`
 
 interface IProps {
   hideLogin?: boolean
+  hideInstall?: boolean
   enableNav?: boolean
   showSticky?: boolean
 }
 
 export const Header: React.FC<IProps> = observer((props) => {
-  const { showSticky } = props
+  const { showSticky, hideLogin, hideInstall } = props
   const [scroll, setScroll] = useState(false)
   const [up, setUp] = useState(false)
-
   const watcherRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
 
@@ -196,7 +200,6 @@ export const Header: React.FC<IProps> = observer((props) => {
       label,
     })
   }
-
   return (
     <>
       <div ref={watcherRef} />
@@ -218,9 +221,11 @@ export const Header: React.FC<IProps> = observer((props) => {
         <ButtonContainer>
           {!UserStore.user ? (
             <Link to="/login">
-              <Button type="button" appearanceTransponentBlack="transponentBlack">
-                Sign in
-              </Button>
+              {!hideLogin && (
+                <Button type="button" appearanceTransponentBlack="transponentBlack">
+                  Sign in
+                </Button>
+              )}
             </Link>
           ) : (
             <Link to="/dashboard">
@@ -233,32 +238,35 @@ export const Header: React.FC<IProps> = observer((props) => {
             (!UserStore.user && (
               <div>
                 <BigButton>
-                  <Button
-                    href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                    // @ts-ignore
-                    onClick={
-                      !scroll
-                        ? () => eventTrack(`button`, `click`, `to_webstore`)
-                        : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                    }
-                  >
-                    Add to Chrome — it’s free
-                  </Button>
+                  {!hideInstall && (
+                    <Button
+                      href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                      // @ts-ignore
+                      onClick={
+                        !scroll
+                          ? () => eventTrack(`button`, `click`, `to_webstore`)
+                          : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                      }
+                    >
+                      Add to Chrome — it’s free
+                    </Button>
+                  )}
                 </BigButton>
                 <SmallButton>
-                  <Button
-                    type="button"
-                    appearanceTransponentBlack="transponentBlack"
-                    href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                    // @ts-ignore
-                    onClick={
-                      !scroll
-                        ? () => eventTrack(`button`, `click`, `to_webstore`)
-                        : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
-                    }
-                  >
-                    Install
-                  </Button>
+                  {!hideInstall && (
+                    <Button
+                      appearanceTransponentBlack="transponentBlack"
+                      href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                      // @ts-ignore
+                      onClick={
+                        !scroll
+                          ? () => eventTrack(`button`, `click`, `to_webstore`)
+                          : () => eventTrack(`button`, `click`, `to_webstore_sticky`)
+                      }
+                    >
+                      Install
+                    </Button>
+                  )}
                 </SmallButton>
               </div>
             ))}

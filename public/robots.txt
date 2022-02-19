@@ -4,4 +4,5 @@ Allow: /
 Disallow: /terms_of_use
 Disallow: /privacy_policy
 Disallow: /extension
+Disallow: /uninstall_ext
 

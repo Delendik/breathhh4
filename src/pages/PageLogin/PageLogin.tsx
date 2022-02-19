@@ -1,138 +1,94 @@
 import styled from 'styled-components'
 import { RouteComponentProps, Link } from '@reach/router'
 
-import { LayoutBase } from 'src/components/LayoutBase'
-import { ContentInner } from 'src/components/ContentInner'
+import { media } from 'src/media'
+import { LayoutBaseWithoutFooter } from 'src/components/LayoutBaseWithoutFooter'
 import { apiUrlFacebook, apiUrlGoogle } from 'src/utils/config'
+import { Button, Spacer } from 'src/ui/atoms'
 
-import iconFlash from './assets/flash_auto_24px.svg'
-import iconVerified from './assets/verified_user_24px.svg'
+const Root = styled.div`
+  height: calc(100vh - 89px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-const DATA = [
-  {
-    title: `Data Protection`,
-    text: `We encrypt your data securely. You can always delete them`,
-    icon: iconFlash,
-  },
-  {
-    title: `Neural Engine Boosted`,
-    text: `Adjusts to you and you see when you need it`,
-    icon: iconVerified,
-  },
-]
-
-const Title = styled.h1`
-  margin-top: 70px;
-  font-size: 42px;
-  line-height: 50px;
+  ${media.mobile`
+  height: calc(100vh - 73px);
+  `}
 `
 
-const Subtitle = styled.p`
-  margin-top: 30px;
-  color: #71727b;
-  font-size: 18px;
-  line-height: 24px;
+const Video = styled.video`
+  width: 320px;
+  height: 320px;
+
+  ${media.mobile`
+    max-width: 320px;
+    width: 100%;
+  `}
 `
 
-const BtnWrap = styled.div`
+const Subtitle = styled.div`
+  display: inline-block;
+  max-width: 320px;
+  color: var(--color-ground-700);
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  font-weight: 500;
+`
+
+const WrapButtons = styled.div`
   display: grid;
   gap: 12px;
-  max-width: 290px;
-  margin-top: 70px;
-`
-
-const Href = styled.a<{ type: `google` | `facebook` }>`
-  position: relative;
-  padding: 15px 15px 15px 64px;
-  color: #3d3a4b;
-  font-size: 18px;
-  text-decoration: none;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &::before {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 24px;
-    height: 24px;
-    content: '';
-
-    ${({ type }) =>
-      type === `google` && `background: url("/assets/icon-google.svg") 0 0 / cover no-repeat;`}
-
-    ${({ type }) =>
-      type === `facebook` && `background: url("/assets/icon-facebook.svg") 0 0 / cover no-repeat;`}
-  }
-`
-
-const WrapBadge = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 40px;
-`
-
-const Badge = styled.div`
-  display: flex;
-`
-
-const BadgeIcon = styled.div<{ bgi: string }>`
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  margin-right: 16px;
-  background: #f1f2f2 url(${({ bgi }) => bgi}) center / 24px 24px no-repeat;
-  border-radius: 4px;
-`
-
-const BadgeTitle = styled.div`
+  width: 320px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 25px;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
+
+  ${media.mobile`
+    max-width: 320px;
+    width: 100%;
+  `}
 `
 
-const BadgeText = styled.div`
-  color: #71727b;
-  font-size: 14px;
-  line-height: 24px;
+const LinkTo = styled(Subtitle)`
+  color: var(--color-ground-800);
+  &:hover {
+    color: var(--color-black);
+  }
 `
-
 export const PageLogin: React.FC<RouteComponentProps> = () => {
   return (
-    <LayoutBase>
-      <ContentInner>
-        <Title>Please authorize to start using</Title>
+    <LayoutBaseWithoutFooter hideLogin hideInstall>
+      <Root>
+        <Video src="assets/signin.mp4" muted autoPlay loop playsInline>
+          <source src="video/signin.webm" type='video/webm; codecs="vp8, vorbis"' />
+          <source src="assets/signin.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+          Sorry, your browser doesn't support embedded videos.
+        </Video>
+        <WrapButtons>
+          <Button iconLeft="Google" iconSize="20" href={apiUrlGoogle}>
+            Continue&nbsp;with&nbsp;Google
+          </Button>
+          <Button iconLeft="Facebook" iconSize="20" href={apiUrlFacebook}>
+            Continue&nbsp;with&nbsp;Facebook
+          </Button>
+        </WrapButtons>
+        <Spacer s="24" />
         <Subtitle>
-          This is to fine-tune the beneficial practices specifically for you. By logging in you
-          agree to the personal <Link to="/privacy_policy">privacy policy</Link> and{` `}
-          <Link to="/terms_of_use">terms of use</Link>
+          You acknowledge that you read, and agree to {`\n`}
+          <Link to="/privacy_policy">
+            <LinkTo>privacy policy</LinkTo>
+          </Link>
+          {` `}
+          and{` `}
+          <Link to="/terms_of_use">
+            <LinkTo>terms of use</LinkTo>
+          </Link>
         </Subtitle>
-        <WrapBadge>
-          {DATA.map((item, index) => {
-            return (
-              <Badge key={index}>
-                <BadgeIcon bgi={item.icon} />
-                <div>
-                  <BadgeTitle>{item.title}</BadgeTitle>
-                  <BadgeText>{item.text}</BadgeText>
-                </div>
-              </Badge>
-            )
-          })}
-        </WrapBadge>
-        <BtnWrap>
-          <Href type="google" href={apiUrlGoogle}>
-            <span>Continue with Google</span>
-          </Href>
-          <Href type="facebook" href={apiUrlFacebook}>
-            <span>Continue with Facebook</span>
-          </Href>
-        </BtnWrap>
-      </ContentInner>
-    </LayoutBase>
+      </Root>
+    </LayoutBaseWithoutFooter>
   )
 }

@@ -1,4 +1,5 @@
 // import ReactPixel from 'react-facebook-pixel'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from '@reach/router'
 import { Header } from 'src/components/Header'
@@ -40,11 +41,11 @@ const NavLink = (props: React.ComponentProps<typeof Link>) => (
     }}
   />
 )
-export const LayoutBaseWithoutFooter: React.FC<{ hideLogin?: boolean; enableNav?: boolean }> = ({
-  children,
-  hideLogin,
-  enableNav,
-}) => {
+export const LayoutBaseWithoutFooter: React.FC<{
+  hideLogin?: boolean
+  enableNav?: boolean
+  hideInstall?: boolean
+}> = ({ children, hideLogin, enableNav, hideInstall }) => {
   // const options = {
   //   autoConfig: true,
   //   debug: false,
@@ -53,10 +54,13 @@ export const LayoutBaseWithoutFooter: React.FC<{ hideLogin?: boolean; enableNav?
   // ReactPixel.init(`218867823794422`, options)
 
   // ReactPixel.pageView()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Root>
       <div>
-        <Header hideLogin={hideLogin} enableNav={enableNav} />
+        <Header hideLogin={hideLogin} enableNav={enableNav} hideInstall={hideInstall} />
         <Container>
           {enableNav && (
             <Nav>
