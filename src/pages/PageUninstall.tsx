@@ -193,9 +193,7 @@ const validationSchema = Yup.object().shape({
 export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
   const isDataSendStorage = localStorage.getItem(`data_send`) && localStorage.getItem(`data_send`)
   const [isDataSend, setDataSend] = useState(isDataSendStorage)
-  const [text, setText] = useState(``)
   console.log(isDataSendStorage)
-  const [isInFocus, isInFocusSet] = useState(false)
   const eventTrack = (category, action, label) => {
     ReactGa.event({
       category,
@@ -260,8 +258,6 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                           <InputMoodWrap>
                             <TextareaAutosize
                               name="comment"
-                              onFocus={() => isInFocusSet(true)}
-                              onBlur={() => isInFocusSet(false)}
                               placeholder="Your thoughts or feelings"
                             />
                             {errors.comment && touched.comment && errors.comment}
@@ -270,23 +266,11 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                       </div>
                     )
                   })}
-                  {/* <InputMoodWrap>
-                    <TextareaAutosize
-                      value={text}
-                      name="comment"
-                      as="textarea"
-                      onChange={(event) => setText(event.target.value)}
-                      onFocus={() => isInFocusSet(true)}
-                      onBlur={() => isInFocusSet(false)}
-                      placeholder="Your thoughts or feelings"
-                    />
-                    {errors.comment && touched.comment && errors.comment}
-                  </InputMoodWrap> */}
                   {(values.reason.length > 0 || values.comment.length > 0) && (
                     <ControlsWrap>
                       <Button
                         type="submit"
-                        autoFocus
+                        // autoFocus
                         onClick={() => eventTrack(`button`, `click`, `feedback`)}
                       >
                         Submit
