@@ -33,6 +33,7 @@
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.2.2",
     "react-scripts": "5.0.0",
+    "react-top-loading-bar": "^2.1.0",
     "rollbar": "^2.24.0",
     "serve": "^13.0.2",
     "styled-components": "^5.3.3",
