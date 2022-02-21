@@ -151,6 +151,10 @@ const InputMoodWrap = styled.div`
   border: 1px solid var(--color-ground-200);
   border-radius: 3px;
   margin-bottom: 34px;
+
+  &:hover {
+    border-color: var(--color-ground-300);
+  }
 `
 
 const TextareaAutosize = styled(Field)`
@@ -163,6 +167,7 @@ const TextareaAutosize = styled(Field)`
   padding: 15px;
   overflow: hidden;
   color: var(--color-text);
+  font-family: inherit;
   font-weight: 500;
   font-size: 14px;
   line-height: 22px;
@@ -181,9 +186,17 @@ const TextareaAutosize = styled(Field)`
     line-height: 22px;
   }
 
+  &:hover::placeholder {
+    color: var(--color-ground-700);
+  }
+
   &:focus::placeholder {
     color: var(--color-ground-700);
   }
+
+  ${media.mobile`
+    font-size: 16px;
+  `}
 `
 
 const validationSchema = Yup.object().shape({
@@ -258,9 +271,9 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                           <InputMoodWrap>
                             <TextareaAutosize
                               name="comment"
+                              autocomplete="off"
                               placeholder="Your thoughts or feelings"
                             />
-                            {errors.comment && touched.comment && errors.comment}
                           </InputMoodWrap>
                         )}
                       </div>
@@ -271,7 +284,12 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                       <Button
                         type="submit"
                         // autoFocus
-                        onClick={() => eventTrack(`button`, `click`, `feedback`)}
+                        onClick={() => {
+                          eventTrack(`button`, `click`, `feedback`)
+                          if (errors.comment) {
+                            alert(errors.comment)
+                          }
+                        }}
                       >
                         Submit
                       </Button>
