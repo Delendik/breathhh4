@@ -65,7 +65,7 @@ export const PageLogin: React.FC<RouteComponentProps> = () => {
       <Root>
         <Video src="assets/signin.mp4" muted autoPlay loop playsInline>
           <source src="video/signin.webm" type='video/webm; codecs="vp8, vorbis"' />
-          <source src="assets/signin.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+          <source src="assets/signin_ext.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
           Sorry, your browser doesn't support embedded videos.
         </Video>
         <WrapButtons>
