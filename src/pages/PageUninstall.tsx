@@ -262,6 +262,11 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                               type="checkbox"
                               name="reason"
                               value={item.text}
+                              onClick={() => {
+                                if (document.getElementById(`submitButton`)) {
+                                  document.getElementById(`submitButton`).focus()
+                                }
+                              }}
                             />
                             <Label htmlFor={item.text} />
                             {item.text}
@@ -271,7 +276,7 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                           <InputMoodWrap>
                             <TextareaAutosize
                               name="comment"
-                              autocomplete="off"
+                              autoComplete="off"
                               placeholder="Your thoughts or feelings"
                             />
                           </InputMoodWrap>
@@ -283,7 +288,8 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                     <ControlsWrap>
                       <Button
                         type="submit"
-                        // autoFocus
+                        id="submitButton"
+                        autoFocus
                         onClick={() => {
                           eventTrack(`button`, `click`, `feedback`)
                           if (errors.comment) {
