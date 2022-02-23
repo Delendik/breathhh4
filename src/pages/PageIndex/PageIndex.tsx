@@ -6,6 +6,7 @@ import { LayoutBase } from 'src/components/LayoutBase'
 import { Reviews } from 'src/components/Reviews'
 import { Benefits } from 'src/components/Benefits'
 import { HeroButton } from 'src/components/HeroButton'
+import { Overtime } from 'src/components/Overtime'
 
 const Content = styled.div`
   margin: 0;
@@ -22,6 +23,7 @@ export const PageIndex: React.FC<RouteComponentProps> = () => {
         <Reviews />
         <Benefits />
         <HeroButton />
+        <Overtime />
       </Content>
     </LayoutBase>
   )
