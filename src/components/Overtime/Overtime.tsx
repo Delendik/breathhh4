@@ -170,7 +170,7 @@ const SmallGrey = styled(BigGrey)`
 
   ${media.laptop`
     display: block;
-    width: 444px;
+    width: 448px;
     height: 30px;
     object-fit: cover;
   `}
@@ -191,7 +191,7 @@ const SmallBlack = styled(BigBlack)`
 
   ${media.laptop`
     display: block;
-    width: 220px;
+    width: 224px;
     height: 30px;
     object-fit: cover;
   `}
@@ -227,7 +227,7 @@ export const Overtime: React.FC<RouteComponentProps> = () => {
             <TextHours>40 hours</TextHours>
           </BlockLeft>
           <BigGrey width="747" height="33" src="/assets/big-grey.svg" alt="arrow" />
-          <SmallGrey width="444" height="30" src="/assets/small-grey.svg" alt="arrow" />
+          <SmallGrey width="448" height="30" src="/assets/small-grey.svg" alt="arrow" />
           <TextVisual>work week</TextVisual>
         </Wrap>
         <Wrap>
@@ -258,7 +258,7 @@ export const Overtime: React.FC<RouteComponentProps> = () => {
             </TextSubtrackSmall>
           </BlockRight>
           <BigBlack width="373" height="33" src="/assets/big-black.svg" alt="arrow" />
-          <SmallBlack width="220" height="30" src="/assets/small-black.svg" alt="arrow" />
+          <SmallBlack width="224" height="30" src="/assets/small-black.svg" alt="arrow" />
           <TextVisual>overtime</TextVisual>
         </Wrap>
       </VisualWrapper>
