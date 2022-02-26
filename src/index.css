@@ -10,6 +10,7 @@ html,
 body {
   position: relative;
   background: var(--color-white);
+  z-index: -2;
 }
 
 body {
@@ -29,6 +30,6 @@ a {
   text-decoration: none;
 }
 
-p{
+p, h1, h2, h3{
   margin: 0;
 }
