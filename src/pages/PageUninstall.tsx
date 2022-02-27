@@ -242,9 +242,10 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
             validationSchema={validationSchema}
             onSubmit={async (values) => {
               const array = Array.from(values.reason)
-              array.push(values.comment)
-              console.log(array)
-              await UserStore.sendDeleteFeedback(array)
+              if (values.comment) {
+                array.push(values.comment)
+              }
+              await UserStore.sendDeleteFeedback({ reasons: array })
               setDataSend(`yes`)
               localStorage.setItem(`data_send`, `yes`)
             }}
