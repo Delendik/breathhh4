@@ -19,6 +19,7 @@ const Root = styled.header.attrs((props) => ({ classname: props.className }))`
   background-color: var(--color-white);
   overflow: hidden;
   padding-bottom: 1px;
+  z-index: 5;
 
   ${media.tablet`
     width: 100%;
@@ -39,6 +40,7 @@ const Root = styled.header.attrs((props) => ({ classname: props.className }))`
 
   &.show {
     height: 77px;
+    position: relative;
     animation: headerFadeIn ease-in 0.5s forwards;
     overflow: hidden;
   }

@@ -10,7 +10,6 @@ html,
 body {
   position: relative;
   background: var(--color-white);
-  z-index: -2;
 }
 
 body {

@@ -29,7 +29,7 @@ const PictureWrap = styled.div`
   border: 2px solid var(--color-black);
   box-sizing: border-box;
   border-radius: 34px;
-  z-index: -1;
+  /* z-index: 1; */
 
   ${media.laptop`
     max-width: 672px;
@@ -204,13 +204,7 @@ const TextLink = styled.a`
   display: flex;
   align-items: center;
   color: var(--color-ground-700);
-
-  ${media.mobile`
-    & svg {
-        width: 16px;
-        height: 16px;
-      }
-  `}
+  /* z-index: 3; */
 
   &:hover {
     cursor: pointer;
@@ -219,6 +213,12 @@ const TextLink = styled.a`
       fill: var(--color-ground-200);
     }
   }
+  ${media.mobile`
+    & svg {
+        width: 16px;
+        height: 16px;
+      }
+  `}
 `
 
 const TextHead = styled.p`
