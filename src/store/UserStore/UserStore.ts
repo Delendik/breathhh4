@@ -18,6 +18,8 @@ export class UserStore {
 
   moodRates: IMoodRates[] = []
 
+  loadingFeedback = false
+
   constructor() {
     makeAutoObservable(this)
   }
@@ -66,7 +68,12 @@ export class UserStore {
   }
 
   async sendDeleteFeedback(data: IDeleteFeedback) {
+    this.loadingFeedback = true
     await fetcher.post(`/users/feedbacks`, data, { headers: { AUTHORIZATION: this.token } })
+
+    runInAction(() => {
+      this.loadingFeedback = false
+    })
   }
 
   async sendReferrer() {
