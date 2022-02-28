@@ -29,7 +29,6 @@ const PictureWrap = styled.div`
   border: 2px solid var(--color-black);
   box-sizing: border-box;
   border-radius: 34px;
-  /* z-index: 1; */
 
   ${media.laptop`
     max-width: 672px;
@@ -49,7 +48,7 @@ const Picture = styled.div`
   background-repeat: repeat;
   width: 550px;
   height: 2430px;
-  animation: moveSlideshow 8s linear infinite;
+  animation: moveSlideshow 16s linear infinite;
   margin: 0 auto;
 
   ${media.laptop`
@@ -78,6 +77,7 @@ const Points = styled.img`
   height: 10px;
   top: 34px;
   left: 34px;
+  z-index: 4;
 `
 
 const Title = styled.h1`
@@ -127,21 +127,21 @@ const Head = styled.img`
   width: 300px;
   height: 300px;
   top: 100px;
-  right: -48px;
-  animation: showhead ease-in 1.3s forwards;
+  right: -20px;
+  animation: showhead ease-in 1s forwards;
 
   ${media.laptop`
     width: 250px;
     height: 250px;
     top: 128px;
-    right: -31px;
+    right: -15px;
   `}
 
   ${media.mobile`
     width: 140px;
     height: 140px;
     top: 90px;
-    right: -16px;
+    right: -6px;
   `}
 
   @keyframes showhead {
@@ -154,14 +154,16 @@ const Head = styled.img`
   }
 `
 
-const TextBox = styled.div`
+const TextBox = styled.a`
   position: absolute;
   top: 68px;
   right: 242px;
   padding: 12px 16px;
   background: var(--color-black);
   border-radius: 14px;
-  animation: showtext ease-in 1.3s forwards;
+  opacity: 0;
+  box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.2);
+  animation: showtext ease-in 1s 1s forwards;
 
   ${media.laptop`
     top: 96px;
@@ -176,10 +178,20 @@ const TextBox = styled.div`
 
   @keyframes showtext {
     from {
-      transform: translateX(100%);
+      opacity: 0;
     }
     to {
-      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    & > * {
+      color: var(--color-ground-200);
+    }
+    & svg path {
+      fill: var(--color-ground-200);
     }
   }
 
@@ -200,19 +212,11 @@ const TextBox = styled.div`
   }
 `
 
-const TextLink = styled.a`
+const TextLink = styled.div`
   display: flex;
   align-items: center;
   color: var(--color-ground-700);
-  /* z-index: 3; */
 
-  &:hover {
-    cursor: pointer;
-    color: var(--color-ground-200);
-    & svg path {
-      fill: var(--color-ground-200);
-    }
-  }
   ${media.mobile`
     & svg {
         width: 16px;
@@ -276,12 +280,12 @@ export const Demo: React.FC = () => {
           {animate && (
             <>
               <Head width="300" height="300" src="/assets/head.svg" alt="head" />
-              <TextBox>
+              <TextBox
+                href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
+                target="blank"
+              >
                 <TextHead>Time to Breathe</TextHead>
-                <TextLink
-                  href="https://chrome.google.com/webstore/detail/breathhh/niipedbmjiopjpmjcpigiflabghcckeo"
-                  target="blank"
-                >
+                <TextLink>
                   <TextHeadGrey> Start</TextHeadGrey>
                   <icons.ArrowUpRightGrey />
                 </TextLink>
