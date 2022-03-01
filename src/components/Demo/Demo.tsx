@@ -182,7 +182,7 @@ const TextBox = styled.a`
   border-radius: 14px;
   opacity: 0;
   box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.2);
-  animation: showtext ease-in 1s 1s forwards;
+  animation: showtext ease-in 0.7s 1s forwards;
 
   ${media.laptop`
     top: 96px;
@@ -207,10 +207,10 @@ const TextBox = styled.a`
   &:hover {
     cursor: pointer;
     & > * {
-      color: var(--color-ground-200);
+      color: var(--color-white);
     }
     & svg path {
-      fill: var(--color-ground-200);
+      fill: var(--color-white);
     }
   }
 
