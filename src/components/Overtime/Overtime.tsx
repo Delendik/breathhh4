@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useRef } from 'react'
 import { media } from 'src/media'
 import { RouteComponentProps } from '@reach/router'
 
@@ -213,6 +214,15 @@ const TextVisual = styled.p`
 `
 
 export const Overtime: React.FC<RouteComponentProps> = () => {
+  const leftEl = document.querySelector(`body`)
+  const leftr = document.getElementById(`test`)
+  const headerRef = useRef<HTMLDivElement>(null)
+
+  leftEl.addEventListener(`scroll`, () => {
+    console.log(`scroll`)
+    leftr.scrollRight = leftEl.scrollTop * 0.5
+  })
+
   return (
     <Root>
       <IconWrap width="80" height="80" src="/assets/overtime-face.svg" alt="face" />
@@ -221,7 +231,7 @@ export const Overtime: React.FC<RouteComponentProps> = () => {
         Breathhh provides tools with science-based proven efficacy, synergy and artificial
         intelligence
       </Text>
-      <VisualWrapper>
+      <VisualWrapper id={`test`}>
         <Wrap>
           <BlockLeft>
             <TextHours>40 hours</TextHours>
