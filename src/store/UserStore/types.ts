@@ -49,9 +49,10 @@ export interface IUser {
   active_subscription: null | IActiveSubscription
 }
 
+// export type IDeleteFeedback = Array<string>
+
 export interface IDeleteFeedback {
-  reason: string
-  comment: string
+  reasons: Array<string>
 }
 
 export interface IReferrer {
