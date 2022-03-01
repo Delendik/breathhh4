@@ -80,6 +80,25 @@ const Points = styled.img`
   z-index: 4;
 `
 
+const Cursor = styled.img`
+  position: absolute;
+  width: 16px;
+  height: 25px;
+  top: 356px;
+  right: 470px;
+  z-index: 4;
+
+  ${media.laptop`
+    top: 449px;
+    right: 236px;
+  `}
+
+  ${media.mobile`
+    top: 306px;
+    right: 116px;
+  `}
+`
+
 const Title = styled.h1`
   max-width: 600px;
   font-family: NeueMachina;
@@ -276,6 +295,7 @@ export const Demo: React.FC = () => {
         <Text>Personal intelligence tailored specifically to you</Text>
         <PictureWrap ref={watcherRef}>
           <Points width="46" height="10" src="/assets/demo-points.svg" alt="points" />
+          <Cursor width="16" height="25" src="/assets/cursor.svg" alt="points" />
           <Picture />
           {animate && (
             <>
