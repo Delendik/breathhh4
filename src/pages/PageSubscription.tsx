@@ -110,7 +110,7 @@ export const PageSubscription: React.FC<RouteComponentProps> = observer(() => {
         <script src="https://cdn.paddle.com/paddle/paddle.js" />
       </Helmet>
       <div>
-        <Promo>100% DISCOUNT PROMOCODE: EARLYBIRDFEB</Promo>
+        <Promo>100% DISCOUNT PROMOCODE: EARLYBIRDMAR</Promo>
         <Content>
           {plans.map((plan, index) => {
             const isPlanTrial = plan.recurring_type === `trial`
