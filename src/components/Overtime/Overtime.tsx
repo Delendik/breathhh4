@@ -215,12 +215,14 @@ const TextVisual = styled.p`
 
 export const Overtime: React.FC<RouteComponentProps> = () => {
   const leftEl = document.querySelector(`body`)
-  const leftr = document.getElementById(`test`)
+  // const leftr = document.getElementById(`test`)
   const headerRef = useRef<HTMLDivElement>(null)
+  console.log(headerRef)
 
   leftEl.addEventListener(`scroll`, () => {
     console.log(`scroll`)
-    leftr.scrollRight = leftEl.scrollTop * 0.5
+    window.moveTo(100, 200)
+    //  = leftEl.scrollTop * 0.5
   })
 
   return (
@@ -231,7 +233,7 @@ export const Overtime: React.FC<RouteComponentProps> = () => {
         Breathhh provides tools with science-based proven efficacy, synergy and artificial
         intelligence
       </Text>
-      <VisualWrapper id={`test`}>
+      <VisualWrapper>
         <Wrap>
           <BlockLeft>
             <TextHours>40 hours</TextHours>

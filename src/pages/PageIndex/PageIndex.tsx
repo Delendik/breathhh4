@@ -7,6 +7,7 @@ import { Reviews } from 'src/components/Reviews'
 import { Benefits } from 'src/components/Benefits'
 import { HeroButton } from 'src/components/HeroButton'
 import { Overtime } from 'src/components/Overtime'
+import { Demo } from 'src/components/Demo'
 
 const Content = styled.div`
   margin: 0;
@@ -22,6 +23,7 @@ export const PageIndex: React.FC<RouteComponentProps> = () => {
       <Content>
         <Reviews />
         <Benefits />
+        <Demo />
         <HeroButton />
         <Overtime />
       </Content>
