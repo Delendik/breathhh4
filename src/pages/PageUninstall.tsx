@@ -30,12 +30,24 @@ const Root = styled.div`
     width: 100%;
   `}
 `
-const ControlsWrap = styled.div`
+const ControlsWrap = styled.div.attrs((props) => ({ classname: props.className }))`
   display: flex;
   gap: 10px;
   align-items: center;
+  opacity: 0;
+  transition: 0.4s;
+
+  & > *:focus {
+    outline: 0;
+  }
+
+  &.show {
+    opacity: 1;
+  }
 `
+
 const Title = styled.h1`
+  font-family: NeueMachina;
   font-size: 42px;
   line-height: 44px;
   text-transform: uppercase;
@@ -121,6 +133,7 @@ const RootThanks = styled.div`
 `
 
 const TitleThanks = styled.h1`
+  font-family: NeueMachina;
   font-size: 56px;
   line-height: 60px;
   text-align: center;
@@ -174,6 +187,7 @@ const TextareaAutosize = styled(Field)`
   word-break: break-all;
   resize: none;
   margin-top: 4px;
+  transition: 0.3s;
 
   &[disabled] {
     opacity: 0.4;
@@ -184,6 +198,7 @@ const TextareaAutosize = styled(Field)`
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
+    transition: 0.3s;
   }
 
   &:hover::placeholder {
@@ -200,7 +215,9 @@ const TextareaAutosize = styled(Field)`
 `
 
 const validationSchema = Yup.object().shape({
-  comment: Yup.string().min(10, `Too Short!`).max(1_000, `Too Long!`),
+  comment: Yup.string()
+    .min(10, `Characters limit from 10 to 1000`)
+    .max(1_000, `Characters limit from 10 to 1000`),
 })
 
 export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
@@ -278,30 +295,32 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                             <TextareaAutosize
                               name="comment"
                               autoComplete="off"
-                              placeholder="Your thoughts or feelings"
+                              placeholder="How else can we improve extension?"
                             />
                           </InputMoodWrap>
                         )}
                       </div>
                     )
                   })}
-                  {(values.reason.length > 0 || values.comment.length > 0) && (
-                    <ControlsWrap>
-                      <Button
-                        type="submit"
-                        id="submitButton"
-                        autoFocus
-                        onClick={() => {
-                          eventTrack(`button`, `click`, `feedback`)
-                          if (errors.comment) {
-                            alert(errors.comment)
-                          }
-                        }}
-                      >
-                        Submit
-                      </Button>
-                    </ControlsWrap>
-                  )}
+                  <ControlsWrap
+                    className={
+                      values.reason.length > 0 || values.comment.length > 0 ? `show` : `none`
+                    }
+                  >
+                    <Button
+                      type="submit"
+                      id="submitButton"
+                      autoFocus
+                      onClick={() => {
+                        eventTrack(`button`, `click`, `feedback`)
+                        if (errors.comment) {
+                          alert(errors.comment)
+                        }
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  </ControlsWrap>
                 </Wrapper>
               </Form>
             )}
