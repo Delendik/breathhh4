@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import cookie from 'js-cookie'
+// import cookie from 'js-cookie'
 
 import { UserStore } from 'src/store/UserStore'
 import { sendMessageToExt } from 'src/utils/config'
@@ -11,8 +11,8 @@ export const useAuth = () => {
   // INFO: Логин
   useEffect(() => {
     ;(async () => {
-      // const AUTHORIZATION = `20s8WkkdEW8o9euFq5s1JQ`
-      const AUTHORIZATION = cookie.get(`token`)
+      const AUTHORIZATION = `20s8WkkdEW8o9euFq5s1JQ`
+      // const AUTHORIZATION = cookie.get(`token`)
 
       if (AUTHORIZATION) {
         try {
