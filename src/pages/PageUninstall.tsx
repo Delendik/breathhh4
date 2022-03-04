@@ -302,7 +302,6 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                       </div>
                     )
                   })}
-                  {/* {(values.reason.length > 0 || values.comment.length > 0) && ( */}
                   <ControlsWrap
                     className={
                       values.reason.length > 0 || values.comment.length > 0 ? `show` : `none`
@@ -322,7 +321,6 @@ export const PageUninstall: React.FC<RouteComponentProps> = observer(() => {
                       Submit
                     </Button>
                   </ControlsWrap>
-                  {/* )} */}
                 </Wrapper>
               </Form>
             )}
