@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { useRef } from 'react'
+// import { useRef } from 'react'
+import { useState, useEffect, useRef, createRef } from 'react'
 import { media } from 'src/media'
 import { RouteComponentProps } from '@reach/router'
 
@@ -71,6 +72,7 @@ const VisualWrapper = styled.div`
   margin-top: 68px;
   width: 1120px;
   display: -webkit-box;
+  transition: 10s;
 
   ${media.laptop`
     max-width: 672px;
@@ -79,6 +81,9 @@ const VisualWrapper = styled.div`
 
   ${media.mobile`
     overflow: auto;
+    &.move {
+      transform: translateX(-1120px);
+    }
   `}
 `
 
@@ -93,10 +98,16 @@ const BlockLeft = styled.div`
   border-bottom: 4px solid var(--color-ground-200);
   display: flex;
   flex-direction: column;
+  transition: 10s;
 
   ${media.laptop`
     width: 444px;
     height: 151px;
+  `}
+  ${media.mobile`
+    &.move {
+      transform: translateX(-1120px);
+    }
   `}
 `
 
@@ -105,10 +116,16 @@ const BlockRight = styled.div`
   width: 373px;
   height: 221px;
   border-bottom: 4px solid var(--color-black);
+  transition: 10s;
 
   ${media.laptop`
     width: 224px;
     height: 151px;
+  `}
+  ${media.mobile`
+    &.move {
+      transform: translateX(-1120px);
+    }
   `}
 `
 
@@ -214,17 +231,46 @@ const TextVisual = styled.p`
 `
 
 export const Overtime: React.FC<RouteComponentProps> = () => {
-  const leftEl = document.querySelector(`body`)
-  // const leftr = document.getElementById(`test`)
-  const headerRef = useRef<HTMLDivElement>(null)
-  console.log(headerRef)
+  const leftEl = document.querySelector(`.testDiv`)
+  // // const leftr = document.getElementById(`test`)
+  // const headerRef = useRef<HTMLDivElement>(null)
+  // console.log(headerRef)
+  const ref = createRef()
 
-  leftEl.addEventListener(`scroll`, () => {
+  document.addEventListener(`scroll`, () => {
     console.log(`scroll`)
-    window.moveTo(100, 200)
-    //  = leftEl.scrollTop * 0.5
+    // window.moveTo(100, 200)
+    leftEl.scrollLeft = 200
   })
+  const watcherRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [animate, setAnimate] = useState(false)
+  // const xxx = document.getElementById(`test`)
+  // let sLeft = xxx.scrollLeft
+  // console.log(sLeft)
+  console.log(ref)
+  useEffect(() => {
+    const options = {
+      root: document,
+      rootMargin: `0%`,
+      threshold: 0,
+    }
 
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log(window.scrollY)
+          // xxx.scrollLeft(200)
+        }
+      })
+    }
+
+    const scrollObserver = new IntersectionObserver(callback, options)
+    scrollObserver.observe(watcherRef.current)
+    return () => {
+      scrollObserver.unobserve(headerRef.current)
+    }
+  }, [headerRef])
   return (
     <Root>
       <IconWrap width="80" height="80" src="/assets/overtime-face.svg" alt="face" />
@@ -233,7 +279,7 @@ export const Overtime: React.FC<RouteComponentProps> = () => {
         Breathhh provides tools with science-based proven efficacy, synergy and artificial
         intelligence
       </Text>
-      <VisualWrapper>
+      <VisualWrapper id="test" ref={ref} className="testDiv">
         <Wrap>
           <BlockLeft>
             <TextHours>40 hours</TextHours>
