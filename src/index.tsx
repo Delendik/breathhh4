@@ -10,7 +10,7 @@ import './index.css'
 
 import { App } from './App'
 
-const isProd = process.env.NODE_ENV === `production`
+// const isProd = process.env.NODE_ENV === `development`
 
 const rollBarConfig = {
   accessToken: `960c63c90161452fa830caa464230012`,
@@ -20,7 +20,7 @@ const rollBarConfig = {
 
 ReactDOM.render(
   <React.StrictMode>
-    {isProd ? (
+    {/* {isProd ? (
       <Provider config={rollBarConfig}>
         <ErrorBoundary>
           <HelmetProvider>
@@ -28,11 +28,11 @@ ReactDOM.render(
           </HelmetProvider>
         </ErrorBoundary>
       </Provider>
-    ) : (
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-    )}
+    ) : ( */}
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+    {/* )} */}
   </React.StrictMode>,
   document.getElementById(`root`)
 )
