@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 // import { useRef } from 'react'
-import { useState, useEffect, useRef, createRef } from 'react'
+import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import { media } from 'src/media'
 import { RouteComponentProps } from '@reach/router'
 
@@ -81,9 +81,6 @@ const VisualWrapper = styled.div`
 
   ${media.mobile`
     overflow: auto;
-    &.move {
-      transform: translateX(-1120px);
-    }
   `}
 `
 
@@ -231,36 +228,25 @@ const TextVisual = styled.p`
 `
 
 export const Overtime: React.FC<RouteComponentProps> = () => {
-  const leftEl = document.querySelector(`.testDiv`)
-  // // const leftr = document.getElementById(`test`)
-  // const headerRef = useRef<HTMLDivElement>(null)
-  // console.log(headerRef)
-  const ref = createRef()
-
-  document.addEventListener(`scroll`, () => {
-    console.log(`scroll`)
-    // window.moveTo(100, 200)
-    leftEl.scrollLeft = 200
-  })
   const watcherRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const [animate, setAnimate] = useState(false)
-  // const xxx = document.getElementById(`test`)
-  // let sLeft = xxx.scrollLeft
-  // console.log(sLeft)
-  console.log(ref)
+  const [start, setStart] = useState(0)
+
   useEffect(() => {
     const options = {
       root: document,
-      rootMargin: `0%`,
+      rootMargin: `-50%`,
       threshold: 0,
     }
 
     const callback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log(window.scrollY)
-          // xxx.scrollLeft(200)
+          setAnimate(true)
+          setStart(window.scrollY)
+        } else {
+          setAnimate(false)
         }
       })
     }
@@ -270,7 +256,18 @@ export const Overtime: React.FC<RouteComponentProps> = () => {
     return () => {
       scrollObserver.unobserve(headerRef.current)
     }
-  }, [headerRef])
+  }, [])
+
+  const doSomething = () => {
+    watcherRef.current.scrollLeft = window.scrollY - start
+  }
+
+  if (animate && window.screen.width < 375) {
+    window.addEventListener(`scroll`, doSomething)
+  } else {
+    window.removeEventListener(`scroll`, doSomething)
+  }
+
   return (
     <Root>
       <IconWrap width="80" height="80" src="/assets/overtime-face.svg" alt="face" />
@@ -279,7 +276,7 @@ export const Overtime: React.FC<RouteComponentProps> = () => {
         Breathhh provides tools with science-based proven efficacy, synergy and artificial
         intelligence
       </Text>
-      <VisualWrapper id="test" ref={ref} className="testDiv">
+      <VisualWrapper ref={watcherRef} id="testDiv">
         <Wrap>
           <BlockLeft>
             <TextHours>40 hours</TextHours>

@@ -10,11 +10,12 @@ import './index.css'
 
 import { App } from './App'
 
-const isProd = process.env.NODE_ENV === `development`
+const isProd = process.env.NODE_ENV === `production`
 
 const rollBarConfig = {
   accessToken: `960c63c90161452fa830caa464230012`,
-  environment: isProd ? `production` : `development`,
+  environment: `development`,
+  // environment: isProd ? `production` : `development`,
 }
 
 ReactDOM.render(

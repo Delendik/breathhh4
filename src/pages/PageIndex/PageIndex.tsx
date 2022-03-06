@@ -22,10 +22,10 @@ export const PageIndex: React.FC<RouteComponentProps> = () => {
     <LayoutBase>
       <Content>
         <Reviews />
+        <Overtime />
         <Benefits />
         <Demo />
         <HeroButton />
-        <Overtime />
       </Content>
     </LayoutBase>
   )
